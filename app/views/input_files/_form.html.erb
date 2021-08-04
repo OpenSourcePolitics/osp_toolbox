@@ -1,0 +1,27 @@
+<%= form_with(model: [@document, @input_file], url: document_input_files_path) do |form| %>
+  <% if input_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(input_file.errors.count, "error") %> prohibited this input_file from being saved:</h2>
+
+      <ul>
+        <% input_file.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="field">
+    <%= form.label :typename %>
+    <%= form.text_field :typename %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
