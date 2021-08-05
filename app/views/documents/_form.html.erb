@@ -16,6 +16,13 @@
     <%= form.text_field :title %>
   </div>
 
+  <% if action_name == "edit" %>
+  <div class="field">
+    <%= form.label :ready %>
+    <%= form.check_box :ready %>
+  </div>
+    <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

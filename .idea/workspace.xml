@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5609e8a7-2f9a-4d3b-9a31-f0fb0dd83b39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/pages/home.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/pages/home.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <list id="13562614-1f8b-4004-9425-dab5b4ead16b" name="Changes by armandfardeau" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/documents_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/documents_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/input_files_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/input_files_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/document.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/document.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/documents/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/documents/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/documents/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/documents/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/documents/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/documents/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/input_files/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/input_files/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/input_files/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/input_files/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/input_files/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/input_files/show.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +60,8 @@
       <workItem from="1627979549507" duration="685000" />
       <workItem from="1627981964092" duration="4866000" />
       <workItem from="1628064593096" duration="681000" />
-      <workItem from="1628085354141" duration="7888000" />
+      <workItem from="1628085354141" duration="10037000" />
+      <workItem from="1628153443256" duration="8616000" />
     </task>
     <servers />
   </component>
