@@ -3,7 +3,6 @@ require 'json'
 require 'net/http'
 require 'uri'
 
-
 class ProcessDocumentJob < ApplicationJob
   queue_as :default
 
@@ -23,11 +22,28 @@ class ProcessDocumentJob < ApplicationJob
     csv_content = csv[1..-1]
 
     csv_content.each_with_object({})
-               .with_index { |(row, hash), index| hash[index.to_s] = parse_row(csv_header, row)}
+               .with_index { |(row, hash), index| hash[index.to_s] = parse_row(csv_header, row) }
   end
 
   def parse_row(header, row)
     (0..header.length - 1).each_with_object({}) { |index, hash| hash[header[index]] = row[index] }
+  end
+
+  def write_archive_file(document, response)
+    archive_filename = "archive.zip"
+    archive = File.open(Rails.root.join("tmp", archive_filename), "wb") do |f|
+      f.write(response.read_body)
+    end
+    document_archive = Archive.create!(document: document)
+    document_archive.attach(
+      io: archive,
+      filename: archive_filename,
+      content_type: 'application/zip'
+    )
+
+    document_archive.save
+    archive.close
+
   end
 
   def send_post_request(content)
@@ -39,8 +55,7 @@ class ProcessDocumentJob < ApplicationJob
     request.body = JSON.dump(content)
 
     # Send the request
-    response = http.request(request)
-    puts response.read_body
-
+    http.request(request)
   end
+
 end

@@ -8,6 +8,7 @@
       <th>Title</th>
       <th>User</th>
       <th>Ready</th>
+      <th>Archive</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,9 @@
         <td><%= document.title %></td>
         <td><%= document.user_id %></td>
         <td><%= document.ready %></td>
+        <td>
+          <%= document_archive_for(document) %>
+        </td>
         <td><%= link_to 'Show', document %></td>
         <td><%= link_to 'Edit', edit_document_path(document) %></td>
         <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
