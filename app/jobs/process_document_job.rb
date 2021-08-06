@@ -2,6 +2,7 @@ require 'csv'
 require 'json'
 require 'net/http'
 require 'uri'
+require 'securerandom'
 
 class ProcessDocumentJob < ApplicationJob
   queue_as :default
@@ -11,7 +12,8 @@ class ProcessDocumentJob < ApplicationJob
       hash[item.typename] = parse_csv(item.file.download)
     end
 
-    send_post_request(output.to_json)
+    response = send_post_request(output.to_json)
+    write_archive_file(document, response)
   end
 
   private
@@ -30,19 +32,19 @@ class ProcessDocumentJob < ApplicationJob
   end
 
   def write_archive_file(document, response)
-    archive_filename = "archive.zip"
+    archive_filename = "archive_#{random_string}.zip"
     archive = File.open(Rails.root.join("tmp", archive_filename), "wb") do |f|
       f.write(response.read_body)
     end
-    document_archive = Archive.create!(document: document)
-    document_archive.attach(
-      io: archive,
+    document_archive = Archive.find_or_create_by!(document: document)
+
+    document_archive.file.attach(
+      io: File.open(Rails.root.join("tmp", archive_filename)),
       filename: archive_filename,
       content_type: 'application/zip'
     )
 
     document_archive.save
-    archive.close
 
   end
 
@@ -58,4 +60,7 @@ class ProcessDocumentJob < ApplicationJob
     http.request(request)
   end
 
+  def random_string
+    @random_string ||= SecureRandom.alphanumeric(8)
+  end
 end
