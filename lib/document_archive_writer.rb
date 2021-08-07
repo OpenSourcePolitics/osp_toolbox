@@ -3,7 +3,7 @@ module DocumentArchiveWriter
     archive_filename = "archive_#{random_string}.zip"
 
     File.open(Rails.root.join("tmp", archive_filename), "wb") do |f|
-      f.write(response.read_body)
+      f.write(response.body)
     end
     document_archive = Archive.find_or_create_by!(document: document)
 
