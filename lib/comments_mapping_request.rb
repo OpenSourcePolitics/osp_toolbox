@@ -3,7 +3,9 @@ require 'net/http'
 require 'uri'
 
 module CommentsMappingRequest
-  def self.send_post_request(content, url = URI("http://127.0.0.1:5000/?sorting_attribute=supports"))
+  URI = URI("#{ENV["COMMENTS_MAPPING_URL"]}/?sorting_attribute=supports")
+
+  def self.send_post_request(content, url = URI)
     http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Post.new(url)
     request["Content-Type"] = "application/json"
