@@ -13,7 +13,11 @@
   <% input_files.each do |input_file| %>
     <tr>
       <td>
-        <%= link_to "Download #{input_file.file.name}", rails_blob_path(input_file.file, disposition: "attachment") %>
+        <% if input_file.file.attachment %>
+          <%= link_to "Download #{input_file.file.name}", rails_blob_path(input_file.file, disposition: "attachment") %>
+        <% else %>
+          Attachment is missing
+        <% end %>
       </td>
       <td><%= input_file.typename %></td>
       <td><%= link_to 'Show', document_input_file_path(document_id: input_file.document_id, id: input_file) %></td>
