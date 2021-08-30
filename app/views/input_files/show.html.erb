@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File:</strong>
+  <%= link_to @input_file.file.filename, @input_file.file if @input_file.file.attached? %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @input_file.typename %>
+</p>
+
+<%= link_to 'Edit', edit_document_input_file_path(id: @input_file) %> |
+<%= link_to 'Back', document_path(@document) %>

@@ -1,0 +1,29 @@
+<%= form_with(model: document) do |form| %>
+  <% if document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+        <% document.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <% if action_name == "edit" %>
+  <div class="field">
+    <%= form.label :ready %>
+    <%= form.check_box :ready %>
+  </div>
+    <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

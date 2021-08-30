@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Document: <%= @document.title %></h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @document.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @document.user.email %>
+</p>
+
+<%= render partial: "input_files/list", locals: { input_files: @document.input_files } %>
+<%= document_archive_for @document %>
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>
+
