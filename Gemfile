@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'active_storage_validations'
 
+gem "roo", "~> 2.8.0"
+gem 'roo-xls'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'dotenv-rails'

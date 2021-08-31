@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @preprocessing.title %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @preprocessing.client %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @preprocessing.url %>
+</p>
+
+<%= link_to 'Edit', edit_preprocessing_path(@preprocessing) %> |
+<%= link_to 'Back', preprocessings_path %>
