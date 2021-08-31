@@ -18,7 +18,7 @@
       <tr>
         <td><%= document.title %></td>
         <td><%= document.user_id %></td>
-        <td><%= document.ready %></td>
+        <td><%= ready_to_process?(document) %></td>
         <td>
           <%= document_archive_for(document) %>
         </td>
