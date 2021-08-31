@@ -60,7 +60,7 @@ class DocumentsController < ApplicationController
     ProcessDocumentJob.perform_later(@document)
 
     respond_to do |format|
-      format.html { redirect_to documents_url, notice: "Document was sent to processing." }
+      format.html { redirect_to document_path(@document), notice: "Document was sent to processing." }
       format.json { head :no_content }
     end
   end

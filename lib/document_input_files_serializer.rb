@@ -10,8 +10,12 @@ module DocumentInputFilesSerializer
 
   private
 
+  def self.detect_colum_separator(data)
+    "#{data[2]}"
+  end
+
   def self.parse_csv(data)
-    csv = CSV.parse(data.force_encoding("utf-8"), col_sep: "\,")
+    csv = CSV.parse(data.force_encoding("utf-8"), col_sep: detect_colum_separator(data))
     csv_header = csv[0]
     csv_content = csv[1..-1]
     csv_content.each_with_object({})
