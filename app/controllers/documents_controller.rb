@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: %i[ show edit update destroy ]
+  before_action :set_document, only: %i[ process_archive show edit update destroy ]
 
   # GET /documents or /documents.json
   def index
@@ -56,10 +56,19 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def process_archive
+    ProcessDocumentJob.perform_later(@document)
+
+    respond_to do |format|
+      format.html { redirect_to documents_url, notice: "Document was sent to processing." }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_document
-      @document = Document.find(params[:id])
+      @document = Document.find(params.try(:[], :id) || params.try(:[], :document_id))
     end
 
     # Only allow a list of trusted parameters through.

@@ -9,4 +9,14 @@ module DocumentsHelper
       "No available archive"
     end
   end
+
+  def process_archive_for(document)
+    return unless ready_to_process?(document)
+
+    render partial: "process_archive_button", locals: {document: document}
+  end
+
+  def ready_to_process?(document)
+    document.input_files&.count == 2
+  end
 end
