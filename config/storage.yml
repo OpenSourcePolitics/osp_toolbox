@@ -6,6 +6,14 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+scaleway:
+  service: S3
+  endpoint: <%= ENV['SCALEWAY_BUCKET_ENDPOINT'] %> # Scaleway API endpoint, depending on your region
+  access_key_id: <%= ENV['SCALEWAY_ACCESS_KEY_ID'] %> # Do not forget to hide your secrets
+  secret_access_key: <%= ENV['SCALEWAY_SECRET_ACCESS_KEY_ID'] %> # Do not forget to hide your secrets
+  region: <%= ENV['SCALEWAY_BUCKET_REGION'] %> # Your bucket region, here it's Paris
+  bucket: <%= ENV['SCALEWAY_BUCKET_NAME'] %> # Your bucket name
+
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
