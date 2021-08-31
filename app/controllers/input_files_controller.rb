@@ -21,7 +21,7 @@ class InputFilesController < ApplicationController
 
     respond_to do |format|
       if @input_file.save
-        format.html { redirect_to document_input_file_path(id: @input_file), notice: "Input file was successfully created." }
+        format.html { redirect_to document_path(id: @document), notice: "Input file was successfully created." }
         format.json { render :show, status: :created, location: @input_file }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class InputFilesController < ApplicationController
   def destroy
     @input_file.destroy
     respond_to do |format|
-      format.html { redirect_to document_input_files_url, notice: "Input file was successfully destroyed." }
+      format.html { redirect_to document_path(id: @document), notice: "Input file was successfully destroyed." }
       format.json { head :no_content }
     end
   end
