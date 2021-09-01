@@ -1,5 +1,5 @@
 class PreprocessingsController < ApplicationController
-  before_action :set_preprocessing, only: %i[ show edit update destroy ]
+  before_action :set_preprocessing, only: %i[ redo_preprocessing show edit update destroy ]
 
   # GET /preprocessings or /preprocessings.json
   def index
@@ -56,10 +56,19 @@ class PreprocessingsController < ApplicationController
     end
   end
 
+  def redo_preprocessing
+    PreprocessingJob.perform_later(@preprocessing)
+
+    respond_to do |format|
+      format.html { redirect_to preprocessings_path(@preprocessing), notice: "Preprocessing was sent to preprocessing again." }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_preprocessing
-      @preprocessing = Preprocessing.find(params[:id])
+      @preprocessing = Preprocessing.find(params.try(:[], :id) || params.try(:[], :preprocessing_id))
     end
 
     # Only allow a list of trusted parameters through.
