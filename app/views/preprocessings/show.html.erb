@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @preprocessing.title %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @preprocessing.client %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @preprocessing.url %>
+</p>
+
+<p>
+  <strong>Preprocessed data:</strong>
+  <button id="preprocessed_data-toggle">See more</button>
+  <pre id="preprocessed_data" class="small"><%= JSON.pretty_generate(@preprocessing.preprocessed_data) %></pre>
+</p>
+
+<%= redo_preprocess %>
+
+<%= link_to 'Edit', edit_preprocessing_path(@preprocessing) %> |
+<%= link_to 'Back', preprocessings_path %>

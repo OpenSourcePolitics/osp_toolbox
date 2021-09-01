@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Preprocessings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Created at</th>
+      <th>Title</th>
+      <th>Client</th>
+      <th>Url</th>
+      <th>Preprocessed</th>
+      <th>File</th>
+      <th>Size</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @preprocessings.each do |preprocessing| %>
+      <tr>
+        <td><%= preprocessing.created_at %></td>
+        <td><%= preprocessing.title %></td>
+        <td><%= preprocessing.client %></td>
+        <td><%= preprocessing.url %></td>
+        <td><%= preprocessing.preprocessed_data.present? %></td>
+        <td><%= link_to preprocessing.file.filename, preprocessing.file.download %></td>
+        <td><%= number_to_human_size(preprocessing.file.byte_size) %></td>
+        <td><%= link_to 'Show', preprocessing %></td>
+        <td><%= link_to 'Edit', edit_preprocessing_path(preprocessing) %></td>
+        <td><%= link_to 'Destroy', preprocessing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Preprocessing', new_preprocessing_path %>

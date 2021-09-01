@@ -13,7 +13,7 @@ module DocumentsHelper
   def process_archive_for(document)
     return unless ready_to_process?(document)
 
-    render partial: "process_archive_button", locals: {document: document}
+    render partial: "process_archive_button"
   end
 
   def ready_to_process?(document)
