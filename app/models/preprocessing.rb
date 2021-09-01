@@ -4,7 +4,7 @@
 class Preprocessing < ApplicationRecord
   has_one_attached :file
 
-  after_save :preprocess_data
+  after_save :preprocess_data, if: -> { self.sent_to_preprocessing_at.nil? }
 
   validates :file, attached: true, content_type: %w[text/csv application/vnd.ms-excel]
 
