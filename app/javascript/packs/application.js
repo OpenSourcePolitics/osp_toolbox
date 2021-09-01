@@ -11,3 +11,18 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener("turbolinks:load", () => {
+    const toggle = document.getElementById("preprocessed_data-toggle");
+    const expandable = document.getElementById("preprocessed_data");
+
+    if (toggle !== undefined) {
+        toggle.addEventListener("click", () => {
+            if (expandable.classList.contains("small")) {
+                return expandable.classList.remove("small")
+            } else {
+                return expandable.classList.add("small")
+            }
+        });
+    }
+});

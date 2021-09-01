@@ -15,6 +15,12 @@
   <%= @preprocessing.url %>
 </p>
 
+<p>
+  <strong>Preprocessed data:</strong>
+  <button id="preprocessed_data-toggle">See more</button>
+  <pre id="preprocessed_data" class="small"><%= JSON.pretty_generate(@preprocessing.preprocessed_data) %></pre>
+</p>
+
 <%= redo_preprocess %>
 
 <%= link_to 'Edit', edit_preprocessing_path(@preprocessing) %> |
