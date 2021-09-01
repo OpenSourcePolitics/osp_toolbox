@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
-# Send data to preprocessing an stores response
+# Send data to preprocessing
 class PreprocessingJob < ApplicationJob
   queue_as :default
 
   def perform(preprocessing)
-    content = PreprocessingSerializer.serialize(preprocessing)
-    response = RequestBuilder.send_post_request(content, URI("#{ENV['PREPROCESSING_URL']}?filename=raw_data"))
+    token = TokenBuilder.generate_token(preprocessing)
 
-    preprocessing.update!(preprocessed_data: response)
+    url = URI("#{ENV['PREPROCESSING_URL']}?token=#{token}&preprocessing_id=#{preprocessing.id}")
+
+    content = PreprocessingSerializer.serialize(preprocessing)
+    RequestBuilder.send_post_request(content, url)
+
+    preprocessing.update!(sent_to_preprocessing_at: Time.current)
   end
 end
