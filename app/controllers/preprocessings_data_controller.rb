@@ -8,9 +8,10 @@ class PreprocessingsDataController < ApplicationController
   def preprocessed_data
     if TokenBuilder.valid_token?(preprocessing, params[:token])
       preprocessing.update!(preprocessed_data: params[:preprocessings_datum])
-      render json: {status: :success}
+
+      render json: { status: :success }
     else
-      render json: {status: :unauthorized}
+      render status: :unauthorized, json: { status: :unauthorized }
     end
   end
 

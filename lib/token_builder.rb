@@ -1,4 +1,6 @@
-require 'digest'
+# frozen_string_literal: true
+
+require "digest"
 
 # Provides methods to build and verify token
 module TokenBuilder
