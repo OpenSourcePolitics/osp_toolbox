@@ -1,0 +1,15 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - test/**/*.rb
+    - db/migrate/*.rb
+    - bin/*.rb
+    - db/schema.rb
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Layout/LineLength:
+  Max: 180
