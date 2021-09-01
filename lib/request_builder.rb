@@ -2,10 +2,8 @@ require 'json'
 require 'net/http'
 require 'uri'
 
-module CommentsMappingRequest
-  URI = URI("#{ENV["COMMENTS_MAPPING_URL"]}/?sorting_attribute=supports")
-
-  def self.send_post_request(content, url = URI)
+module RequestBuilder
+  def self.send_post_request(content, url)
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     request = Net::HTTP::Post.new(url)

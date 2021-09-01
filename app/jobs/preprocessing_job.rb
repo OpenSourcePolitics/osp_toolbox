@@ -3,7 +3,7 @@ class PreprocessingJob < ApplicationJob
 
   def perform(preprocessing)
     content = PreprocessingSerializer.serialize(preprocessing)
-    response = PreprocessingRequest.send_post_request(content)
+    response = RequestBuilder.send_post_request(content, URI(ENV["PREPROCESSING_URL"]))
 
     preprocessing.update!(preprocessed_data: response)
   end
