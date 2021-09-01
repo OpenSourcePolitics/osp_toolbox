@@ -7,7 +7,7 @@ class PreprocessingsDataController < ApplicationController
 
   def preprocessed_data
     if TokenBuilder.valid_token?(preprocessing, params[:token])
-      preprocessing.update!(preprocessed_data: params[:preprocessings_datum])
+      preprocessing.update!(preprocessed_data: PreprocessingSerializer.parse_response(params[:preprocessings_datum]))
 
       render json: { status: :success }
     else
