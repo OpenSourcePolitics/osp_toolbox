@@ -16,10 +16,17 @@
 </p>
 
 <p>
-  <strong>Preprocessed data:</strong>
-  <button id="preprocessed_data-toggle">See more</button>
-  <pre id="preprocessed_data" class="small"><%= JSON.pretty_generate(@preprocessing.preprocessed_data) %></pre>
+  <strong>Sent to preprocessing at:</strong>
+  <%= @preprocessing.sent_to_preprocessing_at %>
 </p>
+
+<% if @preprocessing.preprocessed_data.present? %>
+  <p>
+    <strong>Preprocessed data:</strong>
+    <button id="preprocessed_data-toggle">See more</button>
+  <pre id="preprocessed_data" class="small"><%= JSON.pretty_generate(@preprocessing.preprocessed_data) %></pre>
+  </p>
+<% end %>
 
 <%= redo_preprocess %>
 

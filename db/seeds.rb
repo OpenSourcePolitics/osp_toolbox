@@ -32,6 +32,7 @@ preprocessing = Preprocessing.new(
   title: Faker::Book.title,
   client: Faker::Twitter.name,
   url: Faker::Internet.domain_name,
+  sent_to_preprocessing_at: Time.now,
   preprocessed_data: {
     "0": {
       id: 77,
