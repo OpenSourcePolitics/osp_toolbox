@@ -1,0 +1,109 @@
+id;category/id;category/name/en;category/name/fr;scope/id;scope/name/en;scope/name/fr;participatory_space/id;participatory_space/url;component/id;title/fr;body/fr;state;reference;answer/en;answer/fr;supports;endorsements/total_count;endorsements/user_endorsements;comments;attachments;followers;published_at;url;meeting_urls;related_proposals;is_amend;original_proposal/title;original_proposal/url
+635;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Tour de contrôle - application de suivi de notre parc d'instances Decidim;"**Is your feature request related to a problem? A clear and concise description of what the problem is.** 
+
+Developers often work on things that might be of interest for several Decidim instances.
+Admin sys and product often end up updating only one instance when dozens could benefit the bug fix.
+
+**Describe the solution you'd like**
+
+We need an internal tool that 
+
+- automatically listens to events happening in Github (merges on the reference osp-apps, module updates)
+- scraps information from the many repos we use to deploy our client ( gems (and their versions) contained in Gemfile etc.)
+- consolidated all this information in dashboard which can be use by the all team and give visibility on the actions that need to be done on the server.
+
+We'll give extra attention to how we'll build the layout of this internal tool, using color codes for instances that use old versions (other examples might apply).
+
+At first updates will be made manually but this information tool will help us build more automation around the process of updating our Decidim instances. 
+
+**Describe alternatives you've considered**
+
+Notion boards, excels
+
+**Additional context**
+
+Decidim Monitor is an inspiration that we want to take further : [https://decidim-monitor.herokuapp.com](https://decidim-monitor.herokuapp.com/)
+
+This task relates to other internal projects carried in the past (gemfile scapper by quentin and armand to only name one)
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/20/_automatisation";"";orc-PROP-2020-12-635;"";"";0;6;Frédéric Lardon, Pops, Quentin Champenois, Valentin Chaput, Jean Jaurès, Seb;0;0;13;2020-12-11 17:43:08 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/635;"";"";false;;
+1017;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Rapports automatiques - plateformes permanentes;"Lisa a eu une super idée que je note ici pour pas l'oublier (mais c'est pas pour implémenter maintenant Baptiste (relax), c'est juste pour pas oublier haha) : ça serait super si on arrivait à créer automatiquement un segment sur Matomo lorsqu'on lance une nouvelle concertation, avec uniquement les pages de la concertation. 
+
+Et ce qui serait ouf ce serait qu'à chaque fin de concertation un rapport automatique soit créé. Ça permettrait de faire quelque chose de plutôt intéressant pour les gens qui ont des plateformes permanentes comme les villes et de compléter l'offre de rapport automatique qu'on prépare en ce moment, qui est plutôt centrée sur les plateformes one shot
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/20/_automatisation";"";orc-PROP-2021-01-1017;"";"";0;2;Valentin Chaput, Dynnammo;3;0;13;2021-01-27 10:35:34 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/1017;"";"";false;;
+2056;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Rechercher des utilisateurs dans un espace participatif privé;"Ajouter la possibilité de chercher des utilisateurs dans un espace participatif privé
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/19/_espaceadmin";accepted;orc-PROP-2021-04-2056;"";<p>Prévu pour la 0.25</p>;0;0;"";0;0;13;2021-04-12 10:30:22 +0200;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/2056;"";"";false;;
+636;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Bouton pour diffuser une proposition aux followers;"Au dessus du bouton partager nous pourrions ajouter un bouton pour mettre en avant une proposition en envoyant par message le lien de celle-ci à tous les followers.
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/21/_espaceutilisateur";"";orc-PROP-2020-12-636;"";"";0;0;"";2;0;13;2020-12-15 10:42:22 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/636;"";"";false;;
+632;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Mettre des toggles dans le paramètrage du component;"Il faut parfois scroller beaucoup pour ajouter des paramètres, ce sera préférable si les étapes non-actives d'un PP était réduites. 
+ gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/19/_espaceadmin";evaluating;orc-PROP-2020-12-632;"";<p>Proposition déposée sur Méta Decidim https://meta.decidim.org/processes/roadmap/f/122/proposals/16155</p><p>Mise à l'orde du jour du Sprint ce jour.</p>;0;8;Frédéric Lardon, Pops, Seb, Eloïse Gabadou, Virgile Deville, Dynnammo, Valentin Chaput, Jean Jaurès;2;0;13;2020-12-09 17:48:19 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/632;"";"";false;;
+633;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Améliorer les possibilités de configuration graphique;"L'idée est d'améliorer les possibilités de configuration graphique via l'admin de Decidim pour que les clients soient capables de constituer et modifier eux mêmes leur identité graphique, sans passer par le conseil (et le header snippet).
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/19/_espaceadmin";"";orc-PROP-2020-12-633;"";"";0;4;Frédéric Lardon, Dynnammo, Quentin Champenois, Jean Jaurès;5;0;13;2020-12-11 14:11:09 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/633;"";"";false;;
+634;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Créer un template d'osp-app pour les déploiements;"Pour tous les nouveaux boots de plateformes en version 0.23-stable, nous allons faire un template avec les gems indispensables. Voici la liste que nous avons arrêté jusque-là : 
+- decidim
+- term-customizer
+- nav bar link
+- cookie (Orejime ?)
+
+Les autres gems qui sont parfois utilsées :
+- conferences
+- initiatives
+- phone authorization handler
+- Url aliases
+- Socio demographic authorization handler
+- homepage interactive map
+- decidim-awesome
+- captcha
+
+Qu'en pensez-vous ? Y-a-t'il des gems que vous voudriez ajouter dans le template de référence ?
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/20/_automatisation";"";orc-PROP-2020-12-634;"";"";0;5;Dynnammo, Virgile Deville, Frédéric Lardon, Quentin Champenois, Valentin Chaput;1;0;13;2020-12-11 15:27:19 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/634;"";"";false;;
+637;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Adapter Decidim aux projets internationaux 🌍;"Idéalement, dans les configurations principales de chaque plateforme (Paramètres > Configuration), on aurait en plus du fuseau horaire qui existe déjà : 
+- Devise (pour les BP à l'international hors zone Euro) / aujourd'hui c'est un bout de code : config.currency_unit = ""€""
+(https://docs.decidim.org/en/configure/initializer/) 
+- Format de dates (ex : format US)
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/19/_espaceadmin";"";orc-PROP-2020-12-637;"";"";0;5;Pops, Frédéric Lardon, Quentin Champenois, Valentin Chaput, Dynnammo;0;0;13;2020-12-15 11:01:41 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/637;"";"";false;;
+638;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Import de réponses officielles;"Actuellement, lorsque l'on veut faire des réponses officielles aux propositions, on n'a pas d'autre choix que de les rentrer une par une depuis l'espace admin.
+
+Il pourrait être extrêmement intéressant d'avoir la possibilité d'importer un fichier CSV avec les réponses officielles pour chaque proposition, qui permettrait à la plateforme de les afficher ensuite directement en front. En sachant qu'il faudrait également permettre l'import de l'état de la proposition (retenue, en cours, non retenue).
+
+Le mécanisme d'import existe déjà pour mettre à jour les réalisations du module suivi, si je ne m'abuse !
+
+Ce dev pourrait faire gagner beaucoup de temps :
+- au conseil pour les consultations one shot sur lesquelles il y a beaucoup de propositions
+- aux clients sur les BP par exemple, pour faciliter la vie de ceux qui ne peuvent/veulent pas utiliser les évaluateurs.
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/20/_automatisation gid://development-app/Decidim::Hashtag/19/_espaceadmin gid://development-app/Decidim::Hashtag/22/_outils";"";orc-PROP-2021-01-638;"";"";0;3;Pops, Jean Jaurès, Valentin Chaput;6;0;13;2021-01-05 17:25:48 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/638;"";"";false;;
+639;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Nouvelles améliorations des Surveys;"Malgré les améliorations développées pour la MEL en 2020, nous venons de perdre une autre mission du ministère de l'éducation nationale face à CapCo car leur module questionnaire est plus souple. 
+
+En l'occurrence, il manquait à Decidim deux besoins importants : 
+- Vote sur des images 
+- Barre de progression (utile pour les questionnaires longs)
+
+Il faudrait en profiter pour analyser les autres champs que CapCo à en plus : drag & drop ordonné (mais notre tri marche tout aussi bien), vote au jugement majoritaire etc.
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/21/_espaceutilisateur";"";orc-PROP-2021-01-639;"";"";0;1;Pops;2;0;13;2021-01-05 17:37:59 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/639;"";"";false;;
+643;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Outils de gestion de congés;"Bonjour, j'ai remarqué que notre système de gestion de congés est un peu rigide et occasionne une charge de travail pour Olivier et Valentin.
+
+En effet, il faut envoyer un mail en les mettant en copie puis après acceptation, noter l'absence dans le calendrier. 
+
+Si la personne est placé sous la subordination d'un manager, cela fait une étape de plus dans le processus.
+
+Pour Olivier, la tâche ne s'arrête pas là, il doit également enregistrer une comptabilité du nombre de jours restants et pris pour la paie.
+
+Et pour finir, il faut se reporter à la fiche de paie pour connaitre le quota de jours restants, en fonction du type de contrat et de la date d'arrivée.
+
+En regardant un peu j'ai trouvé quelques logiciels que nous pourrions tester si cette idée vous dit:
+
+https://github.com/libertempo/web
+https://github.com/bbalet/jorani
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/20/_automatisation gid://development-app/Decidim::Hashtag/22/_outils";"";orc-PROP-2021-01-643;"";"";0;5;Valentin Chaput, Olivier, Dynnammo, Pops, Frédéric Lardon;4;0;13;2021-01-19 14:00:51 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/643;"";"";false;;
+1021;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Trier les concertations par ordre anti-chronologique;"Trier les concertations par ordre anti-chronologique pour ne pas scroller sur la dernière page.
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/19/_espaceadmin";"";orc-PROP-2021-02-1021;"";"";0;0;"";0;0;13;2021-02-12 18:15:54 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/1021;"";"";false;;
+1022;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Choisir le filtre par défaut (au lieu d'aléatoire);"Choisir le filtre par défaut (au lieu d'aléatoire)
+gid://development-app/Decidim::Hashtag/18/_internaldev gid://development-app/Decidim::Hashtag/21/_espaceutilisateur";"";orc-PROP-2021-02-1022;"";"";0;0;"";0;0;13;2021-02-12 18:16:30 +0100;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/1022;"";"";false;;
+2081;;"";"";;"";"";34;http://in.opensourcepolitics.eu/processes/OSPace?participatory_process_slug=OSPace;248;Fix admin blocks layout;"**Is your feature request related to a problem? A clear and concise description of what the problem is.** 
+The space separating Admin content blocks has been missing for a while.
+
+**Describe the solution you'd like**
+I'd love the space to come back !
+
+**Additional context**
+Might be the opportunity to take a crack at this : https://meta.decidim.org/processes/roadmap/f/122/proposals/16213
+gid://development-app/Decidim::Hashtag/18/_internaldev";"";orc-PROP-2021-04-2081;"";"";0;0;"";0;1;13;2021-04-27 15:48:23 +0200;http://in.opensourcepolitics.eu/processes/OSPace/f/248/proposals/2081;"";"";false;;

@@ -23,7 +23,7 @@
         <td><%= preprocessing.title %></td>
         <td><%= preprocessing.client %></td>
         <td><%= preprocessing.url %></td>
-        <td><%= preprocessing.preprocessd_data.present? %></td>
+        <td><%= preprocessing.preprocessed_data.present? %></td>
         <td><%= link_to preprocessing.file.filename, preprocessing.file.download %></td>
         <td><%= number_to_human_size(preprocessing.file.byte_size) %></td>
         <td><%= link_to 'Show', preprocessing %></td>
