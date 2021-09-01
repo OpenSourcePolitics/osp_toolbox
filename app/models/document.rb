@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Document < ApplicationRecord
   belongs_to :user
   has_many :input_files, dependent: :destroy

@@ -1,7 +1,10 @@
-require 'json'
-require 'net/http'
-require 'uri'
+# frozen_string_literal: true
 
+require "json"
+require "net/http"
+require "uri"
+
+# This module provides methods for building an http request
 module RequestBuilder
   def self.send_post_request(content, url)
     http = Net::HTTP.new(url.host, url.port)
@@ -11,10 +14,8 @@ module RequestBuilder
     request.body = JSON.dump(content)
     request = http.request(request)
 
-    if request.code != "200"
-      raise "Request error, code: #{request.code}"
-    else
-      request
-    end
+    return request if request.code == "200"
+
+    raise "Request error, code: #{request.code}"
   end
 end

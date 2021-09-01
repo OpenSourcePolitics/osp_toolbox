@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
+# Input files controller
 class InputFilesController < ApplicationController
-  before_action :set_input_file, only: %i[ show edit update destroy ]
+  before_action :set_input_file, only: %i[show edit update destroy]
   before_action :document
 
   # GET /input_files/1 or /input_files/1.json
-  def show
-  end
+  def show; end
 
   # GET /input_files/new
   def new
@@ -12,8 +14,7 @@ class InputFilesController < ApplicationController
   end
 
   # GET /input_files/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /input_files or /input_files.json
   def create
@@ -68,9 +69,7 @@ class InputFilesController < ApplicationController
     @document = Document.find(params[:document_id])
   end
 
-
   def before_action(action)
-
-    self.send(action)
+    send(action)
   end
 end
