@@ -6,12 +6,11 @@ class PreprocessingJob < ApplicationJob
 
   def perform(preprocessing)
     token = TokenBuilder.generate_token(preprocessing)
-
     url = URI("#{ENV['PREPROCESSING_URL']}?token=#{token}&preprocessing_id=#{preprocessing.id}")
-
     content = PreprocessingSerializer.serialize(preprocessing)
-    RequestBuilder.send_post_request(content, url, false)
 
     preprocessing.update!(sent_to_preprocessing_at: Time.current)
+
+    RequestBuilder.send_post_request(content, url, false)
   end
 end

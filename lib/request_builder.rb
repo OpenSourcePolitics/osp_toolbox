@@ -12,12 +12,18 @@ module RequestBuilder
     request = Net::HTTP::Post.new(url)
     request["Content-Type"] = "application/json"
     request.body = JSON.dump(content)
-    request = http.request(request)
+    response = http.request(request)
 
-    request.finish unless wait_for_answer
+    return response if response.code == "200"
 
-    return request if request.code == "200"
+    raise "Request error, code: #{response.code}"
 
-    raise "Request error, code: #{request.code}"
+  rescue Net::ReadTimeout, Net::OpenTimeout
+    if wait_for_answer
+      raise "Time out error for #{url}"
+    else
+      Rails.logger.info("A request has been sent to #{url} and wait for answer was set to false")
+      true
+    end
   end
 end
