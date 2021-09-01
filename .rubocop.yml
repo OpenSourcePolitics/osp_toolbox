@@ -5,8 +5,11 @@ AllCops:
   Exclude:
     - test/**/*.rb
     - db/migrate/*.rb
-    - bin/*.rb
+    - bin/*
     - db/schema.rb
+    - db/seeds.rb
+    - config/environments/**/*.rb
+    - config/application.rb
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Helper for documents
 module DocumentsHelper
   def document_archive_for(document)
     if document.archive && document.archive.file.present?

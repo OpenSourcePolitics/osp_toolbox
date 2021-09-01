@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Preprocessings controller
 class PreprocessingsController < ApplicationController
-  before_action :set_preprocessing, only: %i[ redo_preprocessing show edit update destroy ]
+  before_action :set_preprocessing, only: %i[redo_preprocessing show edit update destroy]
 
   # GET /preprocessings or /preprocessings.json
   def index
@@ -7,8 +10,7 @@ class PreprocessingsController < ApplicationController
   end
 
   # GET /preprocessings/1 or /preprocessings/1.json
-  def show
-  end
+  def show; end
 
   # GET /preprocessings/new
   def new
@@ -16,8 +18,7 @@ class PreprocessingsController < ApplicationController
   end
 
   # GET /preprocessings/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /preprocessings or /preprocessings.json
   def create
@@ -66,13 +67,14 @@ class PreprocessingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_preprocessing
-      @preprocessing = Preprocessing.find(params.try(:[], :id) || params.try(:[], :preprocessing_id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def preprocessing_params
-      params.require(:preprocessing).permit(:title, :client, :url, :file)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_preprocessing
+    @preprocessing = Preprocessing.find(params.try(:[], :id) || params.try(:[], :preprocessing_id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def preprocessing_params
+    params.require(:preprocessing).permit(:title, :client, :url, :file)
+  end
 end
