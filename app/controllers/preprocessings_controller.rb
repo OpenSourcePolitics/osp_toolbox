@@ -26,7 +26,7 @@ class PreprocessingsController < ApplicationController
 
     respond_to do |format|
       if @preprocessing.save
-        format.html { redirect_to @preprocessing, notice: "Preprocessing was successfully created." }
+        format.html { redirect_to preprocessing_url(@preprocessing), notice: "Preprocessing was successfully created." }
         format.json { render :show, status: :created, location: @preprocessing }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class PreprocessingsController < ApplicationController
   def update
     respond_to do |format|
       if @preprocessing.update(preprocessing_params)
-        format.html { redirect_to @preprocessing, notice: "Preprocessing was successfully updated." }
+        format.html { redirect_to preprocessing_url(@preprocessing), notice: "Preprocessing was successfully updated." }
         format.json { render :show, status: :ok, location: @preprocessing }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -75,6 +75,6 @@ class PreprocessingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def preprocessing_params
-    params.require(:preprocessing).permit(:title, :client, :url, :file)
+    params.require(:processing).permit(:title, :client, :url, :file)
   end
 end
