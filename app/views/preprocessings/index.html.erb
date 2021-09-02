@@ -10,6 +10,7 @@
       <th>Client</th>
       <th>Url</th>
       <th>Sent to preprocessing at</th>
+      <th>Preprocessing duration</th>
       <th>Preprocessed</th>
       <th>File</th>
       <th>Size</th>
@@ -24,7 +25,8 @@
         <td><%= preprocessing.title %></td>
         <td><%= preprocessing.client %></td>
         <td><%= preprocessing.url %></td>
-        <td><%= preprocessing.sent_to_preprocessing_at %></td>
+        <td><%= preprocessing.sent_to_preprocessing_at.strftime("%d-%m-%Y %H:%M") %></td>
+        <td><%= preprocessing_duration(preprocessing) %></td>
         <td><%= preprocessing.preprocessed_data.present? %></td>
         <td><%= link_to preprocessing.file.filename, preprocessing.file.download %></td>
         <td><%= number_to_human_size(preprocessing.file.byte_size) %></td>
