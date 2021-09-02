@@ -20,6 +20,11 @@
   <%= @preprocessing.sent_to_preprocessing_at %>
 </p>
 
+<p>
+  <strong>Preprocessing duration:</strong>
+  <%= preprocessing_duration(@preprocessing) %>
+</p>
+
 <% if @preprocessing.preprocessed_data.present? %>
   <p>
     <strong>Preprocessed data:</strong>
