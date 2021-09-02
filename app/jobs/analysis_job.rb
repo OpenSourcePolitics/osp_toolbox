@@ -9,7 +9,7 @@ class AnalysisJob < ApplicationJob
     response = RequestBuilder.send_post_request(JSON.parse(content), url(analysis))
     model = Analysis.find_or_create_by!(typename: analysis, processing: processing)
 
-    FileAttacher.attach_file(model, :file, response, analysis, detect_extension(analysis))
+    FileAttacher.attach_file(model, :file, response.body, analysis, detect_extension(analysis))
   end
 
   private
