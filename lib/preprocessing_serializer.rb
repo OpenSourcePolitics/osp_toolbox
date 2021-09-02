@@ -14,6 +14,6 @@ module PreprocessingSerializer
   end
 
   def self.parse_response(response)
-    JSON.parse(response.to_unsafe_hash["_json"])
+    response.to_unsafe_hash["_json"]
   end
 end
