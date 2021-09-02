@@ -35,5 +35,5 @@ preprocessing = Processing.new(
   sent_to_preprocessing_at: Time.now,
 )
 preprocessing.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.csv")), filename: "subset_raw_data.csv")
-preprocessing.preprocessed_file_data.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.json")), filename: "subset_raw_data.json")
+preprocessing.preprocessed_file_data.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.json"), "r:UTF-8"), filename: "subset_raw_data.json")
 preprocessing.save!

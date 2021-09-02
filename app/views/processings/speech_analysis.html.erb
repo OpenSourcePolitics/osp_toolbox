@@ -1,2 +1,4 @@
 <%= link_to "Back", processings_path %>
 <h1><%= "Speech analysis for: #{@processing.title}" %></h1>
+
+<%= render "processings/analysis", analyses: filter_analyses(@processing.analyses, :ldb) %>
