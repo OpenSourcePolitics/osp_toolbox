@@ -9,4 +9,11 @@ class Processing < ApplicationRecord
   def preprocess_data
     PreprocessingJob.perform_later(self)
   end
+
+  def self.store_preprocessing_data!(preprocessing, data)
+    preprocessing.update!(
+        preprocessed_data: PreprocessingSerializer.parse_response(data),
+        preprocessed_at: Time.current
+    )
+  end
 end
