@@ -12,6 +12,6 @@ class ProcessDocumentJob < ApplicationJob
 
     archive = Archive.find_or_create_by!(document: document)
 
-    FileAttacher.attach_file(archive, response,"comments_mapping_archive", "zip")
+    FileAttacher.attach_file(archive, :file, response, "comments_mapping_archive", "zip")
   end
 end
