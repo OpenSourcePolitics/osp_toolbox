@@ -27,7 +27,7 @@
         <td><%= preprocessing.url %></td>
         <td><%= preprocessing.sent_to_preprocessing_at.strftime("%d-%m-%Y %H:%M") %></td>
         <td><%= preprocessing_duration(preprocessing) %></td>
-        <td><%= preprocessing.preprocessed_data.present? %></td>
+        <td><%= preprocessing.preprocessed_file_data.present? %></td>
         <td><%= link_to preprocessing.file.filename, rails_blob_path(preprocessing.file, disposition: 'attachment') %></td>
         <td><%= number_to_human_size(preprocessing.file.byte_size) %></td>
         <td><%= link_to 'Show', preprocessing_path(preprocessing) %></td>

@@ -10,6 +10,8 @@ class ProcessDocumentJob < ApplicationJob
     output = DocumentInputFilesSerializer.serialize(document)
     response = RequestBuilder.send_post_request(output, URI("#{ENV['COMMENTS_MAPPING_URL']}/?sorting_attribute=supports"))
 
-    DocumentArchiveWriter.write_archive_file(document, response)
+    archive = Archive.find_or_create_by!(document: document)
+
+    FileAttacher.attach_file(archive, :file, response.body, "comments_mapping_archive", "zip")
   end
 end
