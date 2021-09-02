@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :processings, except: [:edit, :update, :create, :new, :destroy] do
+    get "/wordcloud_analysis", to: "processings#wordcloud_analysis"
+    get "/speech_analysis", to: "processings#speech_analysis"
+    post "/redo_analysis", to: "processings#redo_analysis"
+  end
+
   resources :preprocessings do
     post "/redo_preprocessing", to: "preprocessings#redo_preprocessing"
   end

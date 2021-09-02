@@ -2,41 +2,7 @@
 
 <h1>Preprocessings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Created at</th>
-      <th>Title</th>
-      <th>Client</th>
-      <th>Url</th>
-      <th>Sent to preprocessing at</th>
-      <th>Preprocessing duration</th>
-      <th>Preprocessed</th>
-      <th>File</th>
-      <th>Size</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @preprocessings.each do |preprocessing| %>
-      <tr>
-        <td><%= preprocessing.created_at %></td>
-        <td><%= preprocessing.title %></td>
-        <td><%= preprocessing.client %></td>
-        <td><%= preprocessing.url %></td>
-        <td><%= preprocessing.sent_to_preprocessing_at.strftime("%d-%m-%Y %H:%M") %></td>
-        <td><%= preprocessing_duration(preprocessing) %></td>
-        <td><%= preprocessing.preprocessed_file_data.present? %></td>
-        <td><%= link_to preprocessing.file.filename, rails_blob_path(preprocessing.file, disposition: 'attachment') %></td>
-        <td><%= number_to_human_size(preprocessing.file.byte_size) %></td>
-        <td><%= link_to 'Show', preprocessing_path(preprocessing) %></td>
-        <td><%= link_to 'Edit', edit_preprocessing_path(preprocessing) %></td>
-        <td><%= link_to 'Destroy', preprocessing_path(preprocessing), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "processings/list", collection: @preprocessings %>
 
 <br>
 
