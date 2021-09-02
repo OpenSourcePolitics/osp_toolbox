@@ -9,10 +9,12 @@ module FileAttacher
     filename
   end
 
-  def self.attach_file(model, response, name_prefix, extension)
+  def self.attach_file(model, attached_to, response, name_prefix, extension)
     filename = write_file(response, name_prefix, extension)
 
-    model.file.attach(
+    storage = model.send(attached_to)
+
+    storage.attach(
         io: File.open(Rails.root.join("tmp", filename)),
         filename: filename,
         content_type: "application/#{extension}"
