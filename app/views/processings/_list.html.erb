@@ -10,7 +10,7 @@
     <th>Preprocessed</th>
     <th>File</th>
     <th>Size</th>
-    <th colspan="3"></th>
+    <th colspan="3">Actions</th>
   </tr>
   </thead>
 
@@ -26,8 +26,8 @@
       <td><%= item.preprocessed_file_data.present? %></td>
       <td><%= link_to item.file.filename, rails_blob_path(item.file, disposition: 'attachment') %></td>
       <td><%= number_to_human_size(item.file.byte_size) %></td>
-
-      <%= render "#{controller_name}/actions", item: item %>
+      <td><%= render "#{controller_name}/actions", item: item %></td>
+      <td><%= render "redo_analysis_button", item: item %></td>
     </tr>
   <% end %>
   </tbody>
