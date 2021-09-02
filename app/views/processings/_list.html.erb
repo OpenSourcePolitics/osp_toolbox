@@ -1,0 +1,34 @@
+<table>
+  <thead>
+  <tr>
+    <th>Created at</th>
+    <th>Title</th>
+    <th>Client</th>
+    <th>Url</th>
+    <th>Sent to preprocessing at</th>
+    <th>Preprocessing duration</th>
+    <th>Preprocessed</th>
+    <th>File</th>
+    <th>Size</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% collection.each do |item| %>
+    <tr>
+      <td><%= item.created_at %></td>
+      <td><%= item.title %></td>
+      <td><%= item.client %></td>
+      <td><%= item.url %></td>
+      <td><%= item.sent_to_preprocessing_at.strftime("%d-%m-%Y %H:%M") %></td>
+      <td><%= preprocessing_duration(item) %></td>
+      <td><%= item.preprocessed_file_data.present? %></td>
+      <td><%= link_to item.file.filename, rails_blob_path(item.file, disposition: 'attachment') %></td>
+      <td><%= number_to_human_size(item.file.byte_size) %></td>
+
+      <%= render "#{controller_name}/actions", item: item %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

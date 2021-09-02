@@ -7,6 +7,8 @@ class Processing < ApplicationRecord
   has_one_attached :preprocessed_file_data
   validates :file, attached: true, content_type: %w[text/csv application/vnd.ms-excel]
 
+  scope :processed, -> { joins(:preprocessed_file_data_attachment) }
+
   def preprocess_data
     PreprocessingJob.perform_later(self)
   end

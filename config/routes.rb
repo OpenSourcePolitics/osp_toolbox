@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :processings, except: [:edit, :update, :create, :new, :destroy]
+
   resources :preprocessings do
     post "/redo_preprocessing", to: "preprocessings#redo_preprocessing"
   end
