@@ -30,9 +30,9 @@
         <td><%= preprocessing.preprocessed_data.present? %></td>
         <td><%= link_to preprocessing.file.filename, preprocessing.file.download %></td>
         <td><%= number_to_human_size(preprocessing.file.byte_size) %></td>
-        <td><%= link_to 'Show', preprocessing %></td>
+        <td><%= link_to 'Show', preprocessing_path(preprocessing) %></td>
         <td><%= link_to 'Edit', edit_preprocessing_path(preprocessing) %></td>
-        <td><%= link_to 'Destroy', preprocessing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', preprocessing_path(preprocessing), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

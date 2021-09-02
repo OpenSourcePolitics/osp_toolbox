@@ -28,7 +28,7 @@ comments_file = InputFile.create(typename: "Comments", document: document)
 comments_file.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "comments.csv")), filename: "comments.csv")
 comments_file.save!
 
-preprocessing = Preprocessing.new(
+preprocessing = Pprocessing.new(
   title: Faker::Book.title,
   client: Faker::Twitter.name,
   url: Faker::Internet.domain_name,
