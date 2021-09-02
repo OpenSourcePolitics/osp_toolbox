@@ -21,6 +21,6 @@ class PreprocessingsDataController < ApplicationController
   private
 
   def preprocessing
-    @preprocessing ||= Preprocessing.find(params[:preprocessing_id])
+    @preprocessing ||= Processing.find(params[:preprocessing_id])
   end
 end

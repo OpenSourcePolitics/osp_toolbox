@@ -1,4 +1,4 @@
-<%= form_with(model: preprocessing) do |form| %>
+<%= form_with(model: preprocessing, url: url) do |form| %>
   <% if preprocessing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(preprocessing.errors.count, "error") %> prohibited this preprocessing from being saved:</h2>

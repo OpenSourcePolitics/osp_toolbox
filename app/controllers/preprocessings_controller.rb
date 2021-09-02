@@ -6,7 +6,7 @@ class PreprocessingsController < ApplicationController
 
   # GET /preprocessings or /preprocessings.json
   def index
-    @preprocessings = Preprocessing.all
+    @preprocessings = Processing.all
   end
 
   # GET /preprocessings/1 or /preprocessings/1.json
@@ -14,7 +14,7 @@ class PreprocessingsController < ApplicationController
 
   # GET /preprocessings/new
   def new
-    @preprocessing = Preprocessing.new
+    @preprocessing = Processing.new
   end
 
   # GET /preprocessings/1/edit
@@ -22,7 +22,7 @@ class PreprocessingsController < ApplicationController
 
   # POST /preprocessings or /preprocessings.json
   def create
-    @preprocessing = Preprocessing.new(preprocessing_params)
+    @preprocessing = Processing.new(preprocessing_params)
 
     respond_to do |format|
       if @preprocessing.save
@@ -70,7 +70,7 @@ class PreprocessingsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_preprocessing
-    @preprocessing = Preprocessing.find(params.try(:[], :id) || params.try(:[], :preprocessing_id))
+    @preprocessing = Processing.find(params.try(:[], :id) || params.try(:[], :preprocessing_id))
   end
 
   # Only allow a list of trusted parameters through.

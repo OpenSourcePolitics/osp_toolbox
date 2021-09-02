@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_062739) do
+ActiveRecord::Schema.define(version: 2021_09_02_065013) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_09_02_062739) do
     t.index ["document_id"], name: "index_input_files_on_document_id"
   end
 
-  create_table "preprocessings", force: :cascade do |t|
+  create_table "processings", force: :cascade do |t|
     t.string "title"
     t.string "client"
     t.string "url"
