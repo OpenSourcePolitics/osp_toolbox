@@ -5,6 +5,7 @@ class Processing < ApplicationRecord
   after_commit :preprocess_data, if: -> { sent_to_preprocessing_at.nil? }
   has_one_attached :file
   has_one_attached :preprocessed_file_data
+  has_many :analyses
   validates :file, attached: true, content_type: %w[text/csv application/vnd.ms-excel]
 
   scope :processed, -> { joins(:preprocessed_file_data_attachment) }
