@@ -14,15 +14,24 @@ ActiveStorage.start()
 
 document.addEventListener("turbolinks:load", () => {
     const toggle = document.getElementById("preprocessed_data-toggle");
-    const expandable = document.getElementById("preprocessed_data");
+    const data = document.getElementById("preprocessed_data");
 
     if (toggle !== undefined) {
         toggle.addEventListener("click", () => {
-            if (expandable.classList.contains("small")) {
-                return expandable.classList.remove("small")
+            if (data.classList.contains("small")) {
+                return data.classList.remove("small")
             } else {
-                return expandable.classList.add("small")
+                return data.classList.add("small")
             }
+        });
+    }
+
+    const copy = document.getElementById("preprocessed_data-copy");
+
+    if (copy !== undefined) {
+        copy.addEventListener("click", () => {
+            navigator.clipboard.writeText(data.textContent)
+            return copy.textContent = copy.getAttribute("data-copied");
         });
     }
 });
