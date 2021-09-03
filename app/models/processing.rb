@@ -16,7 +16,7 @@ class Processing < ApplicationRecord
   end
 
   def token_to_check_against
-    preprocessed_file_data.checksum
+    file.checksum
   end
 
   def self.store_preprocessing_data!(preprocessing, data)
