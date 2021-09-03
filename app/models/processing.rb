@@ -30,7 +30,7 @@ class Processing < ApplicationRecord
 
     preprocessing.update!(preprocessed_at: Time.current)
 
-    AnalysisesJob.perform_later(preprocessing)
+    AnalysisesJob.perform_later(self)
   end
 
   def preprocessed_data
