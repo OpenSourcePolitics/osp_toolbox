@@ -3,7 +3,7 @@
 require "digest"
 
 # Provides methods to build and verify token
-module TokenBuilder
+module TokenManager
   def self.generate_token(string)
     Digest::SHA2.hexdigest "#{Rails.application.secret_key_base}_#{string}"
   end

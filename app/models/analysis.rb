@@ -14,7 +14,7 @@ class Analysis < ApplicationRecord
     self.save!
   end
 
-  def token_to_check_against
+  def string_to_generate_token
     "#{typename}_#{processing.preprocessed_file_data.checksum}"
   end
 

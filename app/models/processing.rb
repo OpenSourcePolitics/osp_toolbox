@@ -15,7 +15,7 @@ class Processing < ApplicationRecord
     PreprocessingJob.perform_later(self)
   end
 
-  def token_to_check_against
+  def string_to_generate_token
     file.checksum
   end
 

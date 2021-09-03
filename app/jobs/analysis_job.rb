@@ -26,7 +26,7 @@ class AnalysisJob < ApplicationJob
   end
 
   def token
-    TokenBuilder.generate_token("#{analysis.cache_version}_#{@processing.preprocessed_file_data.checksum}")
+    TokenManager.generate_token(analysis.string_to_generate_token)
   end
 
   def content

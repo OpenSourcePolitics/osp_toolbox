@@ -6,7 +6,7 @@ class AnalysesDataController < ApplicationController
   skip_before_action :authenticate_user!
 
   def store_analysis_data
-    if TokenBuilder.valid_token?(analysis.token_to_check_against, params[:token])
+    if TokenManager.valid_token?(analysis.string_to_generate_token, params[:token])
       analysis.store_analysis_data!(request.body.read)
 
       render json: {status: :success}
