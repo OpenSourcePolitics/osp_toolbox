@@ -9,4 +9,8 @@ module ApplicationHelper
       content << content_tag(:pre, JSON.pretty_generate(data), id: "preprocessed_data", class: "small")
     end
   end
+
+  def analyses_for(processing)
+    processing&.analyses.select { |analyse| analyse.file.present? }.map(&:typename).join(", ")
+  end
 end
