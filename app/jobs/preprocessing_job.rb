@@ -19,7 +19,7 @@ class PreprocessingJob < ApplicationJob
   end
 
   def token
-    TokenBuilder.generate_token(@preprocessing.file)
+    TokenBuilder.generate_token(@preprocessing.token_to_check_against)
   end
 
   def content
