@@ -28,7 +28,7 @@ class Processing < ApplicationRecord
         extension: "json"
     )
 
-    preprocessing.update!(preprocessed_at: Time.current)
+    self.update!(preprocessed_at: Time.current)
 
     AnalysisesJob.perform_later(self)
   end
