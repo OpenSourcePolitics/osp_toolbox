@@ -6,7 +6,7 @@ class PreprocessingsDataController < ApplicationController
   skip_before_action :authenticate_user!
 
   def preprocessed_data
-    if TokenBuilder.valid_token?(preprocessing, params[:token])
+    if TokenBuilder.valid_token?(preprocessing.file, params[:token])
       Processing.store_preprocessing_data!(preprocessing, params[:preprocessings_datum])
 
       render json: {status: :success}
