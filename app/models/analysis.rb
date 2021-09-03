@@ -12,6 +12,7 @@ class Analysis < ApplicationRecord
     )
 
     self.save!
+    Notification.send("Analysis #{self.typename} for #{self.processing.title} is over.")
   end
 
   def string_to_generate_token
