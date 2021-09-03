@@ -1,4 +1,5 @@
 require "test_helper"
+require "minitest/mock"
 
 class SanitizerTest < ActiveSupport::TestCase
   test "filename with valid filename" do
@@ -16,6 +17,8 @@ class SanitizerTest < ActiveSupport::TestCase
   test "filename with empty filename" do
     filename = ""
 
-    assert Sanitizer.filename(filename) === "#{DateTime.now.to_i}"
+    DateTime.stub :now, DateTime.new(2022, 12, 12, 1, 1, 1).to_i do
+      assert Sanitizer.filename(filename) === "1670806861"
+    end
   end
 end
