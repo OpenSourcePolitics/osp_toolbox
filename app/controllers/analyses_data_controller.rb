@@ -7,7 +7,7 @@ class AnalysesDataController < ApplicationController
 
   def store_analysis_data
     if TokenBuilder.valid_token?(analysis.token_to_check_against, params[:token])
-      Analysis.store_analysis_data!(analysis, params[:analysises_datum])
+      analysis.store_analysis_data!(params[:analysises_datum])
 
       render json: {status: :success}
     else

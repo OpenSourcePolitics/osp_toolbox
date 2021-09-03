@@ -7,7 +7,7 @@ class PreprocessingsDataController < ApplicationController
 
   def preprocessed_data
     if TokenBuilder.valid_token?(preprocessing.token_to_check_against, params[:token])
-      Processing.store_preprocessing_data!(preprocessing, params[:preprocessings_datum])
+      preprocessing.store_preprocessing_data!(params[:preprocessings_datum])
 
       render json: {status: :success}
     else

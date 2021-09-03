@@ -2,10 +2,16 @@ class Analysis < ApplicationRecord
   belongs_to :processing
   has_one_attached :file
 
-  def self.store_analysis_data!(analysis, data)
-    FileAttacher.attach_file(analysis, :file, data, analysis.typename, analysis.detect_extension)
+  def self.store_analysis_data!(data)
+    FileAttacher.build_and_attach_file(
+        model: self,
+        attached_to: :file,
+        data: data,
+        name_prefix: self.typename,
+        extension: self.detect_extension
+    )
 
-    analysis.save!
+    self.save!
   end
 
   def token_to_check_against

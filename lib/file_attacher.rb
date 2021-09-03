@@ -9,8 +9,8 @@ module FileAttacher
     filename
   end
 
-  def self.attach_file(model, attached_to, response, name_prefix, extension)
-    filename = write_file(response, name_prefix, extension)
+  def self.build_and_attach_file(model:, attached_to:, data:, name_prefix:, extension:)
+    filename = write_file(data, name_prefix, extension)
 
     storage = model.send(attached_to)
 
