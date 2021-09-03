@@ -9,6 +9,8 @@ module RequestBuilder
   def self.send_post_request(content, url, wait_for_answer = true)
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
+    http.open_timeout = 10 unless wait_for_answer
+    http.read_timeout = 10 unless wait_for_answer
     request = Net::HTTP::Post.new(url)
     request["Content-Type"] = "application/json"
     request.body = JSON.dump(content)
