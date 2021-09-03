@@ -9,8 +9,13 @@ module FileAttacher
     filename
   end
 
-  def self.attach_file(model, attached_to, response, name_prefix, extension)
-    filename = write_file(response, name_prefix, extension)
+  def self.delete_temp_file(filename)
+    file = Rails.root.join("tmp", filename)
+    File.delete(file) if File.exists? file
+  end
+
+  def self.build_and_attach_file(model:, attached_to:, data:, name_prefix:, extension:)
+    filename = write_file(data, name_prefix, extension)
 
     storage = model.send(attached_to)
 
@@ -20,7 +25,9 @@ module FileAttacher
         content_type: "application/#{extension}"
     )
 
-    model.save
+    model.save!
+
+    delete_temp_file(filename)
   end
 
   def self.random_string

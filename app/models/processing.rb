@@ -15,13 +15,17 @@ class Processing < ApplicationRecord
     PreprocessingJob.perform_later(self)
   end
 
-  def self.store_preprocessing_data!(preprocessing, data)
-    FileAttacher.attach_file(
-        preprocessing,
-        :preprocessed_file_data,
-        PreprocessingSerializer.parse_response(data),
-        "preprocessed_file_data",
-        "json"
+  def token_to_check_against
+    file.checksum
+  end
+
+  def store_preprocessing_data!(data)
+    FileAttacher.build_and_attach_file(
+        model: self,
+        attached_to: :preprocessed_file_data,
+        data: PreprocessingSerializer.parse_response(data),
+        name_prefix: "preprocessed_file_data",
+        extension: "json"
     )
 
     preprocessing.update!(preprocessed_at: Time.current)

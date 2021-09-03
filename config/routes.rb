@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   post "/preprocessed_data", to: "preprocessings_data#preprocessed_data"
+  post "/analysis_data", to: "analyses_data#store_analysis_data"
 
   devise_for :users
   root to: "pages#home"

@@ -4,29 +4,32 @@
 class AnalysisJob < ApplicationJob
   queue_as :default
 
-  def perform(processing, analysis)
-    content = processing.preprocessed_file_data.download
-    response = RequestBuilder.send_post_request(JSON.parse(content), url(analysis))
-    model = Analysis.find_or_create_by!(typename: analysis, processing: processing)
+  def perform(processing, analysis_type)
+    @processing = processing
+    @analysis_type = analysis_type
 
-    FileAttacher.attach_file(model, :file, response.body, analysis, detect_extension(analysis))
+    RequestBuilder.send_post_request(JSON.parse(content), url, false)
   end
 
   private
 
-  def url(analysis)
-    URI("#{base_url}/#{analysis}")
+  def url
+    URI("#{base_url}/#{@analysis_type}?token=#{token}&analysis_id=#{analysis.id}")
   end
 
   def base_url
-    ENV["BASIC_LINGUISTIC_INDICATORS_URL"]
+    ENV['BASIC_LINGUISTIC_INDICATORS_URL']
   end
 
-  def detect_extension(analysis)
-    if analysis == "wordclouds"
-      "png"
-    else
-      "xlsx"
-    end
+  def analysis
+    Analysis.find_or_create_by!(typename: @analysis_type, processing: @processing)
+  end
+
+  def token
+    TokenBuilder.generate_token("#{analysis.cache_version}_#{@processing.preprocessed_file_data.checksum}")
+  end
+
+  def content
+    @processing.preprocessed_file_data.download
   end
 end
