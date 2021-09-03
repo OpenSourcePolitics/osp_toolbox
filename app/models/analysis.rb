@@ -2,7 +2,7 @@ class Analysis < ApplicationRecord
   belongs_to :processing
   has_one_attached :file
 
-  def self.store_analysis_data!(data)
+  def store_analysis_data!(data)
     FileAttacher.build_and_attach_file(
         model: self,
         attached_to: :file,

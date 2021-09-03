@@ -4,7 +4,7 @@ class Archive < ApplicationRecord
   belongs_to :document
   has_one_attached :file
 
-  def self.store_archive!(response)
+  def store_archive!(response)
     FileAttacher.build_and_attach_file(
         model: self,
         attached_to: :file,
