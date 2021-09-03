@@ -7,7 +7,7 @@ class AnalysesDataController < ApplicationController
 
   def store_analysis_data
     if TokenManager.valid_token?(analysis.string_to_generate_token, params[:token])
-      analysis.store_analysis_data!(request.body.read)
+      analysis.store_analysis_data!(params[:archive].tempfile.read)
 
       render json: {status: :success}
     else
