@@ -6,16 +6,9 @@ module Sanitizer
   # params: filename : String
   # returns: String
   def self.filename(filename)
-    return "#{timestamp}" if filename.blank?
+    return "#{DateTime.now.to_i}" if filename.blank?
+    filename.gsub!('-', '_') if filename.include? "-"
 
     filename.parameterize(separator: "_")
-  end
-
-  private
-
-  # timestamps: Returns a timestamp
-  # returns: Integer
-  def timestamp
-    DateTime.now.to_i
   end
 end
