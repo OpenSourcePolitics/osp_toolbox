@@ -7,7 +7,7 @@ class Analysis < ApplicationRecord
         model: self,
         attached_to: :file,
         data: data,
-        name_prefix: Sanitizer.filename(self.try(:processing)&.title),
+        name_prefix: Sanitizer.filename(self.processing&.title),
         extension: self.detect_extension
     )
 
