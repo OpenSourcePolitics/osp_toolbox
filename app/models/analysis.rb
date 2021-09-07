@@ -2,12 +2,14 @@ class Analysis < ApplicationRecord
   belongs_to :processing
   has_one_attached :file
 
+  validates :processing, presence: true
+
   def store_analysis_data!(data)
     FileAttacher.build_and_attach_file(
         model: self,
         attached_to: :file,
         data: data,
-        name_prefix: self.typename,
+        name_prefix: Sanitizer.filename(self.processing&.title),
         extension: self.detect_extension
     )
 
