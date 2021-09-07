@@ -9,7 +9,7 @@ class Archive < ApplicationRecord
         model: self,
         attached_to: :file,
         data: response.body,
-        name_prefix: "comments_mapping_archive",
+        name_prefix: Sanitizer.filename(self.processing&.title),
         extension: "zip"
     )
   end
