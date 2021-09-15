@@ -24,12 +24,12 @@ class AnalysisJob < ApplicationJob
   end
 
   def query_params
-    params = []
-    params << "token=#{token}"
-    params << "analysis_id=#{analysis.id}"
-    params << "subset_category=#{@category}" if @category.present?
+    params = {}
+    params["token"] = token
+    params["analysis_id"] = analysis.id
+    params["subset_category"] = @category if @category.present?
 
-    "?#{params.join("&")}"
+    "?#{params.to_query}"
   end
 
   def analysis
