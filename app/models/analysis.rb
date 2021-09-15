@@ -2,11 +2,10 @@ class Analysis < ApplicationRecord
   belongs_to :processing
   has_one_attached :file
 
-  validates :processing, presence: true
+  AVAILABLE_ANALYSES = %w(wordclouds ldb).freeze
 
-  def self.available_analyses
-    [:wordclouds, :ldb]
-  end
+  validates :processing, presence: true
+  validates :typename, inclusion: { in: AVAILABLE_ANALYSES }
 
   def store_analysis_data!(data)
     FileAttacher.build_and_attach_file(
