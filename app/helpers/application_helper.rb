@@ -10,7 +10,7 @@ module ApplicationHelper
     end
   end
 
-  def analyses_for(processing)
-    processing&.analyses.select { |analyse| analyse.file.present? }.map(&:typename).join(", ")
+  def analyses_count_for(processing)
+    processing&.analyses.select { |analyse| analyse.file.present? }.count
   end
 end
