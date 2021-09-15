@@ -22,6 +22,8 @@ class AnalysesController < ApplicationController
 
     respond_to do |format|
       if @analysis.save
+        AnalysisJob.perform_later(@analysis.processing, @analysis.typename, @analysis.category)
+
         format.html { redirect_to processing_analysis_path(id: @analysis), notice: "Analysis was successfully created." }
         format.json { render :show, status: :created, location: @analysis }
       else
