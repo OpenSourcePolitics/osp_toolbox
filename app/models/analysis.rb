@@ -4,6 +4,10 @@ class Analysis < ApplicationRecord
 
   validates :processing, presence: true
 
+  def self.available_analyses
+    [:wordclouds, :ldb]
+  end
+
   def store_analysis_data!(data)
     FileAttacher.build_and_attach_file(
         model: self,

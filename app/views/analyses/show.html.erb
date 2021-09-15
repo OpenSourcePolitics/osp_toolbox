@@ -1,0 +1,19 @@
+<h2>Analysis for: <%= @analysis.processing.title %></h2>
+<% if @analysis.category.present? %>
+  <h3>Category for this analysis: <%= @analysis.category %></h3>
+<% end %>
+<h4>Analysis type: <%= @analysis.typename %></h4>
+
+<% if @analysis.file.present? %>
+  Analysis duration time: <%= distance_of_time_in_words(@analysis.created_at, @analysis.file.created_at) %>
+  <% if @analysis.file.representable? %>
+    <div>
+      <%= image_tag @analysis.file.representation(resize_to_limit: [800, 800]) %>
+    </div>
+    <%= link_to "Download", rails_blob_path(@analysis.file, disposition: "attachment") %>
+  <% else %>
+    <%= link_to "Download", rails_blob_path(@analysis.file, disposition: "attachment") %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', processing_analyses_path %>

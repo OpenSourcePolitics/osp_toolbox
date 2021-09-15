@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_132735) do
+ActiveRecord::Schema.define(version: 2021_09_15_141359) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_09_02_132735) do
     t.integer "processing_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
     t.index ["processing_id"], name: "index_analyses_on_processing_id"
   end
 
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_09_02_132735) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "sent_to_preprocessing_at"
     t.datetime "preprocessed_at"
+    t.string "available_categories"
   end
 
   create_table "users", force: :cascade do |t|
