@@ -44,7 +44,7 @@ class AnalysesController < ApplicationController
     AnalysisJob.perform_later(@analysis.processing, @analysis.typename, @analysis.category)
 
     respond_to do |format|
-      format.html { redirect_to processings_path, notice: "Analysis has been triggered." }
+      format.html { redirect_to processing_analyses_path, notice: "Analysis has been triggered." }
       format.json { head :no_content }
     end
   end
