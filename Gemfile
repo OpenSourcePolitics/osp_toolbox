@@ -68,6 +68,8 @@ end
 group :production do
   gem "aws-sdk-s3", require: false
   gem "pg"
+  gem "sentry-ruby"
+  gem "sentry-rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
