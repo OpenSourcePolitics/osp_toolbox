@@ -8,6 +8,6 @@ module AnalysesHelper
   end
 
   def categories_for_select(processing)
-    processing.available_categories.map { |category| [category.titleize, category] }
+    processing.available_categories.map { |category| [category&.titleize, category] }
   end
 end
