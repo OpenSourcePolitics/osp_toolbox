@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-
 class AnalysisJob < ApplicationJob
   queue_as :default
 
-  def perform(processing, analysis_type)
+  def perform(processing, analysis_type, category = nil)
     @processing = processing
     @analysis_type = analysis_type
+    @category = category
 
     RequestBuilder.send_post_request(JSON.parse(content), url, false)
   end
@@ -14,15 +14,26 @@ class AnalysisJob < ApplicationJob
   private
 
   def url
-    URI("#{base_url}/#{@analysis_type}?token=#{token}&analysis_id=#{analysis.id}")
+    url = "#{base_url}/#{@analysis_type}#{query_params}"
+
+    URI(url)
   end
 
   def base_url
     ENV['BASIC_LINGUISTIC_INDICATORS_URL']
   end
 
+  def query_params
+    params = []
+    params << "token=#{token}"
+    params << "analysis_id=#{analysis.id}"
+    params << "subset_category=#{@category}" if @category.present?
+
+    "?#{params.join("&")}"
+  end
+
   def analysis
-    Analysis.find_or_create_by!(typename: @analysis_type, processing: @processing)
+    Analysis.find_or_create_by!(typename: @analysis_type, processing: @processing, category: @category)
   end
 
   def token

@@ -1,0 +1,31 @@
+<h1>Analyses for <%= @processing.title %></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Type</th>
+    <th>Category</th>
+    <th colspan="3">Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @analyses.each do |analysis| %>
+    <tr>
+      <td><%= analysis.typename %></td>
+      <td><%= analysis.category %></td>
+      <% if analysis.file.present? %>
+        <td><%= link_to 'Show', processing_analysis_path(id: analysis) %></td>
+      <% else %>
+        <td>Analysis is not yet available</td>
+      <% end %>
+      <td><%= render "analyses/redo_analysis_button", analysis: analysis %></td>
+      <td><%= link_to 'Destroy', processing_analysis_path(id: analysis), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Analysis', new_processing_analysis_path %>

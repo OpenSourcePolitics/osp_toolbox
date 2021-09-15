@@ -5,7 +5,7 @@ class AnalysisesJob < ApplicationJob
   queue_as :default
 
   def perform(processing)
-    Processing::ANALYSISES.each do |analysis|
+    Analysis.available_analyses.each do |analysis|
       AnalysisJob.perform_later(processing, analysis.to_s)
     end
   end

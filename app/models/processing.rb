@@ -2,8 +2,8 @@
 
 # Model for preprocessing file
 class Processing < ApplicationRecord
-  ANALYSISES = [:wordclouds, :ldb]
   after_commit :preprocess_data, if: -> { sent_to_preprocessing_at.nil? }
+  serialize :available_categories, Array
   has_one_attached :file
   has_one_attached :preprocessed_file_data
   has_many :analyses, dependent: :destroy
@@ -28,12 +28,17 @@ class Processing < ApplicationRecord
         extension: "json"
     )
 
-    self.update!(preprocessed_at: Time.current)
+    self.update!(available_categories: self.parse_categories, preprocessed_at: Time.current)
 
     AnalysisesJob.perform_later(self)
   end
 
   def preprocessed_data
     JSON.parse(preprocessed_file_data.download)
+  end
+
+
+  def parse_categories
+    preprocessed_data["preprocessed_data"].values.map { |row| row["category"] }.uniq
   end
 end

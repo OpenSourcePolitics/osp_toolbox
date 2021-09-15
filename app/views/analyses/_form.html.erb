@@ -1,0 +1,27 @@
+<%= form_with(model: [@processing, @analysis], url: processing_analyses_path) do |form| %>
+  <% if analysis.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(analysis.errors.count, "error") %> prohibited this analysis from being saved:</h2>
+
+      <ul>
+        <% analysis.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :typename %>
+    <%= form.select :typename, available_analyses_typename_for_select %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.select :category, categories_for_select(@processing), include_blank: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

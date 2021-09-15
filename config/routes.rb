@@ -2,9 +2,9 @@
 
 Rails.application.routes.draw do
   resources :processings, except: [:edit, :update, :create, :new, :destroy] do
-    get "/wordcloud_analysis", to: "processings#wordcloud_analysis"
-    get "/speech_analysis", to: "processings#speech_analysis"
-    post "/redo_analysis", to: "processings#redo_analysis"
+    resources :analyses, except: [:edit, :update] do
+      post "/redo_analysis", to: "analyses#redo_analysis"
+    end
   end
 
   resources :preprocessings do
