@@ -12,7 +12,7 @@
   <tbody>
   <% @analyses.each do |analysis| %>
     <tr>
-      <td><%= analysis.typename %></td>
+      <td><%= analysis.typename.titleize %></td>
       <td><%= analysis.category %></td>
       <% if analysis.file.present? %>
         <td><%= link_to 'Show', processing_analysis_path(id: analysis) %></td>
