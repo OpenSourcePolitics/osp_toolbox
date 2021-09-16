@@ -19,18 +19,22 @@ class AnalysesController < ApplicationController
 
   # POST /analyses or /analyses.json
   def create
-    @analysis = Analysis.new(analysis_params.merge(processing: @processing))
+    @analysis = Analysis.find_or_initialize_by(analysis_params.merge(processing: @processing))
 
-    respond_to do |format|
-      if @analysis.save
-        AnalysisJob.perform_later(@analysis.processing, @analysis.typename, @analysis.category)
+    if @analysis.new_record?
+      respond_to do |format|
+        if @analysis.save
+          AnalysisJob.perform_later(@analysis.processing, @analysis.typename, @analysis.category)
 
-        format.html { redirect_to processing_analysis_path(id: @analysis), notice: "Analysis was successfully created." }
-        format.json { render :show, status: :created, location: @analysis }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @analysis.errors, status: :unprocessable_entity }
+          format.html { redirect_to processing_analysis_path(id: @analysis), notice: "Analysis was successfully created." }
+          format.json { render :show, status: :created, location: @analysis }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @analysis.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to processing_analysis_path(id: @analysis), notice: "An existing analysis has been found."
     end
   end
 

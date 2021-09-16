@@ -3,7 +3,7 @@
 class AnalysisJob < ApplicationJob
   queue_as :default
 
-  def perform(processing, analysis_type, category = nil)
+  def perform(processing, analysis_type, category = "")
     @processing = processing
     @analysis_type = analysis_type
     @category = category
