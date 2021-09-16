@@ -10,6 +10,7 @@
 require "faker"
 
 user = User.create!(
+    nickname: "Hello",
     email: "hello@example.org",
     password: "password",
     password_confirmation: "password"
@@ -29,6 +30,7 @@ comments_file.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "com
 comments_file.save!
 
 processing = Processing.new(
+    user: user,
     title: Faker::Book.title,
     client: Faker::Twitter.name,
     url: Faker::Internet.domain_name,

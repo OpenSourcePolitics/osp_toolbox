@@ -2,6 +2,7 @@
   <thead>
   <tr>
     <th>Created at</th>
+    <th>User</th>
     <th>Title</th>
     <th>Client</th>
     <th>Url</th>
@@ -19,6 +20,7 @@
   <% collection.each do |item| %>
     <tr>
       <td><%= item.created_at %></td>
+      <td><%= item.user.nickname %></td>
       <td><%= item.title %></td>
       <td><%= item.client %></td>
       <td><%= item.url %></td>
