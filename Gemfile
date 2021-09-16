@@ -36,6 +36,9 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "dotenv-rails"
 
 gem 'ransack'
+gem 'kaminari'
+
+gem "pg"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,7 +46,6 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem "rubocop"
   gem "rubocop-rails"
-  gem "sqlite3", "~> 1.4"
 end
 
 group :development do
@@ -69,7 +71,6 @@ end
 
 group :production do
   gem "aws-sdk-s3", require: false
-  gem "pg"
   gem "sentry-ruby"
   gem "sentry-rails"
 end

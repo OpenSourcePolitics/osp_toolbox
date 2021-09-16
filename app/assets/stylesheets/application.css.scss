@@ -1,0 +1,23 @@
+@import "scaffolds.scss";
+@import "input_files.scss";
+@import "pages.scss";
+@import "processings.scss";
+
+.pagination {
+  justify-content: center;
+
+  span {
+    cursor: pointer;
+
+    &:not(:last-child) {
+      padding: 0 1rem 0 0;
+    }
+  }
+}
+
+.search_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}

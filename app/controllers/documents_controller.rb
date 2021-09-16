@@ -6,7 +6,8 @@ class DocumentsController < ApplicationController
 
   # GET /documents or /documents.json
   def index
-    @documents = Document.all
+    @query = Document.ransack(params[:q])
+    @documents = @query.result(distinct: true).page(params[:page])
   end
 
   # GET /documents/1 or /documents/1.json
