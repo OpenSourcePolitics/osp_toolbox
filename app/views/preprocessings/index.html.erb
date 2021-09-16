@@ -1,7 +1,7 @@
 <h1>Preprocessings</h1>
 
 <%= render "shared/search", search_query: :title_or_client_cont do %>
-  <%= link_to 'New Preprocessing', new_preprocessing_path %>
+  <%= link_to 'New Preprocessing', new_preprocessing_path, class: "btn btn-outline-primary" %>
 <% end %>
 
 <%= render "processings/list", collection: @preprocessings %>

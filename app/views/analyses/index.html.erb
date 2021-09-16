@@ -1,7 +1,7 @@
 <h1>Analyses for <%= @processing.title %></h1>
 
 <%= render "shared/search", path: processing_analyses_path, search_query: :category_or_typename_cont do %>
-  <%= link_to 'New Analysis', new_processing_analysis_path %>
+  <%= link_to 'New Analysis', new_processing_analysis_path, class: "btn btn-outline-primary" %>
 <% end %>
 
 <br/>
@@ -19,16 +19,30 @@
   <tbody>
   <% @analyses.each do |analysis| %>
     <tr>
-      <td><%= analysis.updated_at %></td>
+      <td><%= l(analysis.updated_at, format: :long) %></td>
       <td><%= analysis.typename.capitalize %></td>
       <td><%= analysis.category %></td>
       <% if analysis.file.present? %>
-        <td><%= link_to 'Show', processing_analysis_path(id: analysis) %></td>
+        <td>
+          <%= link_to 'Show',
+                      processing_analysis_path(id: analysis),
+                      class: "btn btn-outline-primary"
+          %>
+        </td>
       <% else %>
         <td>Analysis is not yet available</td>
       <% end %>
-      <td><%= render "analyses/redo_analysis_button", analysis: analysis %></td>
-      <td><%= link_to 'Destroy', processing_analysis_path(id: analysis), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td>
+        <%= render "analyses/redo_analysis_button", analysis: analysis %>
+      </td>
+      <td>
+        <%= link_to 'Destroy',
+                    processing_analysis_path(id: analysis),
+                    method: :delete,
+                    data: {confirm: 'Are you sure?'},
+                    class: "btn btn-outline-danger"
+        %>
+      </td>
     </tr>
   <% end %>
   </tbody>
