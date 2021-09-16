@@ -3,7 +3,8 @@ class ProcessingsController < ApplicationController
 
   # GET /processings or /processings.json
   def index
-    @processings = Processing.processed
+    @query = Processing.processed.ransack(params[:q])
+    @processings = @query.result(distinct: true).page(params[:page])
   end
 
   private

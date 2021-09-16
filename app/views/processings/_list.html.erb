@@ -1,11 +1,12 @@
 <table>
   <thead>
   <tr>
-    <th>Created at</th>
-    <th>Title</th>
-    <th>Client</th>
-    <th>Url</th>
-    <th>Sent to preprocessing at</th>
+    <th><%= sort_link(@query, :created_at) %></th>
+    <th><%= sort_link(@query, :user) %></th>
+    <th><%= sort_link(@query, :title) %></th>
+    <th><%= sort_link(@query, :client) %></th>
+    <th><%= sort_link(@query, :url) %></th>
+    <th><%= sort_link(@query, :sent_to_preprocessing_at) %></th>
     <th>Preprocessing duration</th>
     <th>Preprocessed</th>
     <th>Available analyses</th>
@@ -19,6 +20,7 @@
   <% collection.each do |item| %>
     <tr>
       <td><%= item.created_at %></td>
+      <td><%= item.user.nickname %></td>
       <td><%= item.title %></td>
       <td><%= item.client %></td>
       <td><%= item.url %></td>

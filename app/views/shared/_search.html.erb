@@ -1,0 +1,9 @@
+<div class="search_header">
+  <%= search_form_for @query, url: infer_path(path ||= nil) do |f| %>
+    <%= f.label search_query %>
+    <%= f.search_field search_query %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= yield %>
+</div>

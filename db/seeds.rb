@@ -9,41 +9,54 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
 
-user = User.create!(
+User.create!(
+    nickname: "Hello",
     email: "hello@example.org",
     password: "password",
     password_confirmation: "password"
 )
 
-document = Document.create!(
-    user: user,
-    title: Faker::Book.title
-)
+(0..10).each do |n|
+  user = User.create!(
+      nickname: "Hello_#{n}",
+      email: "hello_#{n}@example.org",
+      password: "password",
+      password_confirmation: "password"
+  )
 
-proposals_file = InputFile.new(typename: "Proposals", document: document)
-proposals_file.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "proposals.csv")), filename: "proposals.csv")
-proposals_file.save!
+  document = Document.create!(
+      user: user,
+      title: Faker::Book.title
+  )
 
-comments_file = InputFile.create(typename: "Comments", document: document)
-comments_file.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "comments.csv")), filename: "comments.csv")
-comments_file.save!
+  proposals_file = InputFile.new(typename: "Proposals", document: document)
+  proposals_file.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "proposals.csv")), filename: "proposals.csv")
+  proposals_file.save!
 
-processing = Processing.new(
-    title: Faker::Book.title,
-    client: Faker::Twitter.name,
-    url: Faker::Internet.domain_name,
-    sent_to_preprocessing_at: Time.now,
-)
-processing.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.csv")), filename: "subset_raw_data.csv")
-processing.preprocessed_file_data.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.json"), "r:UTF-8"), filename: "subset_raw_data.json")
-processing.save!
-processing.update!(available_categories: processing.parse_categories)
+  comments_file = InputFile.create(typename: "Comments", document: document)
+  comments_file.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "comments.csv")), filename: "comments.csv")
+  comments_file.save!
 
-ldb_analysis = Analysis.create!(processing: processing, typename: "ldb")
-wordclouds_analysis = Analysis.create!(processing: processing, typename: "wordclouds")
+  (0..10).each do
+    processing = Processing.new(
+        user: user,
+        title: Faker::Book.title,
+        client: Faker::Twitter.screen_name,
+        url: Faker::Internet.domain_name,
+        sent_to_preprocessing_at: Time.now,
+    )
+    processing.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.csv")), filename: "subset_raw_data.csv")
+    processing.preprocessed_file_data.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.json"), "r:UTF-8"), filename: "subset_raw_data.json")
+    processing.save!
+    processing.update!(available_categories: processing.parse_categories)
 
-ldb_analysis.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "wordclouds.png")), filename: "wordclouds.png")
-ldb_analysis.save!
+    ldb_analysis = Analysis.create!(processing: processing, typename: "ldb")
+    wordclouds_analysis = Analysis.create!(processing: processing, typename: "wordclouds")
 
-wordclouds_analysis.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "ldb.xlsx")), filename: "ldb.xlsx")
-wordclouds_analysis.save!
+    ldb_analysis.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "wordclouds.png")), filename: "wordclouds.png")
+    ldb_analysis.save!
+
+    wordclouds_analysis.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "ldb.xlsx")), filename: "ldb.xlsx")
+    wordclouds_analysis.save!
+  end
+end

@@ -6,7 +6,8 @@ class PreprocessingsController < ApplicationController
 
   # GET /preprocessings or /preprocessings.json
   def index
-    @preprocessings = Processing.all
+    @query = Processing.ransack(params[:q])
+    @preprocessings = @query.result(distinct: true).page(params[:page])
   end
 
   # GET /preprocessings/1 or /preprocessings/1.json

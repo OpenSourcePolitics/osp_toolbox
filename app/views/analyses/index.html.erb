@@ -1,10 +1,17 @@
 <h1>Analyses for <%= @processing.title %></h1>
 
+<%= render "shared/search", path: processing_analyses_path, search_query: :category_or_typename_cont do %>
+  <%= link_to 'New Analysis', new_processing_analysis_path %>
+<% end %>
+
+<br/>
+
 <table>
   <thead>
   <tr>
-    <th>Type</th>
-    <th>Category</th>
+    <th><%= sort_link(@query, :updated_at) %></th>
+    <th><%= sort_link(@query, :type) %></th>
+    <th><%= sort_link(@query, :category) %></th>
     <th colspan="3">Actions</th>
   </tr>
   </thead>
@@ -12,7 +19,8 @@
   <tbody>
   <% @analyses.each do |analysis| %>
     <tr>
-      <td><%= analysis.typename.titleize %></td>
+      <td><%= analysis.updated_at %></td>
+      <td><%= analysis.typename.capitalize %></td>
       <td><%= analysis.category %></td>
       <% if analysis.file.present? %>
         <td><%= link_to 'Show', processing_analysis_path(id: analysis) %></td>
@@ -25,7 +33,4 @@
   <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Analysis', new_processing_analysis_path %>
+<%= paginate @analyses %>

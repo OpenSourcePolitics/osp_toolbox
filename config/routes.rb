@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   post "/preprocessed_data", to: "preprocessings_data#preprocessed_data"
   post "/analysis_data", to: "analyses_data#store_analysis_data"
 
-  devise_for :users
+  devise_for :users, controllers: {
+      sessions: 'devise/sessions',
+      registrations: 'devise/registrations',
+  }
+
   root to: "pages#home"
 end

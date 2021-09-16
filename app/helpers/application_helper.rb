@@ -13,4 +13,10 @@ module ApplicationHelper
   def analyses_count_for(processing)
     processing&.analyses.select { |analyse| analyse.file.present? }.count
   end
+
+  def infer_path(path)
+    return path unless path.nil?
+
+    self.send("#{controller_name}_path")
+  end
 end

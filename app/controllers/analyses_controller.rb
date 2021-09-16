@@ -4,7 +4,8 @@ class AnalysesController < ApplicationController
 
   # GET /analyses or /analyses.json
   def index
-    @analyses = @processing.analyses
+    @query = @processing.analyses.ransack(params[:q])
+    @analyses = @query.result(distinct: true).page(params[:page])
   end
 
   # GET /analyses/1 or /analyses/1.json
