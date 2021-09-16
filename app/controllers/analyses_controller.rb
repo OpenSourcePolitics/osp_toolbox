@@ -38,7 +38,7 @@ class AnalysesController < ApplicationController
   def destroy
     @analysis.destroy
     respond_to do |format|
-      format.html { redirect_to analyses_url, notice: "Analysis was successfully destroyed." }
+      format.html { redirect_to processing_analyses_path, notice: "Analysis was successfully destroyed." }
       format.json { head :no_content }
     end
   end
