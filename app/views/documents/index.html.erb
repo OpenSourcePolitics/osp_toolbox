@@ -1,7 +1,7 @@
 <h1>Documents</h1>
 
 <%= render "shared/search", search_query: :title_cont do %>
-  <%= link_to 'New Document', new_document_path %>
+  <%= link_to 'New Document', new_document_path, class: "btn btn-outline-primary" %>
 <% end %>
 
 <table>
@@ -24,9 +24,26 @@
       <td>
         <%= document_archive_for(document) %>
       </td>
-      <td><%= link_to 'Show', document %></td>
-      <td><%= link_to 'Edit', edit_document_path(document) %></td>
-      <td><%= link_to 'Destroy', document, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td>
+        <%= link_to 'Show',
+                    document,
+                    class: "btn btn-outline-success"
+        %>
+      </td>
+      <td>
+        <%= link_to 'Edit',
+                    edit_document_path(document),
+                    class: "btn btn-outline-secondary"
+        %>
+      </td>
+      <td>
+        <%= link_to 'Destroy',
+                    document,
+                    method: :delete,
+                    data: {confirm: 'Are you sure?'},
+                    class: "btn btn-outline-danger"
+        %>
+      </td>
     </tr>
   <% end %>
   </tbody>

@@ -1,0 +1,11 @@
+.pagination {
+  justify-content: center;
+
+  span {
+    cursor: pointer;
+
+    &:not(:last-child) {
+      padding: 0 1rem 0 0;
+    }
+  }
+}
