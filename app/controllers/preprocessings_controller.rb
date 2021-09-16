@@ -11,7 +11,8 @@ class PreprocessingsController < ApplicationController
   end
 
   # GET /preprocessings/1 or /preprocessings/1.json
-  def show; end
+  def show;
+  end
 
   # GET /preprocessings/new
   def new
@@ -19,11 +20,12 @@ class PreprocessingsController < ApplicationController
   end
 
   # GET /preprocessings/1/edit
-  def edit; end
+  def edit;
+  end
 
   # POST /preprocessings or /preprocessings.json
   def create
-    @preprocessing = Processing.new(preprocessing_params)
+    @preprocessing = Processing.new(preprocessing_params.merge(user: current_user))
 
     respond_to do |format|
       if @preprocessing.save
