@@ -2,8 +2,13 @@
   <div class="row">
     <div class="col-8">
       <%= search_form_for @query, url: infer_path(path ||= nil), class: "d-flex" do |f| %>
-        <%= f.search_field search_query, class: "form-control me-2", placeholder: search_query_placeholder(search_query) %>
-        <%= f.submit "Search", class: "btn btn-outline-secondary" %>
+        <%= f.search_field search_query,
+                           class: "form-control me-2",
+                           placeholder: t("placeholder",
+                                          scope: "search",
+                                          query: search_query_placeholder(search_query))
+        %>
+        <%= f.submit t("submit", scope: "search"), class: "btn btn-outline-secondary" %>
       <% end %>
     </div>
     <div class="col-2 offset-2">

@@ -19,7 +19,7 @@
   <tbody>
   <% @analyses.each do |analysis| %>
     <tr>
-      <td><%= analysis.updated_at %></td>
+      <td><%= l(analysis.updated_at, format: :long) %></td>
       <td><%= analysis.typename.capitalize %></td>
       <td><%= analysis.category %></td>
       <% if analysis.file.present? %>

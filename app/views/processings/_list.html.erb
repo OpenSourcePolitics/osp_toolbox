@@ -19,7 +19,7 @@
   <tbody>
   <% collection.each do |item| %>
     <tr>
-      <td><%= item.created_at %></td>
+      <td><%= l(item.created_at, format: :long) %></td>
       <td><%= item.user.nickname %></td>
       <td><%= item.title %></td>
       <td><%= item.client %></td>
