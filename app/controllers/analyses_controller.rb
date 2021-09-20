@@ -24,7 +24,7 @@ class AnalysesController < ApplicationController
     if @analysis.new_record?
       respond_to do |format|
         if @analysis.save
-          AnalysisJob.perform_later(@analysis.processing, @analysis.typename, @analysis.category)
+          AnalysisJob.perform_later(@analysis.processing, @analysis.typename, current_user, @analysis.category)
 
           format.html { redirect_to processing_analysis_path(id: @analysis), notice: "Analysis was successfully created." }
           format.json { render :show, status: :created, location: @analysis }
@@ -48,7 +48,7 @@ class AnalysesController < ApplicationController
   end
 
   def redo_analysis
-    AnalysisJob.perform_later(@analysis.processing, @analysis.typename, @analysis.category)
+    AnalysisJob.perform_later(@analysis.processing, @analysis.typename, current_user, @analysis.category)
 
     respond_to do |format|
       format.html { redirect_to processing_analyses_path, notice: "Analysis has been triggered." }

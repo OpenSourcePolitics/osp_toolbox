@@ -3,10 +3,17 @@
 class AnalysisJob < ApplicationJob
   queue_as :default
 
-  def perform(processing, analysis_type, category = "")
+  def perform(processing, analysis_type, user, category = "")
     @processing = processing
     @analysis_type = analysis_type
     @category = category
+
+    Notification.register!(
+        event_name: "Enqueued analysis job",
+        resource_class: analysis.class.name,
+        resource_id: analysis.id,
+        target_id: user.id
+    )
 
     RequestBuilder.send_post_request(JSON.parse(content), url, false)
   end

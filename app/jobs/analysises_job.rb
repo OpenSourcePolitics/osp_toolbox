@@ -6,7 +6,7 @@ class AnalysisesJob < ApplicationJob
 
   def perform(processing)
     Analysis::AVAILABLE_ANALYSES.each do |analysis|
-      AnalysisJob.perform_later(processing, analysis.to_s)
+      AnalysisJob.perform_later(processing, analysis.to_s, processing.user)
     end
   end
 end

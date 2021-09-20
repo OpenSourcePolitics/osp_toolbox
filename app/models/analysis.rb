@@ -5,7 +5,7 @@ class Analysis < ApplicationRecord
   AVAILABLE_ANALYSES = %w(wordclouds ldb).freeze
 
   validates :processing, presence: true
-  validates :typename, inclusion: { in: AVAILABLE_ANALYSES }
+  validates :typename, inclusion: {in: AVAILABLE_ANALYSES}
 
   def store_analysis_data!(data)
     FileAttacher.build_and_attach_file(
@@ -18,7 +18,7 @@ class Analysis < ApplicationRecord
 
     self.save!
 
-    Notification.notify(user: processing.user, message: notification_message)
+    Notification.notify!(self)
   end
 
   def string_to_generate_token
