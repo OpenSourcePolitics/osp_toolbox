@@ -21,7 +21,7 @@ class Notification < ApplicationRecord
 
     request = Net::HTTP::Get.new(url)
     request["Content-Type"] = "application/json"
-    request.body = JSON.dump({text: I18n.t("notification", scope: "rocket_chat", user: user, message: message)})
+    request.body = JSON.dump({text: I18n.t("notification", scope: "rocket_chat", user: user.nickname, message: message)})
 
     https.request(request)
   end
