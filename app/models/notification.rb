@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-require "json"
-require "net/http"
-require "uri"
-
 class Notification < ApplicationRecord
   def self.notify!(resource)
     notification = Notification.find_by(resource_class: resource.class.name, resource_id: resource.id)
@@ -15,15 +11,9 @@ class Notification < ApplicationRecord
 
   def self.send_notification(user, message)
     url = URI(ENV["ROCKET_CHAT_URL"])
+    content = {text: I18n.t("notification", scope: "rocket_chat", user: user.nickname, message: message)}
 
-    https = Net::HTTP.new(url.host, url.port)
-    https.use_ssl = true
-
-    request = Net::HTTP::Get.new(url)
-    request["Content-Type"] = "application/json"
-    request.body = JSON.dump({text: I18n.t("notification", scope: "rocket_chat", user: user.nickname, message: message)})
-
-    https.request(request)
+    RequestBuilder.send_post_request(content, url)
   end
 
   def self.register!(event_name:, resource_class:, resource_id:, target_id:)
