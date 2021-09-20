@@ -22,5 +22,6 @@ module OspToolbox
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = "Europe/Paris"
     config.autoload_paths << Rails.root.join("lib")
+    config.allowed_domains = ENV.fetch("ALLOWED_DOMAINS", "")&.split(",")
   end
 end

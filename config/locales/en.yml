@@ -1,5 +1,13 @@
 ---
 en:
+  user:
+    validations:
+      wrong_domain: 'The domain you are using is wrong, please use one from the list: %{domains}'
+  devise:
+    registrations:
+      new:
+        placeholder:
+          nickname: Enter your rocket chat username without @
   documents:
     form:
       submit: Submit
@@ -12,11 +20,18 @@ en:
   errors:
     messages:
       not_saved: Not saved
+  layouts:
+    navbar:
+      edit_profile: Edit profile
   pages:
     home:
       comments_mapping: Comments mapping
       exploratory_data_analysis: Exploratory data analysis
       preprocessings: Preprocessings
+  rocket_chat:
+    notification: |-
+      Hello %{user}
+      %{message}
   search:
     clear: Clear search
     placeholder: "%{query}"
