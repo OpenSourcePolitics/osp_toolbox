@@ -7,4 +7,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :documents, dependent: :destroy
+
+  def nickname=(string)
+    value = string.start_with?("@") ? string : "@#{string}"
+
+    super(value)
+  end
 end

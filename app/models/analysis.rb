@@ -17,7 +17,8 @@ class Analysis < ApplicationRecord
     )
 
     self.save!
-    Notification.send("Analysis #{self.typename} for #{self.processing.title} is over.")
+
+    Notification.notify(user: processing.user, message: notification_message)
   end
 
   def string_to_generate_token
@@ -30,5 +31,9 @@ class Analysis < ApplicationRecord
     else
       "xlsx"
     end
+  end
+
+  def notification_message
+    "Analysis #{typename} for #{processing.title} is over."
   end
 end
