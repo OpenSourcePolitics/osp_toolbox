@@ -1,5 +1,10 @@
-<h1>Exploratory data analysis</h1>
-
-<%= render "shared/search", search_query: :title_or_client_cont %>
-<%= render "processings/list", collection: @processings %>
-<%= paginate @processings %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Exploratory data analysis</h1>
+    </div>
+  </div>
+  <%= render "shared/search", search_query: :title_or_client_cont %>
+  <%= render "processings/list", collection: @processings %>
+  <%= paginate @processings %>
+</div>

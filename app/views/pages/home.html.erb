@@ -1,4 +1,42 @@
-<h1>Welcome to OSP toolbox</h1>
-<%= link_to "Comments mapping", documents_path %>
-<%= link_to "Preprocessings", preprocessings_path %>
-<%= link_to "Exploratory data analysis", processings_path %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Welcome to OSP toolbox</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to documents_path do %>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">
+              <%= t(".comments_mapping") %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col">
+      <%= link_to preprocessings_path do %>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">
+              <%= t(".preprocessings") %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col">
+      <%= link_to processings_path do %>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">
+              <%= t(".exploratory_data_analysis") %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
