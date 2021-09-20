@@ -1,8 +1,16 @@
 ---
 en:
+  documents:
+    form:
+      submit: Submit
   errors:
     messages:
       not_saved: Not saved
+  pages:
+    home:
+      comments_mapping: Comments mapping
+      exploratory_data_analysis: Exploratory data analysis
+      preprocessings: Preprocessings
   search:
-    placeholder: '%{query}'
+    placeholder: "%{query}"
     submit: Search

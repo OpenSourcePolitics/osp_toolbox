@@ -1,50 +1,56 @@
-<h1>Analyses for <%= @processing.title %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Analyses for <%= @processing.title %></h1>
+    </div>
+  </div>
 
-<%= render "shared/search", path: processing_analyses_path, search_query: :category_or_typename_cont do %>
-  <%= link_to 'New Analysis', new_processing_analysis_path, class: "btn btn-outline-primary" %>
-<% end %>
+  <%= render "shared/search", path: processing_analyses_path, search_query: :category_or_typename_cont do %>
+    <%= link_to 'New Analysis', new_processing_analysis_path, class: "btn btn-outline-primary" %>
+  <% end %>
 
-<br/>
+  <br/>
 
-<table>
-  <thead>
-  <tr>
-    <th><%= sort_link(@query, :updated_at) %></th>
-    <th><%= sort_link(@query, :type) %></th>
-    <th><%= sort_link(@query, :category) %></th>
-    <th colspan="3">Actions</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @analyses.each do |analysis| %>
+  <table class="table">
+    <thead>
     <tr>
-      <td><%= l(analysis.updated_at, format: :long) %></td>
-      <td><%= analysis.typename.capitalize %></td>
-      <td><%= analysis.category %></td>
-      <% if analysis.file.present? %>
+      <th><%= sort_link(@query, :updated_at) %></th>
+      <th><%= sort_link(@query, :type) %></th>
+      <th><%= sort_link(@query, :category) %></th>
+      <th colspan="3">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @analyses.each do |analysis| %>
+      <tr>
+        <td><%= l(analysis.updated_at, format: :long) %></td>
+        <td><%= analysis.typename.capitalize %></td>
+        <td><%= analysis.category %></td>
+        <% if analysis.file.present? %>
+          <td>
+            <%= link_to 'Show',
+                        processing_analysis_path(id: analysis),
+                        class: "btn btn-outline-primary"
+            %>
+          </td>
+        <% else %>
+          <td>Analysis is not yet available</td>
+        <% end %>
         <td>
-          <%= link_to 'Show',
+          <%= render "analyses/redo_analysis_button", analysis: analysis %>
+        </td>
+        <td>
+          <%= link_to 'Destroy',
                       processing_analysis_path(id: analysis),
-                      class: "btn btn-outline-primary"
+                      method: :delete,
+                      data: {confirm: 'Are you sure?'},
+                      class: "btn btn-outline-danger"
           %>
         </td>
-      <% else %>
-        <td>Analysis is not yet available</td>
-      <% end %>
-      <td>
-        <%= render "analyses/redo_analysis_button", analysis: analysis %>
-      </td>
-      <td>
-        <%= link_to 'Destroy',
-                    processing_analysis_path(id: analysis),
-                    method: :delete,
-                    data: {confirm: 'Are you sure?'},
-                    class: "btn btn-outline-danger"
-        %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= paginate @analyses %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @analyses %>
+</div>

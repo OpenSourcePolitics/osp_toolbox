@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field row">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <% if action_name == "edit" %>
-  <div class="field">
-    <%= form.label :ready %>
-    <%= form.check_box :ready %>
-  </div>
-    <% end %>
+    <div class="field row">
+      <%= form.label :ready %>
+      <%= form.check_box :ready %>
+    </div>
+  <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t(".submit"), class: "btn btn-outline-primary" %>
   </div>
 <% end %>
