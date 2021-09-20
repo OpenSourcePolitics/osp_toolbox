@@ -16,13 +16,6 @@
     <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <% if action_name == "edit" %>
-    <div class="field row">
-      <%= form.label :ready %>
-      <%= form.check_box :ready %>
-    </div>
-  <% end %>
-
   <div class="actions">
     <%= form.submit t(".submit"), class: "btn btn-outline-primary" %>
   </div>
