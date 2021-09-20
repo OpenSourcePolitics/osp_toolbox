@@ -1,37 +1,39 @@
-<table>
-  <thead>
-  <tr>
-    <th><%= sort_link(@query, :created_at) %></th>
-    <th><%= sort_link(@query, :user) %></th>
-    <th><%= sort_link(@query, :title) %></th>
-    <th><%= sort_link(@query, :client) %></th>
-    <th><%= sort_link(@query, :url) %></th>
-    <th><%= sort_link(@query, :sent_to_preprocessing_at) %></th>
-    <th>Preprocessing duration</th>
-    <th>Preprocessed</th>
-    <th>Available analyses</th>
-    <th>File</th>
-    <th>Size</th>
-    <th colspan="3">Actions</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% collection.each do |item| %>
+<div class="row">
+  <table class="table">
+    <thead>
     <tr>
-      <td><%= l(item.created_at, format: :long) %></td>
-      <td><%= item.user.nickname %></td>
-      <td><%= item.title %></td>
-      <td><%= item.client %></td>
-      <td><%= item.url %></td>
-      <td><%= item.sent_to_preprocessing_at.strftime("%d-%m-%Y %H:%M") %></td>
-      <td><%= preprocessing_duration(item) %></td>
-      <td><%= item.preprocessed_file_data.present? %></td>
-      <td><%= analyses_count_for(item) %></td>
-      <td><%= link_to item.file.filename, rails_blob_path(item.file, disposition: 'attachment') %></td>
-      <td><%= number_to_human_size(item.file.byte_size) %></td>
-      <td><%= render "#{controller_name}/actions", item: item %></td>
+      <th><%= sort_link(@query, :created_at) %></th>
+      <th><%= sort_link(@query, :user) %></th>
+      <th><%= sort_link(@query, :title) %></th>
+      <th><%= sort_link(@query, :client) %></th>
+      <th><%= sort_link(@query, :url) %></th>
+      <th><%= sort_link(@query, :sent_to_preprocessing_at) %></th>
+      <th>Preprocessing duration</th>
+      <th>Preprocessed</th>
+      <th>Available analyses</th>
+      <th>File</th>
+      <th>Size</th>
+      <th colspan="3">Actions</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+    <% collection.each do |item| %>
+      <tr>
+        <td><%= l(item.created_at, format: :long) %></td>
+        <td><%= item.user.nickname %></td>
+        <td><%= item.title %></td>
+        <td><%= item.client %></td>
+        <td><%= item.url %></td>
+        <td><%= item.sent_to_preprocessing_at.strftime("%d-%m-%Y %H:%M") %></td>
+        <td><%= preprocessing_duration(item) %></td>
+        <td><%= item.preprocessed_file_data.present? %></td>
+        <td><%= analyses_count_for(item) %></td>
+        <td><%= link_to item.file.filename, rails_blob_path(item.file, disposition: 'attachment') %></td>
+        <td><%= number_to_human_size(item.file.byte_size) %></td>
+        <td><%= render "#{controller_name}/actions", item: item %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
