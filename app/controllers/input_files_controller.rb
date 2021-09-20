@@ -22,7 +22,7 @@ class InputFilesController < ApplicationController
 
     respond_to do |format|
       if @input_file.save
-        format.html { redirect_to document_path(id: @document), notice: "Input file was successfully created." }
+        format.html { redirect_to document_path(id: @document), notice: create_notice_message }
         format.json { render :show, status: :created, location: @input_file }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -69,7 +69,11 @@ class InputFilesController < ApplicationController
     @document = Document.find(params[:document_id])
   end
 
-  def before_action(action)
-    send(action)
+  def create_notice_message
+    if @input_file.document.input_files.count > 2
+      "Input file was successfully created."
+    else
+      "Input file was successfully created and document has been sent to processing"
+    end
   end
 end

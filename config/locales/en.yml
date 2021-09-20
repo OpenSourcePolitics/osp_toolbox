@@ -3,6 +3,8 @@ en:
   documents:
     form:
       submit: Submit
+    process_archive_button:
+      submit: Process archive
   errors:
     messages:
       not_saved: Not saved

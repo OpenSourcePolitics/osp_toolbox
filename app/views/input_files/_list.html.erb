@@ -30,4 +30,6 @@
 
 <br>
 
+<% unless ready_to_process?(@document) %>
 <%= link_to 'New Input File', new_document_input_file_path(@document) %>
+<% end %>
