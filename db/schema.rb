@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_131119) do
+ActiveRecord::Schema.define(version: 2021_09_20_205631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 2021_09_16_131119) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "document_id", null: false
     t.index ["document_id"], name: "index_input_files_on_document_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "event_name"
+    t.string "resource_class"
+    t.integer "resource_id"
+    t.integer "target_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "processings", force: :cascade do |t|
