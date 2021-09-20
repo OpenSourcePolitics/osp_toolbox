@@ -1,20 +1,24 @@
 <td>
-  <%= link_to 'Show',
-              preprocessing_path(item),
-              class: "btn btn-outline-success"
-  %>
-</td>
-<td>
-  <%= link_to 'Edit',
-              edit_preprocessing_path(item),
-              class: "btn btn-outline-secondary"
-  %>
-</td>
-<td>
-  <%= link_to 'Destroy',
-              preprocessing_path(item),
-              method: :delete,
-              data: {confirm: 'Are you sure?'},
-              class: "btn btn-outline-danger"
-  %>
+  <div class="row">
+    <div class="col">
+      <%= link_to 'Show',
+                  preprocessing_path(item),
+                  class: "btn btn-outline-success"
+      %>
+    </div>
+    <div class="col">
+      <%= link_to 'Edit',
+                  edit_preprocessing_path(item),
+                  class: "btn btn-outline-secondary"
+      %>
+    </div>
+    <div class="col">
+      <%= link_to 'Destroy',
+                  preprocessing_path(item),
+                  method: :delete,
+                  data: {confirm: 'Are you sure?'},
+                  class: "btn btn-outline-danger"
+      %>
+    </div>
+  </div>
 </td>
