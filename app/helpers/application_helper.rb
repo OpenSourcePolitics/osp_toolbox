@@ -32,4 +32,12 @@ module ApplicationHelper
         notice: "bg-info"
     }.stringify_keys[flash_type.to_s]
   end
+
+  def empty_search_path
+    request.path
+  end
+
+  def search_in_progress?
+    request.params.fetch("q", false)
+  end
 end

@@ -7,7 +7,7 @@ en:
       submit: Process archive
   documents_helper:
     document_archive_for:
-      download: 'Download %{file}'
+      download: Download %{file}
       no_available_archive: No available archive
   errors:
     messages:
@@ -18,5 +18,6 @@ en:
       exploratory_data_analysis: Exploratory data analysis
       preprocessings: Preprocessings
   search:
+    clear: Clear search
     placeholder: "%{query}"
     submit: Search
