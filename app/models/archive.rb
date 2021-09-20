@@ -9,7 +9,7 @@ class Archive < ApplicationRecord
         model: self,
         attached_to: :file,
         data: response.body,
-        name_prefix: Sanitizer.filename(self.processing&.title),
+        name_prefix: Sanitizer.filename(self.document&.title),
         extension: "zip"
     )
   end
