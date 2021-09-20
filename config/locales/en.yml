@@ -5,6 +5,10 @@ en:
       submit: Submit
     process_archive_button:
       submit: Process archive
+  documents_helper:
+    document_archive_for:
+      download: 'Download %{file}'
+      no_available_archive: No available archive
   errors:
     messages:
       not_saved: Not saved

@@ -4,12 +4,12 @@
 module DocumentsHelper
   def document_archive_for(document)
     if document.archive && document.archive.file.present?
-      link_to "Download #{document.archive.file.name}",
-              rails_blob_path(document.archive.file,
-                              disposition: "attachment")
+      link_to t(".download", filename: document.archive.file.name),
+              rails_blob_path(document.archive.file, disposition: "attachment"),
+              class: "btn btn-outline-success"
 
     else
-      "No available archive"
+      t(".no_available_archive")
     end
   end
 

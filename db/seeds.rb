@@ -37,6 +37,12 @@ User.create!(
   comments_file.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "comments.csv")), filename: "comments.csv")
   comments_file.save!
 
+  if n.even?
+    archive = Archive.create!(document: document)
+    archive.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "archive.zip")), filename: "archive.zip")
+    archive.save!
+  end
+
   (0..10).each do
     processing = Processing.new(
         user: user,
