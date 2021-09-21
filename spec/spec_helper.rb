@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 require "simplecov"
+require "codecov"
 
 SimpleCov.start "rails"
+if ENV["CODECOV"]
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
