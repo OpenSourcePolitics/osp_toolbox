@@ -103,7 +103,6 @@ jobs:
           DATABASE_PASSWORD: postgres
           DATABASE_USERNAME: postgres
         run: bundle exec rspec
-      - uses: codecov/codecov-action@v2
   conclusion:
     name: conclusion
     needs: [tests, linters]

@@ -4,9 +4,7 @@ require "simplecov"
 require "codecov"
 
 SimpleCov.start "rails"
-if ENV["CODECOV"]
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end
+SimpleCov.formatter = SimpleCov::Formatter::Codecov if ENV["CODECOV"]
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
