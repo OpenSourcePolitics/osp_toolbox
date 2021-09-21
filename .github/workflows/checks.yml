@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11
+        image: postgres:13
         env:
           POSTGRES_USER: postgres
           POSTGRES_DB: osp_toolbox_test
