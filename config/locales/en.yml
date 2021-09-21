@@ -1,7 +1,7 @@
 ---
 en:
   analysis:
-    notification_message: 'Analysis %{typename} for %{title} is over.'
+    notification_message: Analysis %{typename} for %{title} is over.
   devise:
     registrations:
       new:
