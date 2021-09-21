@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Analyses Helper
 module AnalysesHelper
   def available_analyses_typename
     Analysis::AVAILABLE_ANALYSES

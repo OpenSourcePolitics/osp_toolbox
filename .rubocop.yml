@@ -17,3 +17,11 @@ Style/StringLiterals:
 
 Layout/LineLength:
   Max: 180
+
+# TODO: Lower that number !
+Metrics/AbcSize:
+  Max: 24
+
+# TODO: Lower that number !
+Metrics/MethodLength:
+  Max: 15

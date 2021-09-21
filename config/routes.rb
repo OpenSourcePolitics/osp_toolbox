@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :processings, except: [:edit, :update, :create, :new, :destroy] do
-    resources :analyses, except: [:edit, :update] do
+  resources :processings, except: %i[edit update create new destroy] do
+    resources :analyses, except: %i[edit update] do
       post "/redo_analysis", to: "analyses#redo_analysis"
     end
   end
@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   post "/analysis_data", to: "analyses_data#store_analysis_data"
 
   devise_for :users, controllers: {
-      sessions: 'devise/sessions',
-      registrations: 'devise/registrations',
+    sessions: "devise/sessions",
+    registrations: "devise/registrations"
   }
 
   root to: "pages#home"

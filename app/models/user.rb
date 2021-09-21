@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# User class
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -17,9 +18,8 @@ class User < ApplicationRecord
 
   def check_email_address
     return if Rails.configuration.allowed_domains.empty?
+    return unless Rails.configuration.allowed_domains.none? { |domain| email.end_with?(domain) }
 
-    if Rails.configuration.allowed_domains.none? { |domain| email.end_with?(domain) }
-      self.errors.add(:base, I18n.t("wrong_domain", scope: "user.validations", domains: Rails.configuration.allowed_domains.join(", ")))
-    end
+    errors.add(:base, I18n.t("wrong_domain", scope: "user.validations", domains: Rails.configuration.allowed_domains.join(", ")))
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-
+# Analysises Job
 class AnalysisesJob < ApplicationJob
   queue_as :default
 

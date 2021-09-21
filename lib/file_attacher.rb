@@ -11,7 +11,7 @@ module FileAttacher
 
   def self.delete_temp_file(filename)
     file = Rails.root.join("tmp", filename)
-    File.delete(file) if File.exists? file
+    File.delete(file) if File.exist? file
   end
 
   def self.build_and_attach_file(model:, attached_to:, data:, name_prefix:, extension:)
@@ -20,9 +20,9 @@ module FileAttacher
     storage = model.send(attached_to)
 
     storage.attach(
-        io: File.open(Rails.root.join("tmp", filename)),
-        filename: filename,
-        content_type: "application/#{extension}"
+      io: File.open(Rails.root.join("tmp", filename)),
+      filename: filename,
+      content_type: "application/#{extension}"
     )
 
     model.save!

@@ -16,6 +16,6 @@ class InputFile < ApplicationRecord
   end
 
   def trigger_archive_processing
-    self.document.process_archive
+    document.process_archive
   end
 end

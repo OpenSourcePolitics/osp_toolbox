@@ -9,9 +9,9 @@ class AnalysesDataController < ApplicationController
     if TokenManager.valid_token?(analysis.string_to_generate_token, params[:token])
       analysis.store_analysis_data!(params[:archive].tempfile.read)
 
-      render json: {status: :success}
+      render json: { status: :success }
     else
-      render status: :unauthorized, json: {status: :unauthorized}
+      render status: :unauthorized, json: { status: :unauthorized }
     end
   end
 
