@@ -49,9 +49,9 @@ end
 group :test do
   gem "capybara", ">= 3.26"
   gem "codecov", require: false
+  gem "rails-controller-testing"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'rails-controller-testing'
 end
 
 group :production do

@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe ProcessingsHelper, type: :helper do
   describe "filter_analyses" do
@@ -7,7 +9,7 @@ RSpec.describe ProcessingsHelper, type: :helper do
 
     it "returns wordcloud analyse" do
       expect(
-          helper.filter_analyses((ldb_anlayses + wordcloud_anlayses), "wordclouds")
+        helper.filter_analyses((ldb_anlayses + wordcloud_anlayses), "wordclouds")
       ).to eq(wordcloud_anlayses)
     end
   end
