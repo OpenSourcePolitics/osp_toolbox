@@ -9,7 +9,7 @@ module FileAttacher
     filename
   end
 
-  def self.delete_temp_file(filename)
+  def self.delete_tmp_file(filename)
     file = Rails.root.join("tmp", filename)
     File.delete(file) if File.exist? file
   end
@@ -27,7 +27,7 @@ module FileAttacher
 
     model.save!
 
-    delete_temp_file(filename)
+    delete_tmp_file(filename)
   end
 
   def self.random_string
