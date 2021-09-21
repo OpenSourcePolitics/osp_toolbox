@@ -48,9 +48,9 @@ jobs:
       postgres:
         image: postgres:11
         env:
-          POSTGRES_USER: pg_user
+          POSTGRES_USER: postgres
           POSTGRES_DB: osp_toolbox_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: postgres
         ports: ["5432:5432"]
 
     steps:
@@ -83,10 +83,12 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: pg_user
+          DATABASE_HOST: localhost
+          DATABASE_PASSWORD: postgres
+          DATABASE_USERNAME: postgres
         run: |
-          bundle exec rails db:setup
+          bundle exec rails db:create
+          bundle exec rails db:migrate
       - name: Run tests
         run: bundle exec rspec
       - uses: codecov/codecov-action@v2
