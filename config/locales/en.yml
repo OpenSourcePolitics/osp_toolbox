@@ -1,8 +1,5 @@
 ---
 en:
-  user:
-    validations:
-      wrong_domain: 'The domain you are using is wrong, please use one from the list: %{domains}'
   devise:
     registrations:
       new:
@@ -36,3 +33,6 @@ en:
     clear: Clear search
     placeholder: "%{query}"
     submit: Search
+  user:
+    validations:
+      wrong_domain: 'The domain you are using is wrong, please use one from the list: %{domains}'

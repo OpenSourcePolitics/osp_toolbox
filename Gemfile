@@ -28,9 +28,13 @@ group :development, :test do
   gem "bundler-audit"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "erb_lint", require: false
+  gem "factory_bot_rails"
   gem "i18n-tasks", "~> 0.9.34"
+  gem "rspec"
+  gem "rspec-rails", "~> 5.0.0"
   gem "rubocop", require: false
   gem "rubocop-rails"
+  gem "rubocop-rspec"
 end
 
 group :development do
