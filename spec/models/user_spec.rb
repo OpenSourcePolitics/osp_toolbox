@@ -27,10 +27,13 @@ RSpec.describe User, type: :model do
 
   describe ".check_email_address" do
     context "when email is from a forbidden domain" do
+      before do
+        allow(Rails.configuration).to receive(:allowed_domains).and_return(["example.org"])
+      end
       it "adds an error to the model" do
         user.email = "foo@bar.com"
         expect(user).not_to be_valid
-        expect(user.errors.messages[:base]).to eq(["The domain you are using is wrong, please use one from the list: opensourcepolitics.eu, example.org"])
+        expect(user.errors.messages[:base]).to eq(["The domain you are using is wrong, please use one from the list: example.org"])
       end
     end
     context "when allowed_domains is empty" do
