@@ -97,4 +97,4 @@ jobs:
     if: always()
     steps:
       - name: Result
-        run: ${{ needs.test.result == 'success' && needs.linters.result == 'success' }}
+        run: ${{ needs.tests.result == 'success' && needs.linters.result == 'success' }}
