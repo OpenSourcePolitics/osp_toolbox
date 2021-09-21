@@ -90,3 +90,11 @@ jobs:
       - name: Run tests
         run: bundle exec rspec
       - uses: codecov/codecov-action@v2
+  conclusion:
+    name: conclusion
+    needs: test
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Result
+        run: ${{ needs.test.result == 'success' && needs.linters.result == 'success' }}
