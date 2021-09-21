@@ -1,3 +1,7 @@
 {
-  "extends": "stylelint-config-sass-guidelines"
+  "extends": "stylelint-config-sass-guidelines",
+  "rules": {
+    "max-nesting-depth": 2,
+    "string-quotes": "double"
+  }
 }

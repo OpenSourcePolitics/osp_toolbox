@@ -24,14 +24,14 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "webpacker", "~> 5.0"
 
 group :development, :test do
+  gem "brakeman"
+  gem "bundler-audit"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "erb_lint", require: false
+  gem "erb_lint", require: false
+  gem "i18n-tasks", "~> 0.9.34"
   gem "rubocop", require: false
   gem "rubocop-rails"
-  gem "erb_lint", require: false
-  gem "bundler-audit"
-  gem "brakeman"
-  gem 'i18n-tasks', '~> 0.9.34'
 end
 
 group :development do

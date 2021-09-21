@@ -6,7 +6,7 @@ module ApplicationHelper
     tag.p do
       content = tag.button("See more", id: "preprocessed_data-toggle")
       content << tag.button("Copy", id: "preprocessed_data-copy", data: { copied: "Copied!" })
-      content << tag.pre(JSON.pretty_generate(data), id: "preprocessed_data", class: "preprocessed_data small")
+      content << tag.pre(JSON.pretty_generate(data), id: "preprocessed_data", class: "preprocessed-data small")
     end
   end
 

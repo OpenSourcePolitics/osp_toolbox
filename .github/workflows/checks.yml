@@ -34,7 +34,7 @@ jobs:
         run: |
           bundle exec rubocop --parallel
           yarn run stylelint "app/**/*.scss"
-          bundle exec erblint
+          bundle exec erblint "app/**/*.erb"
           yarn run eslint "app/**/*.js"
       - name: Run security checks
         run: |
