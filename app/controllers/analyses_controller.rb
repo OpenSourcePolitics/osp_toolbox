@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# Analyses Controller
 class AnalysesController < ApplicationController
-  before_action :set_analysis, only: %i[ show edit update destroy redo_analysis ]
-  before_action :set_processing, only: [:index, :new, :create]
+  before_action :set_analysis, only: %i[show destroy redo_analysis]
+  before_action :set_processing, only: %i[index new create]
 
   # GET /analyses or /analyses.json
   def index
@@ -9,8 +12,7 @@ class AnalysesController < ApplicationController
   end
 
   # GET /analyses/1 or /analyses/1.json
-  def show
-  end
+  def show; end
 
   # GET /analyses/new
   def new

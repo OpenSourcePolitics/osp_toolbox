@@ -1,24 +1,4 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![codecov](https://codecov.io/gh/OpenSourcePolitics/osp_toolbox/branch/main/graph/badge.svg?token=PZ57JUEPZ5)](https://codecov.io/gh/OpenSourcePolitics/osp_toolbox)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

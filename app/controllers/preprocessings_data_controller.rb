@@ -9,9 +9,9 @@ class PreprocessingsDataController < ApplicationController
     if TokenManager.valid_token?(preprocessing.string_to_generate_token, params[:token])
       preprocessing.store_preprocessing_data!(params[:preprocessings_datum])
 
-      render json: {status: :success}
+      render json: { status: :success }
     else
-      render status: :unauthorized, json: {status: :unauthorized}
+      render status: :unauthorized, json: { status: :unauthorized }
     end
   end
 

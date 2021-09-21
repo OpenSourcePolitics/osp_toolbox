@@ -10,12 +10,13 @@ class InputFile < ApplicationRecord
   validate :only_one_file_by_type
 
   def only_one_file_by_type
+    return unless document
     return true unless document.input_files.map(&:typename).include?(typename)
 
     errors.add(:base, "A document from #{typename} type has already been uploaded")
   end
 
   def trigger_archive_processing
-    self.document.process_archive
+    document.process_archive
   end
 end

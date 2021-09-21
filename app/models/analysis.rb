@@ -1,22 +1,25 @@
+# frozen_string_literal: true
+
+# Analysis class
 class Analysis < ApplicationRecord
   belongs_to :processing
   has_one_attached :file
 
-  AVAILABLE_ANALYSES = %w(wordclouds ldb).freeze
+  AVAILABLE_ANALYSES = %w[wordclouds ldb].freeze
 
   validates :processing, presence: true
-  validates :typename, inclusion: {in: AVAILABLE_ANALYSES}
+  validates :typename, inclusion: { in: AVAILABLE_ANALYSES }
 
   def store_analysis_data!(data)
     FileAttacher.build_and_attach_file(
-        model: self,
-        attached_to: :file,
-        data: data,
-        name_prefix: Sanitizer.filename(self.processing&.title),
-        extension: self.detect_extension
+      model: self,
+      attached_to: :file,
+      data: data,
+      name_prefix: Sanitizer.filename(processing&.title),
+      extension: detect_extension
     )
 
-    self.save!
+    save!
 
     Notification.notify!(self)
   end

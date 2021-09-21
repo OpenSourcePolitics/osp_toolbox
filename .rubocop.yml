@@ -3,6 +3,7 @@ require: rubocop-rails
 AllCops:
   NewCops: enable
   Exclude:
+    - vendor/**/*
     - test/**/*.rb
     - db/migrate/*.rb
     - bin/*
@@ -16,3 +17,16 @@ Style/StringLiterals:
 
 Layout/LineLength:
   Max: 180
+
+# TODO: Lower that number !
+Metrics/AbcSize:
+  Max: 24
+
+# TODO: Lower that number !
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/BlockLength:
+  Max: 25
+  Exclude:
+    - spec/factories.rb

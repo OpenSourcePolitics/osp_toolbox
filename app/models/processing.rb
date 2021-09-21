@@ -22,14 +22,14 @@ class Processing < ApplicationRecord
 
   def store_preprocessing_data!(data)
     FileAttacher.build_and_attach_file(
-        model: self,
-        attached_to: :preprocessed_file_data,
-        data: PreprocessingSerializer.parse_response(data),
-        name_prefix: "preprocessed_file_data",
-        extension: "json"
+      model: self,
+      attached_to: :preprocessed_file_data,
+      data: PreprocessingSerializer.parse_response(data),
+      name_prefix: "preprocessed_file_data",
+      extension: "json"
     )
 
-    self.update!(available_categories: self.parse_categories, preprocessed_at: Time.current)
+    update!(available_categories: parse_categories, preprocessed_at: Time.current)
 
     AnalysisesJob.perform_later(self)
   end
@@ -37,7 +37,6 @@ class Processing < ApplicationRecord
   def preprocessed_data
     JSON.parse(preprocessed_file_data.download)
   end
-
 
   def parse_categories
     preprocessed_data["preprocessed_data"].values.map { |row| row["category"] }.uniq.compact

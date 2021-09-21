@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Analysis Job
 class AnalysisJob < ApplicationJob
   queue_as :default
 
@@ -9,10 +10,10 @@ class AnalysisJob < ApplicationJob
     @category = category
 
     Notification.register!(
-        event_name: "Enqueued analysis job",
-        resource_class: analysis.class.name,
-        resource_id: analysis.id,
-        target_id: user.id
+      event_name: "Enqueued analysis job",
+      resource_class: analysis.class.name,
+      resource_id: analysis.id,
+      target_id: user.id
     )
 
     RequestBuilder.send_post_request(JSON.parse(content), url, false)
@@ -27,7 +28,7 @@ class AnalysisJob < ApplicationJob
   end
 
   def base_url
-    ENV['BASIC_LINGUISTIC_INDICATORS_URL']
+    ENV["BASIC_LINGUISTIC_INDICATORS_URL"]
   end
 
   def query_params
