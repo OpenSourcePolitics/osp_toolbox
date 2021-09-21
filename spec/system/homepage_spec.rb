@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 describe "Homepage", type: :system do
@@ -7,7 +9,7 @@ describe "Homepage", type: :system do
   end
 
   it "signs me in" do
-    visit '/'
+    visit "/"
     expect(page).to have_content "Welcome to OSP toolbox"
     expect(page).to have_link "Comments mapping"
     expect(page).to have_link "Preprocessings"
