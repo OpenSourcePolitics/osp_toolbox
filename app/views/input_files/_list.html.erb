@@ -20,9 +20,9 @@
         <% end %>
       </td>
       <td><%= input_file.typename %></td>
-      <td><%= link_to 'Show', document_input_file_path(document_id: input_file.document_id, id: input_file) %></td>
-      <td><%= link_to 'Edit', edit_document_input_file_path(document_id: input_file.document_id, id: input_file) %></td>
-      <td><%= link_to 'Destroy', document_input_file_path(document_id: input_file.document_id, id: input_file), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to "Show", document_input_file_path(document_id: input_file.document_id, id: input_file) %></td>
+      <td><%= link_to "Edit", edit_document_input_file_path(document_id: input_file.document_id, id: input_file) %></td>
+      <td><%= link_to "Destroy", document_input_file_path(document_id: input_file.document_id, id: input_file), method: :delete, data: { confirm: "Are you sure?" } %></td>
     </tr>
   <% end %>
   </tbody>
@@ -31,5 +31,5 @@
 <br>
 
 <% unless ready_to_process?(@document) %>
-<%= link_to 'New Input File', new_document_input_file_path(@document) %>
+<%= link_to "New Input File", new_document_input_file_path(@document) %>
 <% end %>

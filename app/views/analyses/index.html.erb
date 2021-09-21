@@ -6,10 +6,10 @@
   </div>
 
   <%= render "shared/search", path: processing_analyses_path, search_query: :category_or_typename_cont do %>
-    <%= link_to 'New Analysis', new_processing_analysis_path, class: "btn btn-outline-primary" %>
+    <%= link_to "New Analysis", new_processing_analysis_path, class: "btn btn-outline-primary" %>
   <% end %>
 
-  <br/>
+  <br>
 
   <table class="table">
     <thead>
@@ -29,10 +29,9 @@
         <td><%= analysis.category %></td>
         <% if analysis.file.present? %>
           <td>
-            <%= link_to 'Show',
+            <%= link_to "Show",
                         processing_analysis_path(id: analysis),
-                        class: "btn btn-outline-primary"
-            %>
+                        class: "btn btn-outline-primary" %>
           </td>
         <% else %>
           <td>Analysis is not yet available</td>
@@ -41,12 +40,11 @@
           <%= render "analyses/redo_analysis_button", analysis: analysis %>
         </td>
         <td>
-          <%= link_to 'Destroy',
+          <%= link_to "Destroy",
                       processing_analysis_path(id: analysis),
                       method: :delete,
-                      data: {confirm: 'Are you sure?'},
-                      class: "btn btn-outline-danger"
-          %>
+                      data: { confirm: "Are you sure?" },
+                      class: "btn btn-outline-danger" %>
         </td>
       </tr>
     <% end %>

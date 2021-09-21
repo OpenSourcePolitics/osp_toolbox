@@ -31,6 +31,7 @@ group :development, :test do
   gem "erb_lint", require: false
   gem "bundler-audit"
   gem "brakeman"
+  gem 'i18n-tasks', '~> 0.9.34'
 end
 
 group :development do

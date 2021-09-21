@@ -29,7 +29,7 @@
         <td><%= preprocessing_duration(item) %></td>
         <td><%= item.preprocessed_file_data.present? %></td>
         <td><%= analyses_count_for(item) %></td>
-        <td><%= link_to item.file.filename, rails_blob_path(item.file, disposition: 'attachment') %></td>
+        <td><%= link_to item.file.filename, rails_blob_path(item.file, disposition: "attachment") %></td>
         <td><%= number_to_human_size(item.file.byte_size) %></td>
         <td><%= render "#{controller_name}/actions", item: item %></td>
       </tr>

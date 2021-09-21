@@ -1,11 +1,30 @@
 ---
-EnableDefaultLinters: true
+
 linters:
-  ErbSafety:
+  ExtraNewline:
     enabled: true
-    better_html_config: .better-html.yml
+
+  FinalNewline:
+    enabled: true
+
+  SpaceAroundErbTag:
+    enabled: true
+
+  AllowedScriptType:
+    enabled: true
+    allowed_types:
+      - text/javascript
+      - text/template
+
   Rubocop:
     enabled: true
+
     rubocop_config:
-      inherit_from:
-        - .rubocop.yml
+      AllCops:
+        DisabledByDefault: true
+
+      Style/StringLiterals:
+        EnforcedStyle: double_quotes
+
+      Layout/SpaceInsideHashLiteralBraces:
+        Enabled: true

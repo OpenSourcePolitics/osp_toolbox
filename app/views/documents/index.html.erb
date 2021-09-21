@@ -5,7 +5,7 @@
 </div>
 
 <%= render "shared/search", search_query: :title_cont do %>
-  <%= link_to 'New Document', new_document_path, class: "btn btn-outline-primary" %>
+  <%= link_to "New Document", new_document_path, class: "btn btn-outline-primary" %>
 <% end %>
 
 <div class="row">
@@ -32,24 +32,21 @@
         <td>
           <div class="row">
             <div class="col">
-              <%= link_to 'Show',
+              <%= link_to "Show",
                           document,
-                          class: "btn btn-outline-success"
-              %>
+                          class: "btn btn-outline-success" %>
             </div>
             <div class="col">
-              <%= link_to 'Edit',
+              <%= link_to "Edit",
                           edit_document_path(document),
-                          class: "btn btn-outline-secondary"
-              %>
+                          class: "btn btn-outline-secondary" %>
             </div>
             <div class="col">
-              <%= link_to 'Destroy',
+              <%= link_to "Destroy",
                           document,
                           method: :delete,
-                          data: {confirm: 'Are you sure?'},
-                          class: "btn btn-outline-danger"
-              %>
+                          data: { confirm: "Are you sure?" },
+                          class: "btn btn-outline-danger" %>
             </div>
           </div>
         </td>
