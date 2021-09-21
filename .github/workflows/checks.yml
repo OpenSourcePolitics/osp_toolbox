@@ -33,13 +33,13 @@ jobs:
       - name: Run linters
         run: |
           bundle exec rubocop --parallel
-          bundle exec stylelint
-          bundle exec prettier
-          bundle exec eslint
+          yarn run stylelint "app/**/*.scss"
+          bundle exec erblint
+          yarn run eslint "app/**/*.js"
       - name: Run security checks
         run: |
-          bin/bundler-audit --update
-          bin/brakeman -q -w2
+          bundle exec bundler-audit --update
+          bundle exec brakeman -q -w2
 
   tests:
     name: Tests

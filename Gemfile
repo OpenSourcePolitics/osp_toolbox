@@ -25,8 +25,12 @@ gem "webpacker", "~> 5.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "erb_lint", require: false
   gem "rubocop", require: false
   gem "rubocop-rails"
+  gem "erb_lint", require: false
+  gem "bundler-audit"
+  gem "brakeman"
 end
 
 group :development do
