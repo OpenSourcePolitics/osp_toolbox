@@ -6,15 +6,15 @@ RSpec.describe "Preprocessings_data", type: :request do
   let(:processing) { create(:processing) }
   let(:token) { "faa5833ff55bd4d7302048a460dac60b25a3d3925f728ab82f0154475043c257" }
   let(:preprocessings_datum) do
-    {"_json"=> JSON.dump({"preprocessed_data": {"foo":"bar"}})}
+    { "_json" => JSON.dump({ preprocessed_data: { foo: "bar" } }) }
   end
 
   describe "POST /preprocessed_data" do
     before do
       post "/preprocessed_data", params: {
-          token: token,
-          preprocessings_datum: preprocessings_datum,
-          preprocessing_id: processing.id
+        token: token,
+        preprocessings_datum: preprocessings_datum,
+        preprocessing_id: processing.id
       }
     end
 

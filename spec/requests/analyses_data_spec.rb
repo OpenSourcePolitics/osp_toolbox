@@ -12,9 +12,9 @@ RSpec.describe "Analyses_data", type: :request do
   describe "POST /store_analysis_data" do
     before do
       post "/analysis_data", params: {
-          token: token,
-          archive: archive_file,
-          analysis_id: analysis.id
+        token: token,
+        archive: archive_file,
+        analysis_id: analysis.id
       }
     end
 

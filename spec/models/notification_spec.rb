@@ -22,10 +22,10 @@ RSpec.describe Notification, type: :model do
     it "creates a notification" do
       expect do
         subject.register!(
-            event_name: "dummy",
-            resource_class: analysis.class.name,
-            resource_id: analysis.id,
-            target_id: user.id
+          event_name: "dummy",
+          resource_class: analysis.class.name,
+          resource_id: analysis.id,
+          target_id: user.id
         )
       end.to change { subject.count }.by(1)
     end
@@ -34,8 +34,8 @@ RSpec.describe Notification, type: :model do
   describe ".notify!" do
     before do
       allow(subject).to receive(:send_notification)
-                            .with(user, analysis.notification_message)
-                            .and_return(true)
+        .with(user, analysis.notification_message)
+        .and_return(true)
     end
 
     context "when notification is nil" do
@@ -49,7 +49,7 @@ RSpec.describe Notification, type: :model do
     it "destroys notification" do
       expect do
         subject.notify!(analysis)
-        end.to change { subject.count }.by(-1)
+      end.to change { subject.count }.by(-1)
     end
   end
 end

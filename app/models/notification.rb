@@ -3,7 +3,7 @@
 # Notification class
 class Notification < ApplicationRecord
   class << self
-    alias_method :register!, :create!
+    alias register! create!
   end
 
   def self.notify!(resource)
@@ -18,7 +18,7 @@ class Notification < ApplicationRecord
 
   def self.send_notification(user, message)
     url = URI(ENV["ROCKET_CHAT_URL"])
-    content = {text: I18n.t("notification", scope: "rocket_chat", user: user.nickname, message: message)}
+    content = { text: I18n.t("notification", scope: "rocket_chat", user: user.nickname, message: message) }
 
     RequestBuilder.send_post_request(content, url)
   end
