@@ -16,7 +16,7 @@ class AnalysisJob < ApplicationJob
       target_id: user.id
     )
 
-    RequestBuilder.send_post_request(JSON.parse(content), url, false)
+    RequestBuilder.send_post_request(JSON.parse(content), url, wait_for_answer: false)
   end
 
   private

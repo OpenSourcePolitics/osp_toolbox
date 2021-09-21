@@ -9,7 +9,7 @@ class PreprocessingJob < ApplicationJob
 
     @preprocessing.update!(sent_to_preprocessing_at: Time.current)
 
-    RequestBuilder.send_post_request(content, url, false)
+    RequestBuilder.send_post_request(content, url, wait_for_answer: false)
   end
 
   private
