@@ -96,6 +96,11 @@ jobs:
           bundle exec rails db:migrate
       - uses: nanasess/setup-chromedriver@v1.0.1
       - name: Run tests
+        env:
+          RAILS_ENV: test
+          DATABASE_HOST: localhost
+          DATABASE_PASSWORD: postgres
+          DATABASE_USERNAME: postgres
         run: bundle exec rspec
       - uses: codecov/codecov-action@v2
   conclusion:
