@@ -51,6 +51,7 @@ group :test do
   gem "codecov", require: false
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rails-controller-testing'
 end
 
 group :production do

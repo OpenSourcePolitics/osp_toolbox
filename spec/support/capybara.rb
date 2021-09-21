@@ -3,8 +3,6 @@
 require "capybara/rails"
 require "capybara/rspec"
 
-include Warden::Test::Helpers # rubocop:disable Style/MixinUsage
-
 Capybara.server = :puma, { Silent: true }
 
 Capybara.register_driver :chrome_headless do |app|
