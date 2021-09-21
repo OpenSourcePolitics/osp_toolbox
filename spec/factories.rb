@@ -19,6 +19,7 @@ FactoryBot.define do
 
     trait :with_preprocessed_file_data do
       sent_to_preprocessing_at { Time.current }
+      preprocessed_at { Time.current }
       preprocessed_file_data do
         Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/subset_raw_data.json"))
       end
@@ -37,14 +38,27 @@ FactoryBot.define do
     file do
       Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/proposals.csv"), "text/csv")
     end
+
+    trait :with_comment_file do
+      file do
+        Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/comments.csv"), "text/csv")
+      end
+    end
   end
 
   factory :document do
     user { create(:user) }
+
+    trait :with_archive do
+      archive { create(:archive) }
+    end
   end
 
   factory :archive do
     document { create(:document) }
+    file do
+      Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/archive.zip"))
+    end
   end
 
   factory :analysis do
