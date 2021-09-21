@@ -8,6 +8,8 @@ class Processing < ApplicationRecord
   has_one_attached :preprocessed_file_data
   has_many :analyses, dependent: :destroy
   belongs_to :user
+
+  validates :title, presence: true
   validates :file, attached: true, content_type: %w[text/csv application/vnd.ms-excel]
 
   scope :processed, -> { joins(:preprocessed_file_data_attachment) }
@@ -35,6 +37,8 @@ class Processing < ApplicationRecord
   end
 
   def preprocessed_data
+    return if preprocessed_file_data.blank?
+
     JSON.parse(preprocessed_file_data.download)
   end
 

@@ -12,6 +12,7 @@ FactoryBot.define do
 
   factory :processing do
     user { create(:user) }
+    title { Faker::Book.title }
     file do
       Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/subset_raw_data.csv"), "text/csv")
     end
