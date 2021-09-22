@@ -23,6 +23,10 @@ FactoryBot.define do
       preprocessed_file_data do
         Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/subset_raw_data.json"))
       end
+
+      after(:create) do |processing|
+        processing.available_categories = processing.parse_categories
+      end
     end
   end
 
