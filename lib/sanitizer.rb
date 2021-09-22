@@ -8,8 +8,6 @@ module Sanitizer
   def self.filename(filename)
     return DateTime.now.to_i.to_s if filename.blank?
 
-    filename.gsub!("-", "_") if filename.include? "-"
-
-    filename.parameterize(separator: "_")
+    filename.parameterize(separator: "_").gsub("-", "_")
   end
 end
