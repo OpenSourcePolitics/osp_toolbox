@@ -64,13 +64,26 @@ FactoryBot.define do
   factory :analysis do
     processing { create(:processing) }
     typename { "wordclouds" }
+    file do
+      Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/wordclouds.png"))
+    end
 
     trait :wordclouds do
       typename { "wordclouds" }
+      file do
+        Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/wordclouds.png"))
+      end
     end
 
     trait :ldb do
       typename { "ldb" }
+      file do
+        Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/ldb.xlsx"))
+      end
+    end
+
+    trait :without_file do
+      file { nil }
     end
   end
 end
