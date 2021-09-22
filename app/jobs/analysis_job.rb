@@ -28,7 +28,7 @@ class AnalysisJob < ApplicationJob
   end
 
   def base_url
-    ENV["BASIC_LINGUISTIC_INDICATORS_URL"]
+    ENV.fetch("BASIC_LINGUISTIC_INDICATORS_URL", "https://change-me.org")
   end
 
   def query_params
