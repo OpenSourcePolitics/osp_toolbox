@@ -8,7 +8,7 @@ describe "Homepage", type: :system do
     login_as(user)
   end
 
-  it "signs me in" do
+  it "returns the homepage" do
     visit "/"
     expect(page).to have_content "Welcome to OSP toolbox"
     expect(page).to have_link "Comments mapping"

@@ -2,8 +2,14 @@
 
 # Notification class
 class Notification < ApplicationRecord
+  class << self
+    alias register! create!
+  end
+
   def self.notify!(resource)
     notification = Notification.find_by(resource_class: resource.class.name, resource_id: resource.id)
+
+    return if notification.nil?
 
     send_notification(User.find(notification.target_id), resource.notification_message)
 
@@ -15,9 +21,5 @@ class Notification < ApplicationRecord
     content = { text: I18n.t("notification", scope: "rocket_chat", user: user.nickname, message: message) }
 
     RequestBuilder.send_post_request(content, url)
-  end
-
-  def self.register!(event_name:, resource_class:, resource_id:, target_id:)
-    create!(event_name: event_name, resource_class: resource_class, resource_id: resource_id, target_id: target_id)
   end
 end

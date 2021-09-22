@@ -8,6 +8,7 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  config.secret_key_base = "76cdcbdfc03f930513952f59b212262b14da09c6feecb67128cb319d3e156d9d96baf7af384af6a1c32d60d8f9273572279563817c051c249f22cca4f1ba25cc"
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.cache_classes = false

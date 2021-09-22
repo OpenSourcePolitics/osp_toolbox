@@ -32,7 +32,7 @@ module ApplicationHelper
       error: "bg-danger",
       alert: "bg-warning",
       notice: "bg-info"
-    }.stringify_keys[flash_type.to_s]
+    }[flash_type]
   end
 
   def empty_search_path

@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :documents, dependent: :destroy
-  before_save :check_email_address
+  validate :check_email_address
 
   def nickname=(string)
     value = string.start_with?("@") ? string : "@#{string}"

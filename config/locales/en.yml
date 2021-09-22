@@ -1,5 +1,7 @@
 ---
 en:
+  analysis:
+    notification_message: Analysis %{typename} for %{title} is over.
   devise:
     registrations:
       new:
@@ -12,7 +14,7 @@ en:
       submit: Process archive
   documents_helper:
     document_archive_for:
-      download: Download %{file}
+      download: Download %{filename}
       no_available_archive: No available archive
   errors:
     messages:

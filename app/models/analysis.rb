@@ -37,6 +37,6 @@ class Analysis < ApplicationRecord
   end
 
   def notification_message
-    "Analysis #{typename} for #{processing.title} is over."
+    I18n.t("notification_message", scope: "analysis", typename: typename, title: processing.title)
   end
 end
