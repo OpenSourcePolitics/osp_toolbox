@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   post "/analysis_data", to: "analyses_data#store_analysis_data"
 
   devise_for :users, controllers: {
-      sessions: "devise/sessions",
-      registrations: "devise/registrations"
+    sessions: "devise/sessions",
+    registrations: "devise/registrations"
   }
 
   root to: "pages#home"

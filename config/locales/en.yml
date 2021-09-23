@@ -30,7 +30,7 @@ en:
   rocket_chat:
     notification: |-
       Hello %{user}
-      %{message}
+      [%{message}](%{link})
   search:
     clear: Clear search
     placeholder: "%{query}"

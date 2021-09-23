@@ -14,13 +14,12 @@ RSpec.describe Notification, type: :model do
   let!(:analysis) { create(:analysis) }
   let!(:user) { create(:user) }
 
-  let(:text) { "Analysis #{analysis.typename} for #{analysis.processing.title} is over." }
+  let(:text) { "[Analysis #{analysis.typename} for #{analysis.processing.title} is over.](#{link})" }
   let(:link) { "http://change-me.org/processings/#{analysis.processing.id}/analyses/#{analysis.id}" }
   let(:content) do
     {
-        title: text,
-        title_link: link,
-        text: "Hello #{user.nickname}\n#{text}"
+      title_link: link,
+      text: "Hello #{user.nickname}\n#{text}"
     }
   end
   let(:url) { URI("change-me.org") }
@@ -33,10 +32,10 @@ RSpec.describe Notification, type: :model do
     it "creates a notification" do
       expect do
         subject.register!(
-            event_name: "dummy",
-            resource_class: analysis.class.name,
-            resource_id: analysis.id,
-            target_id: user.id
+          event_name: "dummy",
+          resource_class: analysis.class.name,
+          resource_id: analysis.id,
+          target_id: user.id
         )
       end.to change { subject.count }.by(1)
     end
@@ -45,8 +44,8 @@ RSpec.describe Notification, type: :model do
   describe ".notify!" do
     before do
       allow(subject).to receive(:send_notification)
-                            .with(user, analysis.notification_message)
-                            .and_return(true)
+        .with(user, analysis.notification_message)
+        .and_return(true)
     end
 
     context "when notification is nil" do
