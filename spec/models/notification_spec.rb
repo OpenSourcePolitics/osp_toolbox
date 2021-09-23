@@ -13,8 +13,15 @@ RSpec.describe Notification, type: :model do
   end
   let!(:analysis) { create(:analysis) }
   let!(:user) { create(:user) }
+
+  let(:text) { "Analysis #{analysis.typename} for #{analysis.processing.title} is over." }
+  let(:link) { "http://change-me.org/processings/#{analysis.processing.id}/analyses/#{analysis.id}" }
   let(:content) do
-    {text: "Hello #{user.nickname}\nAnalysis #{analysis.typename} for #{analysis.processing.title} is over."}
+    {
+        title: text,
+        title_link: link,
+        text: "Hello #{user.nickname}\n#{text}"
+    }
   end
   let(:url) { URI("change-me.org") }
 

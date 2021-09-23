@@ -121,4 +121,6 @@ Rails.application.configure do
 
   # Filter preprocessing api response
   config.filter_parameters += ["_json"] unless ENV["UNFILTERED_API_RESPONSE"]
+
+  Rails.application.routes.default_url_options = {host: ENV["APP_HOSTNAME"]}
 end

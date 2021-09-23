@@ -27,7 +27,9 @@ class Notification < ApplicationRecord
 
     def generate_content(user, message)
       {
-          text: I18n.t("notification", scope: "rocket_chat", user: user.nickname, message: message)
+          text: I18n.t("notification", scope: "rocket_chat", user: user.nickname, message: message[:text]),
+          title: message[:text],
+          title_link: message[:link],
       }
     end
   end
