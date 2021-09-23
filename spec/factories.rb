@@ -6,6 +6,7 @@ FactoryBot.define do
   factory :user do
     password = Faker::Lorem.unique
     email { Faker::Internet.email(domain: "example.org") }
+    nickname { Faker::Twitter.screen_name }
     password { password }
     password_confirmation { password }
   end
