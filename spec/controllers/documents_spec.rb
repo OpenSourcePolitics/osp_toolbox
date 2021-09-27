@@ -25,8 +25,10 @@ RSpec.describe "Documents", type: :request do
   end
 
   describe "POST /documents" do
+    let(:title) { "dummy_title" }
+
     before do
-      post "/documents", params: { document: { title: "dummy_title" } }
+      post "/documents", params: { document: { title: title } }
     end
 
     it "assigns documents" do
@@ -35,6 +37,14 @@ RSpec.describe "Documents", type: :request do
 
     it "redirects to show" do
       expect(response).to redirect_to("/documents/#{Document.last.id}")
+    end
+
+    context "when document is invalid" do
+      let(:title) { nil }
+
+      it "render home template" do
+        expect(response).to render_template(:new)
+      end
     end
   end
 
@@ -71,15 +81,17 @@ RSpec.describe "Documents", type: :request do
       expect(assigns(:document)).to eq(document)
     end
 
-    it "render home template" do
+    it "render show template" do
       expect(response).to render_template(:show)
     end
   end
 
   describe "PUT /documents/:id" do
+    let(:title) { "Dummy title" }
+
     before do
       put "/documents/#{document.id}", params: {
-        document: { title: "" }
+        document: { title: title }
       }
     end
 
@@ -89,6 +101,14 @@ RSpec.describe "Documents", type: :request do
 
     it "redirect to show" do
       expect(response).to redirect_to("/documents/#{document.id}")
+    end
+
+    context "when document is invalid" do
+      let(:title) { nil }
+
+      it "render edit template" do
+        expect(response).to render_template(:edit)
+      end
     end
   end
 
