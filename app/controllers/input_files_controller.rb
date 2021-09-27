@@ -35,7 +35,7 @@ class InputFilesController < ApplicationController
   def update
     respond_to do |format|
       if @input_file.update(input_file_params)
-        format.html { redirect_to @input_file, notice: "Input file was successfully updated." }
+        format.html { redirect_to document_input_file_path(id: @input_file), notice: "Input file was successfully updated." }
         format.json { render :show, status: :ok, location: @input_file }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -70,7 +70,7 @@ class InputFilesController < ApplicationController
   end
 
   def create_notice_message
-    if @input_file.document.input_files.count > 2
+    if document.input_files.count < 2
       "Input file was successfully created."
     else
       "Input file was successfully created and document has been sent to processing"
