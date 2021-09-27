@@ -39,11 +39,13 @@ FactoryBot.define do
 
   factory :input_file do
     document { create(:document) }
+    typename { "Proposals" }
     file do
       Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/proposals.csv"), "text/csv")
     end
 
     trait :with_comment_file do
+      typename { "Comments" }
       file do
         Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/comments.csv"), "text/csv")
       end
