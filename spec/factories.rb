@@ -5,8 +5,8 @@ require "faker"
 FactoryBot.define do
   factory :user do
     password = Faker::Lorem.unique
-    email { Faker::Internet.email(domain: "example.org") }
     nickname { Faker::Twitter.screen_name }
+    email { Faker::Internet.unique.email(domain: "example.org") }
     password { password }
     password_confirmation { password }
   end

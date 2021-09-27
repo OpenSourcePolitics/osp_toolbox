@@ -14,7 +14,7 @@ RSpec.describe "Processings", type: :request do
     before { get "/processings" }
 
     it "assigns processings" do
-      expect(assigns(:processings)).to eq(processings)
+      expect(assigns(:processings)).to match_array(processings)
     end
 
     it "renders the index template" do
