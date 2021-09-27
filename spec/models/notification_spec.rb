@@ -14,6 +14,16 @@ RSpec.describe Notification, type: :model do
   let!(:analysis) { create(:analysis) }
   let!(:user) { create(:user) }
 
+  let(:text) { "[Analysis #{analysis.typename} for #{analysis.processing.title} is over.](#{link})" }
+  let(:link) { "http://change-me.org/processings/#{analysis.processing.id}/analyses/#{analysis.id}" }
+  let(:content) do
+    {
+      title_link: link,
+      text: "Hello #{user.nickname}\n#{text}"
+    }
+  end
+  let(:url) { URI("change-me.org") }
+
   it "is valid" do
     expect(notification).to be_valid
   end
@@ -50,6 +60,16 @@ RSpec.describe Notification, type: :model do
       expect do
         subject.notify!(analysis)
       end.to change { subject.count }.by(-1)
+    end
+  end
+
+  describe ".send_notification" do
+    before do
+      allow(RequestBuilder).to receive(:send_post_request).with(content, url).and_return(true)
+    end
+
+    it "sends a notification" do
+      expect(subject.send_notification(user, analysis.notification_message)).to eq(true)
     end
   end
 end

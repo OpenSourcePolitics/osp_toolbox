@@ -2,6 +2,7 @@
 
 # Analysis class
 class Analysis < ApplicationRecord
+  include Rails.application.routes.url_helpers
   belongs_to :processing
   has_one_attached :file
 
@@ -37,6 +38,9 @@ class Analysis < ApplicationRecord
   end
 
   def notification_message
-    I18n.t("notification_message", scope: "analysis", typename: typename, title: processing.title)
+    {
+      text: I18n.t("notification_message", scope: "analysis", typename: typename, title: processing.title),
+      link: processing_analysis_url(processing_id: processing, id: self)
+    }
   end
 end
