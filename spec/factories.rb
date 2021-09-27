@@ -18,6 +18,12 @@ FactoryBot.define do
       Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/subset_raw_data.csv"), "text/csv")
     end
 
+    trait :with_xls_file do
+      file do
+        Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/subset_raw_data.xls"), "application/vnd.ms-excel")
+      end
+    end
+
     trait :with_preprocessed_file_data do
       sent_to_preprocessing_at { Time.current }
       preprocessed_at { Time.current }
