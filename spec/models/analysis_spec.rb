@@ -31,7 +31,10 @@ RSpec.describe Analysis, type: :model do
 
   describe "notification_message" do
     it "returns a string with a predictable message" do
-      expect(analysis.notification_message).to eq("Analysis wordclouds for dummy is over.")
+      expect(analysis.notification_message).to eq({
+                                                    link: "http://change-me.org/processings/#{processing.id}/analyses/#{analysis.id}",
+                                                    text: "Analysis wordclouds for dummy is over."
+                                                  })
     end
   end
 end
