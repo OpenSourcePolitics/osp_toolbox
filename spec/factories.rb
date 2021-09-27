@@ -55,6 +55,7 @@ FactoryBot.define do
 
   factory :document do
     user { create(:user) }
+    title { Faker::Book.title }
 
     trait :with_archive do
       archive { create(:archive) }
