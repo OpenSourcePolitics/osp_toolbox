@@ -18,6 +18,12 @@ FactoryBot.define do
       Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/subset_raw_data.csv"), "text/csv")
     end
 
+    trait :with_xls_file do
+      file do
+        Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/subset_raw_data.xls"), "application/vnd.ms-excel")
+      end
+    end
+
     trait :with_preprocessed_file_data do
       sent_to_preprocessing_at { Time.current }
       preprocessed_at { Time.current }
@@ -40,11 +46,13 @@ FactoryBot.define do
 
   factory :input_file do
     document { create(:document) }
+    typename { "Proposals" }
     file do
       Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/proposals.csv"), "text/csv")
     end
 
     trait :with_comment_file do
+      typename { "Comments" }
       file do
         Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/comments.csv"), "text/csv")
       end
@@ -53,6 +61,7 @@ FactoryBot.define do
 
   factory :document do
     user { create(:user) }
+    title { Faker::Book.title }
 
     trait :with_archive do
       archive { create(:archive) }
