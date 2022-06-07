@@ -35,7 +35,7 @@ class InputFilesController < ApplicationController
   def update
     respond_to do |format|
       if @input_file.update(input_file_params)
-        format.html { redirect_to document_input_file_path(id: @input_file), notice: "Input file was successfully updated." }
+        format.html { redirect_to document_input_file_path(id: @input_file), notice: t(".update") }
         format.json { render :show, status: :ok, location: @input_file }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class InputFilesController < ApplicationController
   def destroy
     @input_file.destroy
     respond_to do |format|
-      format.html { redirect_to document_path(id: @document), notice: "Input file was successfully destroyed." }
+      format.html { redirect_to document_path(id: @document), notice: t(".destroy") }
       format.json { head :no_content }
     end
   end
@@ -71,9 +71,9 @@ class InputFilesController < ApplicationController
 
   def create_notice_message
     if document.input_files.count < 2
-      "Input file was successfully created."
+      t(".create_notice_message.singular")
     else
-      "Input file was successfully created and document has been sent to processing"
+      t(".create_notice_message.plural")
     end
   end
 end

@@ -28,7 +28,7 @@ class PreprocessingsController < ApplicationController
 
     respond_to do |format|
       if @preprocessing.save
-        format.html { redirect_to preprocessing_url(@preprocessing), notice: "Preprocessing was successfully created." }
+        format.html { redirect_to preprocessing_url(@preprocessing), notice: t(".create") }
         format.json { render :show, status: :created, location: @preprocessing }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class PreprocessingsController < ApplicationController
   def update
     respond_to do |format|
       if @preprocessing.update(preprocessing_params)
-        format.html { redirect_to preprocessing_url(@preprocessing), notice: "Preprocessing was successfully updated." }
+        format.html { redirect_to preprocessing_url(@preprocessing), notice: t(".update") }
         format.json { render :show, status: :ok, location: @preprocessing }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class PreprocessingsController < ApplicationController
   def destroy
     @preprocessing.destroy
     respond_to do |format|
-      format.html { redirect_to preprocessings_url, notice: "Preprocessing was successfully destroyed." }
+      format.html { redirect_to preprocessings_url, notice: t(".destroy") }
       format.json { head :no_content }
     end
   end
@@ -63,7 +63,7 @@ class PreprocessingsController < ApplicationController
     PreprocessingJob.perform_later(@preprocessing)
 
     respond_to do |format|
-      format.html { redirect_to preprocessings_path(@preprocessing), notice: "Preprocessing was sent to preprocessing again." }
+      format.html { redirect_to preprocessings_path(@preprocessing), notice: t(".redo_preprocessing") }
       format.json { head :no_content }
     end
   end

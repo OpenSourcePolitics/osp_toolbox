@@ -4,7 +4,7 @@
 module FileAttacher
   def self.write_file(response, name_prefix, extension)
     filename = "#{name_prefix}_#{random_string}.#{extension}"
-    File.open(Rails.root.join("tmp", filename), "wb") { |f| f.write(response) }
+    File.binwrite(Rails.root.join("tmp", filename), response)
 
     filename
   end

@@ -63,3 +63,37 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  preprocessings:
+    redo_preprocessing:
+      redo_preprocessing: ""
+    destroy:
+      destroy: ""
+    update:
+      update: ""
+    create:
+      create: ""
+  input_files:
+    destroy:
+      destroy: ""
+    update:
+      update: ""
+    create_notice_message:
+      singular: ""
+      plural: ""
+  documents:
+    process_archive:
+      process_archive: ""
+    destroy:
+      destroy: ""
+    update:
+      update: ""
+    create:
+      create: ""
+  analyses:
+    redo_analysis:
+      redo_analysis: ""
+    destroy:
+      destroy: ""
+    create:
+      create: ""
+      found: ""

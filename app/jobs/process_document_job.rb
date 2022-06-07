@@ -8,7 +8,7 @@ class ProcessDocumentJob < ApplicationJob
 
   def perform(document)
     output = DocumentInputFilesSerializer.serialize(document)
-    response = RequestBuilder.send_post_request(output, URI("#{ENV['COMMENTS_MAPPING_URL']}/?sorting_attribute=supports"))
+    response = RequestBuilder.send_post_request(output, URI("#{ENV.fetch('COMMENTS_MAPPING_URL', nil)}/?sorting_attribute=supports"))
 
     archive = Archive.find_or_create_by!(document: document)
 

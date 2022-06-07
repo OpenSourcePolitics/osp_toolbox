@@ -20,7 +20,7 @@ module XlsSerializer
   end
 
   def self.cleaned_rows(xls)
-    (xls.first_row..xls.last_row).map { |index| xls.row(index).reject(&:blank?) }
+    (xls.first_row..xls.last_row).map { |index| xls.row(index).compact_blank }
   end
 
   def self.cast_to_int(rows)

@@ -20,6 +20,7 @@ class AnalysesController < ApplicationController
   end
 
   # POST /analyses or /analyses.json
+  # rubocop:disable Metrics/AbcSize
   def create
     @analysis = Analysis.find_or_initialize_by(analysis_params.merge(processing: @processing))
 
@@ -28,7 +29,7 @@ class AnalysesController < ApplicationController
         if @analysis.save
           AnalysisJob.perform_later(@analysis.processing, @analysis.typename, current_user, @analysis.category)
 
-          format.html { redirect_to processing_analysis_path(id: @analysis), notice: "Analysis was successfully created." }
+          format.html { redirect_to processing_analysis_path(id: @analysis), notice: t(".create") }
           format.json { render :show, status: :created, location: @analysis }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -36,15 +37,16 @@ class AnalysesController < ApplicationController
         end
       end
     else
-      redirect_to processing_analysis_path(id: @analysis), notice: "An existing analysis has been found."
+      redirect_to processing_analysis_path(id: @analysis), notice: t(".found")
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   # DELETE /analyses/1 or /analyses/1.json
   def destroy
     @analysis.destroy
     respond_to do |format|
-      format.html { redirect_to processing_analyses_path, notice: "Analysis was successfully destroyed." }
+      format.html { redirect_to processing_analyses_path, notice: t(".destroy") }
       format.json { head :no_content }
     end
   end
@@ -53,7 +55,7 @@ class AnalysesController < ApplicationController
     AnalysisJob.perform_later(@analysis.processing, @analysis.typename, current_user, @analysis.category)
 
     respond_to do |format|
-      format.html { redirect_to processing_analyses_path, notice: "Analysis has been triggered." }
+      format.html { redirect_to processing_analyses_path, notice: t(".redo_analysis") }
       format.json { head :no_content }
     end
   end

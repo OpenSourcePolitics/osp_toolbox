@@ -15,7 +15,7 @@ class PreprocessingJob < ApplicationJob
   private
 
   def url
-    URI("#{ENV['PREPROCESSING_URL']}?token=#{token}&preprocessing_id=#{@preprocessing.id}")
+    URI("#{ENV.fetch('PREPROCESSING_URL', nil)}?token=#{token}&preprocessing_id=#{@preprocessing.id}")
   end
 
   def token
