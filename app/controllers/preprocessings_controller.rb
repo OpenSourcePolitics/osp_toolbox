@@ -7,6 +7,7 @@ class PreprocessingsController < ApplicationController
   # GET /preprocessings or /preprocessings.json
   def index
     @query = Processing.ransack(params[:q])
+    @query.sorts = ['sent_to_preprocessing_at asc'] if @query.sorts.empty?
     @preprocessings = @query.result(distinct: true).page(params[:page])
   end
 
