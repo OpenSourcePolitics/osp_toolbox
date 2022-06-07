@@ -8,7 +8,6 @@ class Analysis < ApplicationRecord
 
   AVAILABLE_ANALYSES = %w[wordclouds ldb].freeze
 
-  validates :processing
   validates :typename, inclusion: { in: AVAILABLE_ANALYSES }
 
   def store_analysis_data!(data)

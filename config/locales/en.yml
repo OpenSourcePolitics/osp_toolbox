@@ -1,5 +1,13 @@
 ---
 en:
+  analyses:
+    create:
+      create: Analysis was successfully created.
+      found: An existing analysis has been found.
+    destroy:
+      destroy: Analysis was successfully destroyed.
+    redo_analysis:
+      redo_analysis: Analysis has been triggered.
   analysis:
     notification_message: Analysis %{typename} for %{title} is over.
   devise:
@@ -8,18 +16,18 @@ en:
         placeholder:
           nickname: Enter your rocket chat username without @
   documents:
+    create:
+      create: Document was successfully created.
+    destroy:
+      destroy: Document was successfully destroyed.
     form:
       submit: Submit
+    process_archive:
+      process_archive: Document was sent to processing.
     process_archive_button:
       submit: Process archive
-    process_archive:
-      process_archive: "Document was sent to processing."
-    destroy:
-      destroy: "Document was successfully destroyed."
     update:
-      update: "Document was successfully updated."
-    create:
-      create: "Document was successfully created."
+      update: Document was successfully updated.
   documents_helper:
     document_archive_for:
       download: Download %{filename}
@@ -27,6 +35,14 @@ en:
   errors:
     messages:
       not_saved: Not saved
+  input_files:
+    create_notice_message:
+      plural: Input file was successfully created and document has been sent to processing
+      singular: Input file was successfully created.
+    destroy:
+      destroy: Input file was successfully destroyed.
+    update:
+      update: Input file was successfully updated.
   layouts:
     navbar:
       edit_profile: Edit profile
@@ -35,6 +51,15 @@ en:
       comments_mapping: Comments mapping
       exploratory_data_analysis: Exploratory data analysis
       preprocessings: Preprocessings
+  preprocessings:
+    create:
+      create: Preprocessing was successfully created.
+    destroy:
+      destroy: Preprocessing was successfully destroyed.
+    redo_preprocessing:
+      redo_preprocessing: Preprocessing was sent to preprocessing again.
+    update:
+      update: Preprocessing was successfully updated.
   rocket_chat:
     notification: |-
       Hello %{user}
@@ -46,28 +71,3 @@ en:
   user:
     validations:
       wrong_domain: 'The domain you are using is wrong, please use one from the list: %{domains}'
-  preprocessings:
-    redo_preprocessing:
-      redo_preprocessing: "Preprocessing was sent to preprocessing again."
-    destroy:
-      destroy: "Preprocessing was successfully destroyed."
-    update:
-      update: "Preprocessing was successfully updated."
-    create:
-      create: "Preprocessing was successfully created."
-  input_files:
-    destroy:
-      destroy: "Input file was successfully destroyed."
-    update:
-      update: "Input file was successfully updated."
-    create_notice_message:
-      singular: "Input file was successfully created."
-      plural: "Input file was successfully created and document has been sent to processing"
-  analyses:
-    redo_analysis:
-      redo_analysis: "Analysis has been triggered."
-    destroy:
-      destroy: "Analysis was successfully destroyed."
-    create:
-      create: "Analysis was successfully created."
-      found: "An existing analysis has been found."
