@@ -2,7 +2,7 @@
 
 require "simplecov"
 require "codecov"
-require 'webmock/rspec'
+require "webmock/rspec"
 
 SimpleCov.start "rails"
 SimpleCov.formatter = SimpleCov::Formatter::Codecov if ENV["CODECOV"]

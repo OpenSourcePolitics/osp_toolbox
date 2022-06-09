@@ -9,7 +9,7 @@ RSpec.describe RequestBuilder do
   let(:content) { { foo: "bar" } }
 
   before do
-    stub_request(:post, url).with(body: JSON.dump(content),).to_return(status: 200, body: JSON.dump(content), headers: {})
+    stub_request(:post, url).with(body: JSON.dump(content)).to_return(status: 200, body: JSON.dump(content), headers: {})
   end
 
   it "sends a request" do
