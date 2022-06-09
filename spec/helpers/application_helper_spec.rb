@@ -3,6 +3,9 @@
 require "rails_helper"
 
 RSpec.describe ApplicationHelper, type: :helper do
+  before do
+    helper.request.path = "dummy_path.org"
+  end
   describe "infer_path" do
     before do
       allow(ActionController::Base).to receive(:controller_name).and_return("processings")
@@ -68,6 +71,12 @@ RSpec.describe ApplicationHelper, type: :helper do
       it "returns nil" do
         expect(helper.analyses_count_for(processing)).to eq(nil)
       end
+    end
+  end
+
+  describe "empty_search_path" do
+    it "returns request path" do
+      expect(helper.empty_search_path).to eq("dummy_path.org")
     end
   end
 end
