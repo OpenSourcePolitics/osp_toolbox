@@ -10,7 +10,7 @@ module CsvSerializer
   end
 
   def self.detect_colum_separator(data)
-    (data[2]).to_s
+    data.match(/\W/).to_s
   end
 
   def self.parse_csv(data)

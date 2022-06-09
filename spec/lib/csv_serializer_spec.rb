@@ -14,4 +14,18 @@ RSpec.describe CsvSerializer do
       expect(subject.serialize(data).class).to eq(Hash)
     end
   end
+
+  describe ".detect_colum_separator(data)" do
+    it "returns the correct separator" do
+      expect(subject.detect_colum_separator(data)).to eq(";")
+    end
+
+    context "when there is no id column" do
+      let(:data) { "title,body" }
+
+      it "returns the corect separator" do
+        expect(subject.detect_colum_separator(data)).to eq(",")
+      end
+    end
+  end
 end
