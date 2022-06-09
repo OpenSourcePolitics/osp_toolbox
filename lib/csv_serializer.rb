@@ -10,6 +10,7 @@ module CsvSerializer
   end
 
   def self.detect_colum_separator(data)
+    # returns the first non word character A.K.A. separator
     data.match(/\W/).to_s
   end
 
