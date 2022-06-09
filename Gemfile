@@ -52,6 +52,7 @@ group :test do
   gem "rails-controller-testing"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "webmock"
 end
 
 group :production do
