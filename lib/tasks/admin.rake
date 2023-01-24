@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 namespace :admin do
   desc "Create admin user"
   task create: :environment do
     print "Enter email: "
-    email = STDIN.gets.chomp
+    email = $stdin.gets.chomp
     print "Enter password: "
-    password = STDIN.gets.chomp
+    password = $stdin.gets.chomp
     print "Enter password confirmation: "
-    password_confirmation = STDIN.gets.chomp
+    password_confirmation = $stdin.gets.chomp
 
     if password == password_confirmation
-      User.create!(nickname: "admin", email: email, password: password, password_confirmation: password_confirmation, admin: true)
+      User.create!(nickname: "admin", email:, password:, password_confirmation:, admin: true)
       puts "Admin user created"
     else
       puts "Passwords do not match"

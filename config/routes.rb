@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'sidekiq/web'
+
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   resources :processings, except: %i[edit update create new destroy] do
@@ -25,8 +26,8 @@ Rails.application.routes.draw do
     registrations: "devise/registrations"
   }
 
-  authenticate :user, lambda { |u| u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
+  authenticate :user, ->(u) { u.admin? } do
+    mount Sidekiq::Web => "/sidekiq"
   end
 
   root to: "pages#home"
