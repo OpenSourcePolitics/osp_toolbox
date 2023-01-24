@@ -5,7 +5,8 @@ system("git remote update > /dev/null 2>&1")
 outdated = `git status -uno`.include?("Your branch is behind")
 
 if outdated
-  puts "Starting update at #{Time.zone.now}"
+  # rubocop:disable Rails/TimeZone
+  puts "Starting update at #{Time.now}"
   system("git pull")
   system("bundle install")
   system("RAILS_ENV=production bundle exec rails db:migrate")
@@ -13,5 +14,6 @@ if outdated
   system("RAILS_ENV=production bundle exec rails assets:precompile")
   system("sudo service nginx restart")
   system("sudo service sidekiq restart")
-  puts "Finishing update at #{Time.zone.now}"
+  puts "Finishing update at #{Time.now}"
+  # rubocop:enable Rails/TimeZone
 end
