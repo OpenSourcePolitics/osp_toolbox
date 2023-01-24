@@ -46,6 +46,7 @@ en:
   layouts:
     navbar:
       edit_profile: Edit profile
+      sidekiq: Sidekiq
   pages:
     home:
       comments_mapping: Comments mapping
