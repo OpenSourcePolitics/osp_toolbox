@@ -4,7 +4,7 @@
 system("git remote update > /dev/null 2>&1")
 outdated = `git status -uno`.include?("Your branch is behind")
 
-if outdated
+if outdated || ARGV.include?("--force")
   # rubocop:disable Rails/TimeZone
   puts "Starting update at #{Time.now}"
   system("git pull")
