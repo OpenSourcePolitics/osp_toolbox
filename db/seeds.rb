@@ -10,23 +10,31 @@
 require "faker"
 
 User.create!(
-    nickname: "Hello",
-    email: "hello@example.org",
-    password: "password",
-    password_confirmation: "password"
+  nickname: "admin",
+  email: "admin@example.org",
+  password: "password",
+  password_confirmation: "password",
+  admin: true
+)
+
+User.create!(
+  nickname: "Hello",
+  email: "hello@example.org",
+  password: "password",
+  password_confirmation: "password"
 )
 
 (0..10).each do |n|
   user = User.create!(
-      nickname: "Hello_#{n}",
-      email: "hello_#{n}@example.org",
-      password: "password",
-      password_confirmation: "password"
+    nickname: "Hello_#{n}",
+    email: "hello_#{n}@example.org",
+    password: "password",
+    password_confirmation: "password"
   )
 
   document = Document.create!(
-      user: user,
-      title: Faker::Book.title
+    user: user,
+    title: Faker::Book.title
   )
 
   proposals_file = InputFile.new(typename: "Proposals", document: document)
@@ -45,11 +53,11 @@ User.create!(
 
   (0..10).each do
     processing = Processing.new(
-        user: user,
-        title: Faker::Book.title,
-        client: Faker::Twitter.screen_name,
-        url: Faker::Internet.domain_name,
-        sent_to_preprocessing_at: Time.now,
+      user: user,
+      title: Faker::Book.title,
+      client: Faker::Twitter.screen_name,
+      url: Faker::Internet.domain_name,
+      sent_to_preprocessing_at: Time.now,
     )
     processing.file.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.csv")), filename: "subset_raw_data.csv")
     processing.preprocessed_file_data.attach(io: File.open(Rails.root.join("db", "seeds_data", "subset_raw_data.json"), "r:UTF-8"), filename: "subset_raw_data.json")
