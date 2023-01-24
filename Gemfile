@@ -60,3 +60,5 @@ group :production do
   gem "sentry-rails"
   gem "sentry-ruby"
 end
+
+gem "sidekiq", "~> 7.0"
