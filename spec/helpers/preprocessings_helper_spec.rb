@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe PreprocessingsHelper, type: :helper do
+RSpec.describe PreprocessingsHelper do
   let(:processing) do
     create(:processing,
            sent_to_preprocessing_at: Time.utc(2021, 1, 1, 12, 0, 0),

@@ -14,7 +14,7 @@ class Analysis < ApplicationRecord
     FileAttacher.build_and_attach_file(
       model: self,
       attached_to: :file,
-      data: data,
+      data:,
       name_prefix: Sanitizer.filename(processing&.title),
       extension: detect_extension
     )
@@ -38,7 +38,7 @@ class Analysis < ApplicationRecord
 
   def notification_message
     {
-      text: I18n.t("notification_message", scope: "analysis", typename: typename, title: processing.title),
+      text: I18n.t("notification_message", scope: "analysis", typename:, title: processing.title),
       link: processing_analysis_url(processing_id: processing, id: self)
     }
   end

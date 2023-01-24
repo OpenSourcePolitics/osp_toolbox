@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe "InputFiles", type: :system do
+RSpec.describe "InputFiles" do
   # TODO: Implement me!
 end

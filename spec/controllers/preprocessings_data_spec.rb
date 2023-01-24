@@ -12,8 +12,8 @@ RSpec.describe "Preprocessings_data", type: :request do
   describe "POST /preprocessed_data" do
     before do
       post "/preprocessed_data", params: {
-        token: token,
-        preprocessings_datum: preprocessings_datum,
+        token:,
+        preprocessings_datum:,
         preprocessing_id: processing.id
       }
     end

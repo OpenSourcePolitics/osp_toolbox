@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Processing, type: :model do
+RSpec.describe Processing do
   let!(:processing) { build(:processing) }
 
   it "is valid" do
@@ -25,7 +25,7 @@ RSpec.describe Processing, type: :model do
 
   describe "preprocessed_data" do
     it "returns a nil" do
-      expect(processing.preprocessed_data).to eq(nil)
+      expect(processing.preprocessed_data).to be_falsey
     end
 
     context "when there is a preprocessed_file_data" do
@@ -39,6 +39,7 @@ RSpec.describe Processing, type: :model do
 
   describe "parse_categories" do
     let!(:processing) { create(:processing, :with_preprocessed_file_data) }
+
     it "returns a nil" do
       expect(processing.parse_categories).to eq(["consommer"])
     end

@@ -1,6 +1,9 @@
-require: rubocop-rails
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
+  TargetRubyVersion: 3.2.0
   NewCops: enable
   Exclude:
     - vendor/**/*
@@ -30,3 +33,18 @@ Metrics/BlockLength:
   Max: 25
   Exclude:
     - spec/**/*
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+RSpec/NestedGroups:
+  Max: 5

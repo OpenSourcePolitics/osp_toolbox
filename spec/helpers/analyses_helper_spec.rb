@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe AnalysesHelper, type: :helper do
+RSpec.describe AnalysesHelper do
   describe "available_analyses_typename" do
     it "returns available analyses" do
       expect(helper.available_analyses_typename).to eq(Analysis::AVAILABLE_ANALYSES)

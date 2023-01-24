@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe "Processings", type: :system do
+RSpec.describe "Processings" do
   # TODO: Implement me!
 end

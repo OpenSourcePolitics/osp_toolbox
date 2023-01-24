@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe "Analyses", type: :system do
+RSpec.describe "Analyses" do
   # TODO: Implement me!
 end

@@ -2,22 +2,24 @@
 
 require "rails_helper"
 
-RSpec.describe DocumentsHelper, type: :helper do
+RSpec.describe DocumentsHelper do
   let!(:document) { create(:document, :with_archive) }
 
   describe "ready_to_process?" do
     context "when document has less than two input files" do
       it "returns false" do
-        expect(helper.ready_to_process?(document)).to be_falsey
+        expect(helper).not_to be_ready_to_process(document)
       end
     end
 
     context "when document has two input files" do
-      let!(:comments_input_file) { create(:input_file, :with_comment_file, document: document) }
-      let!(:proposals_input_file) { create(:input_file, document: document) }
+      # rubocop:disable RSpec/LetSetup
+      let!(:comments_input_file) { create(:input_file, :with_comment_file, document:) }
+      let!(:proposals_input_file) { create(:input_file, document:) }
+      # rubocop:enable RSpec/LetSetup
 
       it "returns true" do
-        expect(helper.ready_to_process?(document)).to be_truthy
+        expect(helper).to be_ready_to_process(document)
       end
     end
   end
@@ -33,6 +35,7 @@ RSpec.describe DocumentsHelper, type: :helper do
 
     context "when there is no archive" do
       let!(:document) { create(:document) }
+
       it "returns no archive message" do
         expect(helper.document_archive_for(document)).to eq("No available archive")
       end

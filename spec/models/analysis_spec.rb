@@ -2,8 +2,8 @@
 
 require "rails_helper"
 
-RSpec.describe Analysis, type: :model do
-  let!(:analysis) { create(:analysis, processing: processing) }
+RSpec.describe Analysis do
+  let!(:analysis) { create(:analysis, processing:) }
   let!(:processing) { create(:processing, :with_preprocessed_file_data, title: "dummy") }
 
   it "is valid" do
@@ -22,7 +22,8 @@ RSpec.describe Analysis, type: :model do
     end
 
     context "when typename is ldb" do
-      let!(:analysis) { create(:analysis, :ldb, processing: processing) }
+      let!(:analysis) { create(:analysis, :ldb, processing:) }
+
       it "returns xslx" do
         expect(analysis.detect_extension).to eq("xlsx")
       end

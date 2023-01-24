@@ -71,10 +71,10 @@ RSpec.describe "Preprocessings", type: :request do
     before do
       post "/preprocessings", params: {
         processing: {
-          title: title,
-          client: client,
-          url: url,
-          file: file
+          title:,
+          client:,
+          url:,
+          file:
         }
       }
     end
@@ -101,13 +101,14 @@ RSpec.describe "Preprocessings", type: :request do
 
   describe "PUT /preprocessings" do
     let(:new_title) { "#{title} new" }
+
     before do
       put "/preprocessings/#{processing.id}", params: {
         processing: {
           title: new_title,
-          client: client,
-          url: url,
-          file: file
+          client:,
+          url:,
+          file:
         }
       }
 

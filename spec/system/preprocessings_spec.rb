@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe "Preprocessings", type: :system do
+RSpec.describe "Preprocessings" do
   # TODO: Implement me!
 end

@@ -2,8 +2,9 @@
 
 require "rails_helper"
 
-RSpec.describe Notification, type: :model do
-  subject { described_class }
+RSpec.describe Notification do
+  subject(:notifier) { described_class }
+
   let!(:notification) do
     create(:notification,
            event_name: "dummy",
@@ -31,35 +32,39 @@ RSpec.describe Notification, type: :model do
   describe ".register!" do
     it "creates a notification" do
       expect do
-        subject.register!(
+        notifier.register!(
           event_name: "dummy",
           resource_class: analysis.class.name,
           resource_id: analysis.id,
           target_id: user.id
         )
-      end.to change { subject.count }.by(1)
+      end.to change(notifier, :count).by(1)
     end
   end
 
   describe ".notify!" do
     before do
-      allow(subject).to receive(:send_notification)
+      # rubocop:disable RSpec/SubjectStub
+      allow(notifier).to receive(:send_notification)
         .with(user, analysis.notification_message)
         .and_return(true)
+      # rubocop:enable RSpec/SubjectStub
     end
 
     context "when notification is nil" do
+      # rubocop:disable RSpec/LetSetup
       let!(:notification) { create(:notification) }
+      # rubocop:enable RSpec/LetSetup
 
       it "does nothing" do
-        expect(subject.notify!(analysis)).to eq(nil)
+        expect(notifier.notify!(analysis)).to be_falsey
       end
     end
 
     it "destroys notification" do
       expect do
-        subject.notify!(analysis)
-      end.to change { subject.count }.by(-1)
+        notifier.notify!(analysis)
+      end.to change(notifier, :count).by(-1)
     end
   end
 
@@ -69,7 +74,7 @@ RSpec.describe Notification, type: :model do
     end
 
     it "sends a notification" do
-      expect(subject.send_notification(user, analysis.notification_message)).to eq(true)
+      expect(notifier.send_notification(user, analysis.notification_message)).to be_truthy
     end
   end
 end

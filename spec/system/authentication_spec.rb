@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Authentication", type: :system do
+describe "Authentication" do
   let(:user) { create(:user) }
 
   describe "Sign in" do

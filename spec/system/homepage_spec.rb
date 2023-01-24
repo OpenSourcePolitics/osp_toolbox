@@ -2,8 +2,9 @@
 
 require "rails_helper"
 
-describe "Homepage", type: :system do
+describe "Homepage" do
   let(:user) { create(:user) }
+
   before do
     login_as(user)
   end

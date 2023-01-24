@@ -18,7 +18,7 @@ class InputFilesController < ApplicationController
 
   # POST /input_files or /input_files.json
   def create
-    @input_file = InputFile.new(input_file_params.merge(document: document))
+    @input_file = InputFile.new(input_file_params.merge(document:))
 
     respond_to do |format|
       if @input_file.save

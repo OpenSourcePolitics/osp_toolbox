@@ -43,6 +43,6 @@ class Processing < ApplicationRecord
   end
 
   def parse_categories
-    preprocessed_data["preprocessed_data"].values.map { |row| row["category"] }.uniq.compact
+    preprocessed_data["preprocessed_data"].values.pluck("category").uniq.compact
   end
 end

@@ -2,8 +2,9 @@
 
 require "rails_helper"
 
-RSpec.describe PreprocessingJob, type: :job do
-  subject { described_class }
+RSpec.describe PreprocessingJob do
+  subject(:job) { described_class }
+
   let(:processing) { build(:processing) }
 
   before do
@@ -11,7 +12,7 @@ RSpec.describe PreprocessingJob, type: :job do
   end
 
   it "sets sent_to_preprocessing_at" do
-    subject.perform_now(processing)
+    job.perform_now(processing)
 
     expect(processing.sent_to_preprocessing_at).not_to be_nil
   end

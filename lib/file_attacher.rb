@@ -4,24 +4,27 @@
 module FileAttacher
   def self.write_file(response, name_prefix, extension)
     filename = "#{name_prefix}_#{random_string}.#{extension}"
-    File.binwrite(Rails.root.join("tmp", filename), response)
+    path = Rails.root.join("tmp", filename)
+    File.binwrite(path, response)
 
     filename
   end
 
   def self.delete_tmp_file(filename)
-    file = Rails.root.join("tmp", filename)
-    File.delete(file) if File.exist? file
+    path = Rails.root.join("tmp", filename)
+    FileUtils.rm_f(path)
+
+    !File.exist?(path)
   end
 
   def self.build_and_attach_file(model:, attached_to:, data:, name_prefix:, extension:)
     filename = write_file(data, name_prefix, extension)
-
     storage = model.send(attached_to)
+    path = Rails.root.join("tmp", filename)
 
     storage.attach(
-      io: File.open(Rails.root.join("tmp", filename)),
-      filename: filename,
+      io: File.open(path),
+      filename:,
       content_type: "application/#{extension}"
     )
 

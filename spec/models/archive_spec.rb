@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Archive, type: :model do
+RSpec.describe Archive do
   let!(:archive) { create(:archive) }
 
   it "is valid" do
@@ -12,7 +12,7 @@ RSpec.describe Archive, type: :model do
   describe ".store_archive!" do
     it "creates an attached file" do
       # rubocop:disable Style/OpenStructUse
-      expect(archive.store_archive!(OpenStruct.new(response: "foo/bar"))).to eq(1)
+      expect(archive.store_archive!(OpenStruct.new(response: "foo/bar"))).to be_truthy
       # rubocop:enable Style/OpenStructUse
     end
   end

@@ -18,17 +18,17 @@ RSpec.describe FileAttacher do
 
   describe ".build_and_attach_file" do
     it "attachs file to the model" do
-      expect(processing.preprocessed_file_data.attached?).to be_falsey
+      expect(processing.preprocessed_file_data).not_to be_attached
 
       perform_action
 
-      expect(processing.preprocessed_file_data.attached?).to be_truthy
+      expect(processing.preprocessed_file_data).to be_attached
     end
 
     it "doesn't let temp file behinds" do
       perform_action
 
-      expect(Dir.glob(Rails.root.join("tmp/*.json")).size).to eq(0)
+      expect(Rails.root.glob("tmp/*.json").size).to eq(0)
     end
 
     it "sets a prefix for the file" do

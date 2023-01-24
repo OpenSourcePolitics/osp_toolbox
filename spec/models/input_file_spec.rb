@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe InputFile, type: :model do
+RSpec.describe InputFile do
   let!(:input_file) { create(:input_file) }
 
   it "is valid" do

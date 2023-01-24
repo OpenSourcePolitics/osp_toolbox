@@ -28,7 +28,7 @@ RSpec.describe "Documents", type: :request do
     let(:title) { "dummy_title" }
 
     before do
-      post "/documents", params: { document: { title: title } }
+      post "/documents", params: { document: { title: } }
     end
 
     it "assigns documents" do
@@ -91,7 +91,7 @@ RSpec.describe "Documents", type: :request do
 
     before do
       put "/documents/#{document.id}", params: {
-        document: { title: title }
+        document: { title: }
       }
     end
 

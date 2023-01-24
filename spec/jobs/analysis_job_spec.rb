@@ -3,12 +3,13 @@
 require "rails_helper"
 require "json"
 
-RSpec.describe AnalysisJob, type: :job do
-  subject { described_class }
+RSpec.describe AnalysisJob do
+  subject(:job) { described_class }
+
   let!(:processing) { create(:processing, :with_preprocessed_file_data) }
 
   let!(:analysis) do
-    Analysis.find_or_create_by!(typename: typename, processing: processing, category: category)
+    Analysis.find_or_create_by!(typename:, processing:, category:)
   end
 
   let(:user) { create(:user) }
@@ -30,8 +31,8 @@ RSpec.describe AnalysisJob, type: :job do
   describe "#perform" do
     it "creates a notification" do
       expect do
-        subject.perform_now(analysis.processing, analysis.typename, user)
-      end.to change { Notification.count }.by(1)
+        job.perform_now(analysis.processing, analysis.typename, user)
+      end.to change(Notification, :count).by(1)
     end
 
     context "when there is a category" do
@@ -42,8 +43,8 @@ RSpec.describe AnalysisJob, type: :job do
 
       it "creates a notification" do
         expect do
-          subject.perform_now(analysis.processing, analysis.typename, user, category)
-        end.to change { Notification.count }.by(1)
+          job.perform_now(analysis.processing, analysis.typename, user, category)
+        end.to change(Notification, :count).by(1)
       end
     end
   end

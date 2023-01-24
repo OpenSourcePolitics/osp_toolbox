@@ -3,7 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Sanitizer do
-  subject { described_class }
+  subject(:sanitizer) { described_class }
+
   describe ".filename" do
     let(:filenames) { %w[dummy-name-for#my%file 123_dummy_file dummyname] }
 
@@ -11,7 +12,7 @@ RSpec.describe Sanitizer do
 
     it "returns a proper filename" do
       filenames.each_with_index do |filename, index|
-        expect(subject.filename(filename)).to eq(sanitized_filename[index])
+        expect(sanitizer.filename(filename)).to eq(sanitized_filename[index])
       end
     end
 
@@ -19,7 +20,7 @@ RSpec.describe Sanitizer do
       it "returns a Date string" do
         allow(DateTime).to receive(:now).and_return("1632352627")
 
-        expect(subject.filename("")).to eq("1632352627")
+        expect(sanitizer.filename("")).to eq("1632352627")
       end
     end
   end

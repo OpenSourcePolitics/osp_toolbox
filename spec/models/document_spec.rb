@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Document, type: :model do
+RSpec.describe Document do
   let(:document) { create(:document) }
 
   it "is valid" do

@@ -3,7 +3,8 @@
 require "rails_helper"
 
 RSpec.describe RequestBuilder do
-  subject { described_class }
+  subject(:request_builder) { described_class }
+
   let(:url) { "https://dummycall.org" }
   let(:uri) { URI(url) }
   let(:content) { { foo: "bar" } }
@@ -13,10 +14,10 @@ RSpec.describe RequestBuilder do
   end
 
   it "sends a request" do
-    expect(subject.send_post_request(content, uri).response.code).to eq("200")
+    expect(request_builder.send_post_request(content, uri).response.code).to eq("200")
   end
 
   it "returns response" do
-    expect(subject.send_post_request(content, uri).response.body).to eq(JSON.dump(content))
+    expect(request_builder.send_post_request(content, uri).response.body).to eq(JSON.dump(content))
   end
 end

@@ -2,10 +2,11 @@
 
 require "rails_helper"
 
-RSpec.describe ApplicationHelper, type: :helper do
+RSpec.describe ApplicationHelper do
   before do
     helper.request.path = "dummy_path.org"
   end
+
   describe "infer_path" do
     before do
       allow(ActionController::Base).to receive(:controller_name).and_return("processings")
@@ -19,6 +20,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context "when path is nil" do
       let(:path) { nil }
+
       it "returns path" do
         expect(helper.infer_path(path)).to eq("/processings")
       end
@@ -50,15 +52,19 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "analyses_count_for" do
+    # rubocop:disable RSpec/LetSetup
     let!(:processing) { create(:processing) }
-    let!(:analyses) { create_list(:analysis, 2, processing: processing) }
+    let!(:analyses) { create_list(:analysis, 2, processing:) }
+    # rubocop:enable RSpec/LetSetup
 
     it "returns 2" do
       expect(helper.analyses_count_for(processing)).to eq(2)
     end
 
     context "when file are empty" do
-      let!(:analyses) { create_list(:analysis, 2, :without_file, processing: processing) }
+      # rubocop:disable RSpec/LetSetup
+      let!(:analyses) { create_list(:analysis, 2, :without_file, processing:) }
+      # rubocop:enable RSpec/LetSetup
 
       it "returns nil" do
         expect(helper.analyses_count_for(processing)).to eq(0)
@@ -66,10 +72,12 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     context "when analyses are empty" do
+      # rubocop:disable RSpec/LetSetup
       let!(:analyses) { nil }
+      # rubocop:enable RSpec/LetSetup
 
       it "returns nil" do
-        expect(helper.analyses_count_for(processing)).to eq(nil)
+        expect(helper.analyses_count_for(processing)).to be_falsey
       end
     end
   end

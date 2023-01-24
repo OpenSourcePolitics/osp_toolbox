@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe "InputFiles", type: :request do
   let(:user) { create(:user) }
   let(:document) { create(:document) }
-  let(:input_file) { create(:input_file, document: document) }
+  let(:input_file) { create(:input_file, document:) }
   let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("db/seeds_data/proposals.csv"), "text/csv") }
   let(:typename) { "Proposals" }
 
@@ -59,8 +59,8 @@ RSpec.describe "InputFiles", type: :request do
       before do
         post "/documents/#{document.id}/input_files", params: {
           input_file: {
-            file: file,
-            typename: typename
+            file:,
+            typename:
           }
         }
       end
@@ -80,12 +80,12 @@ RSpec.describe "InputFiles", type: :request do
 
     context "when an input file already exist for the document" do
       before do
-        create(:input_file, document: document)
+        create(:input_file, document:)
 
         post "/documents/#{document.id}/input_files", params: {
           input_file: {
-            file: file,
-            typename: typename
+            file:,
+            typename:
           }
         }
       end
@@ -94,7 +94,7 @@ RSpec.describe "InputFiles", type: :request do
         expect(flash[:notice]).to match(/Input file was successfully created and document has been sent to processing*/)
       end
 
-      context "and trying to create with the same typename" do
+      context "when trying to create with the same typename" do
         let(:typename) { "Proposals" }
 
         it "render edit template" do
@@ -111,8 +111,8 @@ RSpec.describe "InputFiles", type: :request do
     before do
       put "/documents/#{document.id}/input_files/#{input_file.id}", params: {
         input_file: {
-          file: file,
-          typename: typename
+          file:,
+          typename:
         }
       }
     end

@@ -74,7 +74,7 @@ RSpec.describe "Analyses", type: :request do
         post "/processings/#{processing.id}/analyses", params: {
           analysis:
               {
-                typename: typename,
+                typename:,
                 category: ""
               }
         }
