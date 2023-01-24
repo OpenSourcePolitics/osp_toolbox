@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+system("git remote update")
+outdated = `git status -uno`.include?("Your branch is behind")
+
+if outdated
+  system("git pull")
+  system("bundle install")
+  system("RAILS_ENV=production bundle exec rails db:migrate")
+  system("yarn install")
+  system("RAILS_ENV=production bundle exec rails assets:precompile")
+  system("sudo service nginx restart")
+  system("sudo service sidekiq restart")
+end
