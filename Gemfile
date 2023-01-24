@@ -57,6 +57,7 @@ end
 
 group :production do
   gem "aws-sdk-s3", require: false
+  gem "dalli"
   gem "sentry-rails"
   gem "sentry-ruby"
   gem "sidekiq", "~> 6.0"
