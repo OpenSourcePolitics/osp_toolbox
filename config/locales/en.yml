@@ -45,6 +45,7 @@ en:
       update: Input file was successfully updated.
   layouts:
     navbar:
+      debug: Debug
       edit_profile: Edit profile
       sidekiq: Sidekiq
   pages:
