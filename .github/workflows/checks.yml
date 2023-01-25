@@ -29,18 +29,26 @@ jobs:
       - name: Install packages
         run: |
           yarn install --pure-lockfile
-
       - name: Run linters
         run: |
           bundle exec rubocop --parallel
           yarn run stylelint "app/**/*.scss"
           bundle exec erblint "app/**/*.erb"
           yarn run eslint "app/**/*.js"
+  security:
+    name: Security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
       - name: Run security checks
         run: |
           bundle exec bundler-audit --update
           bundle exec brakeman -q -w2
-
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -102,9 +110,9 @@ jobs:
         run: bundle exec rspec
   conclusion:
     name: conclusion
-    needs: [tests, linters]
+    needs: [tests, linters, security]
     runs-on: ubuntu-latest
     if: always()
     steps:
       - name: Result
-        run: ${{ needs.tests.result == 'success' && needs.linters.result == 'success' }}
+        run: ${{ needs.tests.result == 'success' && needs.security.result == 'success' && needs.linters.result == 'success' }}
