@@ -1,19 +1,19 @@
-.row{
+.row {
   padding-top: 2rem;
 }
 
 .card-actions {
-  color: $deepl-blue;
+  color: $deepBlue;
   text-decoration: none;
 
   .card {
     transition: transform 250ms ease-in-out;
 
     &:hover {
+      background-color: $deepBlue;
+      box-shadow: 5px 5px 50px 5px rgba(0, 0, 0, 0.5);
+      color: $lightText;
       transform: scale(1.005);
-      box-shadow: 5px 5px 50px 5px rgba(0,0,0,0.50);
-      background-color: $deepl-blue;
-      color: $light-text;
     }
 
     .card-img-top {
@@ -23,10 +23,6 @@
 
     h2 {
       font-weight: bold;
-    }
-
-    p {
-
     }
   }
 }
