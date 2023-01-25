@@ -11,6 +11,6 @@ class Document < ApplicationRecord
   def process_archive
     return unless input_files.size >= 2
 
-    ProcessDocumentJob.perform_later(self.id)
+    ProcessDocumentJob.perform_later(id)
   end
 end
