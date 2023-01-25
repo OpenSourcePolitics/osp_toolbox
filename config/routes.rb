@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => "/sidekiq"
+    get "/debug", to: "pages#debug"
   end
 
   root to: "pages#home"
