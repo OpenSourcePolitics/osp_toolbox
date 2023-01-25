@@ -9,8 +9,8 @@ class Document < ApplicationRecord
   validates :title, presence: true
 
   def process_archive
-    return unless input_files.count > 2
+    return unless input_files.size >= 2
 
-    ProcessDocumentJob.perform_later(self)
+    ProcessDocumentJob.perform_later(self.id)
   end
 end

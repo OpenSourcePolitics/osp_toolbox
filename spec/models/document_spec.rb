@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Document do
-  let(:document) { create(:document) }
+  let!(:document) { create(:document) }
 
   it "is valid" do
     expect(document).to be_valid
@@ -22,17 +22,17 @@ RSpec.describe Document do
     let!(:input_file_comments) { create(:input_file, :with_comment_file, document:) }
 
     it "calls ProcessDocumentJob" do
-      expect(ProcessDocumentJob).to receive(:perform_later).with(document)
+      expect(ProcessDocumentJob).to receive(:perform_later).with(document.id)
 
-      document.process_archive
+      document.reload.process_archive
     end
 
     context "when input files are less than 2" do
-      let(:input_file_comments) { nil }
+      let!(:input_file_comments) { nil }
 
       it "doesn't enqueue a job" do
         expect do
-          document.process_archive
+          document.reload.process_archive
         end.not_to have_enqueued_job(ProcessDocumentJob)
       end
     end
