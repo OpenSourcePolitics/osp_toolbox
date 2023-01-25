@@ -11,9 +11,7 @@ RSpec.describe Archive do
 
   describe ".store_archive!" do
     it "creates an attached file" do
-      # rubocop:disable Style/OpenStructUse
       expect(archive.store_archive!(OpenStruct.new(response: "foo/bar"))).to be_truthy
-      # rubocop:enable Style/OpenStructUse
     end
   end
 end
