@@ -6,33 +6,39 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= link_to documents_path do %>
-        <div class="card">
+      <%= link_to documents_path, class: "card-actions" do %>
+        <div class="card text-center">
+          <%= image_tag "document.svg", class: "card-img-top", alt: t(".comments_mapping.alt") %>
           <div class="card-body">
+            <h2 class="card-title"><%= t(".comments_mapping.title") %></h2>
             <p class="card-text">
-              <%= t(".comments_mapping") %>
+              <%= t(".comments_mapping.description") %>
             </p>
           </div>
         </div>
       <% end %>
     </div>
     <div class="col">
-      <%= link_to preprocessings_path do %>
-        <div class="card">
+      <%= link_to preprocessings_path, class: "card-actions" do %>
+        <div class="card text-center">
+          <%= image_tag "services.svg", class: "card-img-top", alt: t(".preprocessings.alt") %>
           <div class="card-body">
+            <h2 class="card-title"><%= t(".preprocessings.title") %></h2>
             <p class="card-text">
-              <%= t(".preprocessings") %>
+              <%= t(".preprocessings.description") %>
             </p>
           </div>
         </div>
       <% end %>
     </div>
     <div class="col">
-      <%= link_to processings_path do %>
-        <div class="card">
+      <%= link_to processings_path, class: "card-actions" do %>
+        <div class="card text-center">
+          <%= image_tag "ring-details.svg", class: "card-img-top", alt: t(".exploratory_data_analysis.alt") %>
           <div class="card-body">
+            <h2 class="card-title"><%= t(".exploratory_data_analysis.title") %></h2>
             <p class="card-text">
-              <%= t(".exploratory_data_analysis") %>
+              <%= t(".exploratory_data_analysis.description") %>
             </p>
           </div>
         </div>

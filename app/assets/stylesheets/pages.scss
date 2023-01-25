@@ -1,3 +1,32 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.row{
+  padding-top: 2rem;
+}
+
+.card-actions {
+  color: $deepl-blue;
+  text-decoration: none;
+
+  .card {
+    transition: transform 250ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.005);
+      box-shadow: 5px 5px 50px 5px rgba(0,0,0,0.50);
+      background-color: $deepl-blue;
+      color: $light-text;
+    }
+
+    .card-img-top {
+      height: 100px;
+      width: auto;
+    }
+
+    h2 {
+      font-weight: bold;
+    }
+
+    p {
+
+    }
+  }
+}

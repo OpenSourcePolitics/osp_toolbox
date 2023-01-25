@@ -97,3 +97,8 @@ en:
     create:
       create: ""
       found: ""
+  pages:
+    home:
+      comments_mapping:
+        title: ""
+        description: ""
