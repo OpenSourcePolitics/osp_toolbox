@@ -132,7 +132,7 @@ RSpec.describe "Documents", type: :request do
 
   describe "/process_archive" do
     before do
-      allow(ProcessDocumentJob).to receive(:perform_later).with(document).and_return(true)
+      allow(ProcessDocumentJob).to receive(:perform_later).with(document.id).and_return(true)
       post "/documents/#{document.id}/process_archive", params: {}
     end
 

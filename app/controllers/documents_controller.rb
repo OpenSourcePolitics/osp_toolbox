@@ -59,7 +59,7 @@ class DocumentsController < ApplicationController
   end
 
   def process_archive
-    ProcessDocumentJob.perform_later(@document)
+    ProcessDocumentJob.perform_later(@document.id)
 
     respond_to do |format|
       format.html { redirect_to document_path(@document), notice: t(".process_archive") }
