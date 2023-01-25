@@ -50,14 +50,17 @@ en:
   pages:
     home:
       comments_mapping:
-        title: Comments mapping
+        alt: Comments mapping
         description: Allows you to map comments to the corresponding proposals.
+        title: Comments mapping
       exploratory_data_analysis:
-        title: Exploratory data analysis
+        alt: Exploratory data analysis
         description: Allows you to perform an exploratory data analysis on the data.
+        title: Exploratory data analysis
       preprocessings:
-        title: Preprocessings
+        alt: Preprocessings
         description: Allows you to preprocess the data before the analysis.
+        title: Preprocessings
   preprocessings:
     create:
       create: Preprocessing was successfully created.
