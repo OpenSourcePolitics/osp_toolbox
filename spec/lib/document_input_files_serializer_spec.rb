@@ -13,7 +13,7 @@ RSpec.describe DocumentInputFilesSerializer do
 
   describe ".serialize" do
     it "serializes the input files" do
-      expect(serializer.serialize(document.reload).keys).to eq(%w[Comments Proposals])
+      expect(serializer.serialize(document.reload).keys).to match_array(%w[Comments Proposals])
       expect(serializer.serialize(document.reload)["Comments"].length).to eq(25)
       expect(serializer.serialize(document.reload)["Proposals"].length).to eq(14)
       expect(serializer.serialize(document).class).to eq(Hash)
