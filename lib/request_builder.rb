@@ -30,8 +30,12 @@ module RequestBuilder
     http.use_ssl = url.scheme == "https"
     request = Net::HTTP::Get.new(url)
     response = http.request(request)
-    return response if response.code == "200"
+    if raise_error
+      return response if response.code == "200"
 
-    raise "Request error, code: #{response.code}" if raise_error
+      raise "Request error, code: #{response.code}" if raise_error
+    else
+      response
+    end
   end
 end
