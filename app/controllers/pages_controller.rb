@@ -17,33 +17,33 @@ class PagesController < ApplicationController
 
   def service_status(service)
     if service[:url].nil?
-      response = OpenStruct.new(code: "404", body: { message: "Service not found" }.to_json)
+      response = Struct.new(:code, :body)
+      response.new("404", { "message" => "Service not found" })
     else
       url = URI("#{service[:url]}/ping")
-      response = RequestBuilder.send_get_request(url, raise_error: false)
+      begin
+        response = RequestBuilder.send_get_request(url, raise_error: false)
+        response.body = JSON.parse(response.body)
+      rescue JSON::ParserError
+        response.body = { "message" => response.body }
+      end
     end
 
-    build_response(response.code, response.body)
-  end
-
-  def build_response(code, body)
-    body = { message: body } unless body.is_a?(Hash)
-
-    OpenStruct.new(code:, body:)
+    response
   end
 
   def services
     [
       {
-        name: "PREPROCESSING_URL",
+        name: "Preprocessing service",
         url: ENV.fetch("PREPROCESSING_URL", nil)
       },
       {
-        name: "BASIC_LINGUISTIC_INDICATORS_URL",
+        name: "Basic linguistic indicators service",
         url: ENV.fetch("BASIC_LINGUISTIC_INDICATORS_URL", nil)
       },
       {
-        name: "COMMENTS_MAPPING_URL",
+        name: "Comments mapping service",
         url: ENV.fetch("COMMENTS_MAPPING_URL", nil)
       }
     ]
