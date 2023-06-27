@@ -1,0 +1,17 @@
+<h1>Generate new QRCode</h1>
+
+
+<div>
+  <p>
+    <%== I18n.t("qrcode.index.description") %>
+  </p>
+</div>
+<div class="content">
+  <%= turbo_frame_tag "qrcode_generate", class: "turbo_qrcode" do %>
+    <%= form_with url: qrcode_generate_url, method: :get, class: "qrcode-form d-flex flex-justify-center" do |form| %>
+      <div class="input">
+        <%= form.text_field :query, maxlength: 70, placeholder:  I18n.t("qrcode.content.form.field.placeholder"), class: "qrcode__query" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

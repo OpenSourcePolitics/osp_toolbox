@@ -1,5 +1,20 @@
 ---
 en:
+  qrcode:
+    index:
+      description: You can create a QRCode easily by adding a <b>valid URL</b> in the text below
+    content:
+      form:
+        instructions:
+          screenshot:
+            legend: "Your QRcode is available ! To get your qrcode you can : "
+            first: "Right click on Qrcode"
+            second: Select "Take a screenshot"
+            third: And save it !
+            or: Or
+            last: Take a screenshot
+        field:
+          placeholder: "https://opensourcepolitics.eu/references-clients/"
   analyses:
     create:
       create: Analysis was successfully created.
@@ -58,6 +73,10 @@ en:
         alt: Exploratory data analysis
         description: Allows you to perform an exploratory data analysis on the data.
         title: Exploratory data analysis
+      qrcode:
+        alt: QRcode
+        description: Create QRcode easily
+        title: QRCODE generator
       preprocessings:
         alt: Preprocessings
         description: Allows you to preprocess the data before the analysis.

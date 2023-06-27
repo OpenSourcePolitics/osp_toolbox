@@ -44,5 +44,19 @@
         </div>
       <% end %>
     </div>
+
+    <div class="col">
+      <%= link_to qrcode_index_path, class: "card-actions" do %>
+        <div class="card text-center">
+          <%= render inline: Rails.root.join('app/assets/images/qrcode.svg').read %>
+          <div class="card-body">
+            <h2 class="card-title"><%= t(".qrcode.title") %></h2>
+            <p class="card-text">
+              <%= t(".qrcode.description") %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

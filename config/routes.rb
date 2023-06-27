@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :qrcode, only: [:index] do
+  end
+  get "/qrcode/generate", controller: "qrcode#generate", as: "qrcode_generate"
+
   resources :preprocessings do
     post "/redo_preprocessing", to: "preprocessings#redo_preprocessing"
   end

@@ -22,6 +22,8 @@ gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "webpacker", "~> 5.0"
+gem 'turbo-rails'
+gem "rqrcode", "~> 2.0"
 
 group :development, :test do
   gem "brakeman"
@@ -41,7 +43,6 @@ group :development do
   gem "faker"
   gem "listen", "~> 3.3"
   gem "rack-mini-profiler", "~> 2.0"
-  # gem "rails-erd"
   gem "spring"
   gem "web-console", ">= 4.1.0"
 end
@@ -62,3 +63,6 @@ group :production do
   gem "sentry-ruby"
   gem "sidekiq", "~> 6.0"
 end
+
+# Use Redis for Action Cable
+gem 'redis', '~> 4.0'

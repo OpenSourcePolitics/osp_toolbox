@@ -1,0 +1,25 @@
+<%= link_to qrcode_index_path, class: "card-actions" do %>
+  <%= render inline: Rails.root.join('app/assets/images/back.svg').read %>
+<% end %>
+
+<ul>
+  <legend><%= I18n.t("qrcode.content.form.instructions.screenshot.legend") %></legend>
+  <li><%= I18n.t("qrcode.content.form.instructions.screenshot.first") %></li>
+  <li><%= I18n.t("qrcode.content.form.instructions.screenshot.second") %></li>
+  <li><%= I18n.t("qrcode.content.form.instructions.screenshot.third") %></li>
+
+  <ol><%= I18n.t("qrcode.content.form.instructions.screenshot.or") %></ol>
+  <li><%= I18n.t("qrcode.content.form.instructions.screenshot.last") %></li>
+</ul>
+
+<%= turbo_frame_tag "qrcode_generate" do %>
+  <div>
+    <%= form_with url: qrcode_generate_url, method: :get do |form| %>
+      <%= form.text_field :query, maxlength: 70, placeholder:  I18n.t("qrcode.content.form.field.placeholder") %>
+    <% end %>
+  </div>
+
+  <div class="qrcode__svg">
+    <%== @svg %>
+  </div>
+<% end %>

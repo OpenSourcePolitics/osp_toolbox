@@ -16,6 +16,10 @@
       box-shadow: 5px 5px 50px 5px rgba(0, 0, 0, 0.5);
       color: $lightText;
       transform: scale(1.005);
+
+      svg {
+        color: $lightText;
+      }
     }
 
     .card-img-top {
